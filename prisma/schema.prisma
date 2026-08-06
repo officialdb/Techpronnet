@@ -1,0 +1,137 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id             Int      @id @default(autoincrement())
+  email          String   @unique
+  hashedPassword String   @map("hashed_password")
+  name           String
+  role           String   @default("ADMIN")
+  createdAt      DateTime @default(now()) @map("created_at")
+
+  @@map("users")
+}
+
+model Service {
+  id              Int      @id @default(autoincrement())
+  domain          String
+  name            String
+  slug            String   @unique
+  tagline         String
+  description     String
+  icon            String
+  featuresJson    String   @map("features_json")
+  pricingStarting String?  @map("pricing_starting")
+  isPopular       Boolean  @default(false) @map("is_popular")
+  orderIndex      Int      @default(0) @map("order_index")
+  createdAt       DateTime @default(now()) @map("created_at")
+
+  @@map("services")
+}
+
+model Project {
+  id             Int      @id @default(autoincrement())
+  title          String
+  slug           String   @unique
+  client         String
+  domain         String
+  description    String
+  imageUrl       String   @map("image_url")
+  metricsJson    String?  @map("metrics_json")
+  completionDate String   @map("completion_date")
+  isFeatured     Boolean  @default(false) @map("is_featured")
+  createdAt      DateTime @default(now()) @map("created_at")
+
+  @@map("projects")
+}
+
+model BlogPost {
+  id          Int      @id @default(autoincrement())
+  title       String
+  slug        String   @unique
+  content     String
+  excerpt     String
+  author      String
+  readTime    String   @map("read_time")
+  tagsJson    String   @map("tags_json")
+  imageUrl    String   @map("image_url")
+  publishedAt DateTime @default(now()) @map("published_at")
+
+  @@map("blog_posts")
+}
+
+model Lead {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String
+  phone     String
+  company   String?
+  source    String   @default("Website CTA")
+  status    String   @default("NEW")
+  notes     String?
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
+
+  @@map("leads")
+}
+
+model QuoteRequest {
+  id               Int      @id @default(autoincrement())
+  referenceCode    String   @unique @map("reference_code")
+  domain           String
+  name             String
+  email            String
+  phone            String
+  company          String?
+  address          String?
+  requirementsJson String   @map("requirements_json")
+  budgetRange      String?  @map("budget_range")
+  urgency          String   @default("Standard")
+  status           String   @default("PENDING")
+  createdAt        DateTime @default(now()) @map("created_at")
+
+  @@map("quote_requests")
+}
+
+model Review {
+  id              Int     @id @default(autoincrement())
+  reviewerName    String  @map("reviewer_name")
+  reviewerAvatar  String? @map("reviewer_avatar")
+  rating          Float   @default(5.0)
+  reviewText      String  @map("review_text")
+  reviewDate      String  @map("review_date")
+  verifiedGoogle  Boolean @default(true) @map("verified_google")
+  isFeatured      Boolean @default(false) @map("is_featured")
+  isPinned        Boolean @default(false) @map("is_pinned")
+  ownerReply      String? @map("owner_reply")
+  aiSummaryTags   String? @map("ai_summary_tags")
+  category        String  @default("General")
+
+  @@map("reviews")
+}
+
+model CMSSetting {
+  id        Int    @id @default(autoincrement())
+  key       String @unique
+  valueJson String @map("value_json")
+
+  @@map("cms_settings")
+}
+
+model AuditLog {
+  id          Int      @id @default(autoincrement())
+  action      String
+  entityType  String   @map("entity_type")
+  entityId    String?  @map("entity_id")
+  performedBy String   @map("performed_by")
+  timestamp   DateTime @default(now())
+  details     String?
+
+  @@map("audit_logs")
+}
