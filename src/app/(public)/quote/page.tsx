@@ -160,15 +160,17 @@ function QuoteFormContent() {
     try {
       const response = await submitQuoteRequest({
         domain: data.domain,
-        requirements_json: JSON.stringify(data.requirements),
-        custom_notes: data.customNotes,
+        requirements_json: JSON.stringify({
+          specs: data.requirements,
+          custom_notes: data.customNotes
+        }),
         budget_range: data.budgetRange,
         urgency: data.urgency,
-        client_name: data.name,
-        client_email: data.email,
-        client_phone: data.phone,
-        client_company: data.company,
-        location: data.address
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        company: data.company,
+        address: data.address
       });
       setSuccessResult(response);
     } catch (err) {
