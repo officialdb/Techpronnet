@@ -1,14 +1,22 @@
-from typing import Optional, List, Any
-from pydantic import BaseModel, EmailStr
+from typing import Optional, Literal
+from pydantic import BaseModel, EmailStr, Field
 from datetime import datetime
+
+# Enum of allowed service domains — rejects any unknown value at the API boundary
+AllowedDomain = Literal[
+    'software', 'security', 'solar', 'networking',
+    'it-support', 'tracking', 'street-power'
+]
+
+# ─── User ───────────────────────────────────────────────────────────────────
 
 class UserBase(BaseModel):
     email: EmailStr
-    name: str
+    name: str = Field(..., min_length=2, max_length=100)
     role: str = "ADMIN"
 
 class UserCreate(UserBase):
-    password: str
+    password: str = Field(..., min_length=8, max_length=128)
 
 class UserResponse(UserBase):
     id: int
@@ -16,15 +24,17 @@ class UserResponse(UserBase):
     class Config:
         from_attributes = True
 
+# ─── Service ─────────────────────────────────────────────────────────────────
+
 class ServiceBase(BaseModel):
-    domain: str
-    name: str
-    slug: str
-    tagline: str
-    description: str
-    icon: str
+    domain: str = Field(..., max_length=50)
+    name: str = Field(..., max_length=200)
+    slug: str = Field(..., max_length=200)
+    tagline: str = Field(..., max_length=500)
+    description: str = Field(..., max_length=3000)
+    icon: str = Field(..., max_length=100)
     features_json: str
-    pricing_starting: Optional[str] = None
+    pricing_starting: Optional[str] = Field(None, max_length=50)
     is_popular: bool = False
     order_index: int = 0
 
@@ -37,15 +47,17 @@ class ServiceResponse(ServiceBase):
     class Config:
         from_attributes = True
 
+# ─── Project ─────────────────────────────────────────────────────────────────
+
 class ProjectBase(BaseModel):
-    title: str
-    slug: str
-    client: str
-    domain: str
-    description: str
-    image_url: str
+    title: str = Field(..., max_length=300)
+    slug: str = Field(..., max_length=300)
+    client: str = Field(..., max_length=200)
+    domain: str = Field(..., max_length=50)
+    description: str = Field(..., max_length=3000)
+    image_url: str = Field(..., max_length=600)
     metrics_json: Optional[str] = None
-    completion_date: str
+    completion_date: str = Field(..., max_length=50)
     is_featured: bool = False
 
 class ProjectResponse(ProjectBase):
@@ -54,13 +66,15 @@ class ProjectResponse(ProjectBase):
     class Config:
         from_attributes = True
 
+# ─── Lead ────────────────────────────────────────────────────────────────────
+
 class LeadCreate(BaseModel):
-    name: str
-    email: str
-    phone: str
-    company: Optional[str] = None
-    source: Optional[str] = "Website CTA"
-    notes: Optional[str] = None
+    name: str = Field(..., min_length=2, max_length=150)
+    email: EmailStr
+    phone: str = Field(..., min_length=7, max_length=30)
+    company: Optional[str] = Field(None, max_length=200)
+    source: Optional[str] = Field("Website CTA", max_length=100)
+    notes: Optional[str] = Field(None, max_length=2000)
 
 class LeadResponse(LeadCreate):
     id: int
@@ -70,16 +84,18 @@ class LeadResponse(LeadCreate):
     class Config:
         from_attributes = True
 
+# ─── Quote Request ────────────────────────────────────────────────────────────
+
 class QuoteRequestCreate(BaseModel):
-    domain: str
-    name: str
-    email: str
-    phone: str
-    company: Optional[str] = None
-    address: Optional[str] = None
-    requirements_json: str
-    budget_range: Optional[str] = None
-    urgency: Optional[str] = "Standard"
+    domain: AllowedDomain
+    name: str = Field(..., min_length=2, max_length=150)
+    email: EmailStr
+    phone: str = Field(..., min_length=7, max_length=30)
+    company: Optional[str] = Field(None, max_length=200)
+    address: Optional[str] = Field(None, max_length=500)
+    requirements_json: str = Field(..., max_length=10000)
+    budget_range: Optional[str] = Field(None, max_length=100)
+    urgency: Optional[str] = Field("Standard", max_length=50)
 
 class QuoteRequestResponse(QuoteRequestCreate):
     id: int
@@ -88,6 +104,15 @@ class QuoteRequestResponse(QuoteRequestCreate):
     created_at: datetime
     class Config:
         from_attributes = True
+
+# ─── Review ──────────────────────────────────────────────────────────────────
+
+class ReviewCreate(BaseModel):
+    reviewer_name: str = Field(..., min_length=2, max_length=150)
+    rating: float = Field(..., ge=1.0, le=5.0)
+    review_text: str = Field(..., min_length=10, max_length=2000)
+    review_date: str = Field(..., max_length=50)
+    category: str = Field("General", max_length=100)
 
 class ReviewResponse(BaseModel):
     id: int
@@ -105,10 +130,18 @@ class ReviewResponse(BaseModel):
     class Config:
         from_attributes = True
 
+# ─── CMS ─────────────────────────────────────────────────────────────────────
+
 class CMSSettingSchema(BaseModel):
-    key: str
+    key: str = Field(..., max_length=100)
     value_json: str
+
+# ─── Auth ─────────────────────────────────────────────────────────────────────
 
 class Token(BaseModel):
     access_token: str
     token_type: str
+
+class AuthLoginRequest(BaseModel):
+    email: EmailStr
+    password: str = Field(..., min_length=1, max_length=128)

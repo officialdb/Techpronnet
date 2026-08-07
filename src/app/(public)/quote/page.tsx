@@ -48,8 +48,11 @@ function QuoteFormContent() {
         'CCTV HD IP Cameras (4 - 16 Cameras)',
         'Enterprise Surveillance (16+ Cameras & NVR)',
         'Biometric Access Control & Turnstiles',
-        'Smart Home Automation System',
+        'Intercom System Installation',
+        'Smart Door Bell Installation',
+        'Electric Fence Installation & Monitoring',
         'High-Security Armored Doors',
+        'Smart Home Automation System',
         'Perimeter Motion & Intrusion Alarm'
       ]
     },
@@ -57,11 +60,13 @@ function QuoteFormContent() {
       title: 'Solar & Renewable Power System Specs',
       icon: 'fa-sun-o',
       options: [
+        'Solar/Inverter & Battery Installation',
         '5kVA Hybrid Solar Inverter System',
         '10kVA - 15kVA Commercial Solar Array',
         '50kVA Industrial Microgrid Array',
         'Lithium-Ion Wall Battery Backup Storage',
         'Solar Roof Panels & Racking Mounts',
+        'Solar Street Light Installation',
         'Smart Energy Audit & Surge Protection'
       ]
     },
@@ -85,6 +90,31 @@ function QuoteFormContent() {
         '24/7 IT Helpdesk Hotline SLA',
         'On-site Emergency Technician Visits',
         'Software Licensing & Compliance Management'
+      ]
+    },
+    tracking: {
+      title: 'Car Tracking & Fleet Monitoring Specs',
+      icon: 'fa-map-marker',
+      options: [
+        'Single Vehicle GPS Tracker Installation',
+        'Multi-Vehicle Fleet Tracking Setup',
+        'Geofencing & Zone Alert Notifications',
+        'Engine Immobilizer & Remote Cut-Off',
+        'Live Web Fleet Monitoring Dashboard',
+        'Driver Behavior & Mileage Reports',
+        'Anti-Theft Tracking & Recovery Support'
+      ]
+    },
+    'street-power': {
+      title: 'Solar Street Lights & Outdoor Power Specs',
+      icon: 'fa-lightbulb-o',
+      options: [
+        'Estate Road Solar Street Light Installation',
+        'Compound & Perimeter Solar Flood Lights',
+        'Motion-Activated Dusk-to-Dawn Lights',
+        'Commercial Parking Lot Solar Lighting',
+        'Warehouse & Factory Outdoor Lighting',
+        'Maintenance & Bulb Replacement Service'
       ]
     }
   };

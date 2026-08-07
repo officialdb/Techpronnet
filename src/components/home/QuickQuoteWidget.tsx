@@ -9,10 +9,12 @@ export default function QuickQuoteWidget() {
 
   const domains = [
     { id: 'software', name: 'Software Development', icon: 'fa-code', badge: 'Custom Web/Mobile/AI' },
-    { id: 'security', name: 'Security Solutions', icon: 'fa-shield', badge: 'CCTV & Smart Home' },
+    { id: 'security', name: 'Security Solutions', icon: 'fa-shield', badge: 'CCTV, Intercom & Fence' },
     { id: 'solar', name: 'Solar & Inverters', icon: 'fa-sun-o', badge: 'Clean Power Systems' },
     { id: 'networking', name: 'Networking Infrastructure', icon: 'fa-sitemap', badge: 'Mesh Wi-Fi & Cabling' },
-    { id: 'it-support', name: 'Managed IT Support', icon: 'fa-wrench', badge: '24/7 SLA Repairs' }
+    { id: 'it-support', name: 'Managed IT Support', icon: 'fa-wrench', badge: '24/7 SLA Repairs' },
+    { id: 'tracking', name: 'Car Tracking & Fleet', icon: 'fa-map-marker', badge: 'GPS & Anti-Theft' },
+    { id: 'street-power', name: 'Solar Street Lights', icon: 'fa-lightbulb-o', badge: 'Outdoor Power' }
   ];
 
   const handleLaunchFullWizard = (e: React.FormEvent) => {
@@ -41,7 +43,7 @@ export default function QuickQuoteWidget() {
           <form onSubmit={handleLaunchFullWizard} className="space-y-8">
             
             {/* Domain Selection Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3">
               {domains.map((dom, idx) => {
                 const isSelected = selectedDomain === dom.id;
                 return (

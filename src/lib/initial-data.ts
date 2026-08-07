@@ -1,6 +1,6 @@
 export interface ServiceItem {
   id: number;
-  domain: 'software' | 'security' | 'solar' | 'networking' | 'it-support';
+  domain: 'software' | 'security' | 'solar' | 'networking' | 'it-support' | 'tracking' | 'street-power';
   name: string;
   slug: string;
   tagline: string;
@@ -70,16 +70,19 @@ export const INITIAL_SERVICES: ServiceItem[] = [
     domain: 'security',
     name: 'CCTV & Security Solutions',
     slug: 'cctv-security-systems',
-    tagline: 'Enterprise-grade Surveillance, Smart Home, Security Doors & Access Control.',
-    description: 'Protect your assets with high-definition IP camera networks, biometric access control, smart home automation, high-security door systems, and real-time perimeter alarm alerts.',
+    tagline: 'Enterprise-grade Surveillance, Smart Doors, Intercom, Electric Fence & Access Control.',
+    description: 'Protect your assets with high-definition IP camera networks, biometric access control, intercom systems, electric fencing, smart door bells, and real-time perimeter alarm alerts.',
     icon: 'fa-shield',
     features_json: JSON.stringify([
       'CCTV Installation & IP Cameras',
       'CCTV Maintenance & Monitoring',
       'Access Control Systems (Biometric/Keycard)',
-      'Smart Home Installation & Automation',
+      'Intercom System Installation',
+      'Smart Door Bell Installation',
+      'Electric Fence Installation & Monitoring',
       'Armored Security Door Installation',
-      'Intrusion & Motion Alarm Systems'
+      'Intrusion & Motion Alarm Systems',
+      'Smart Home Installation & Automation'
     ]),
     pricing_starting: '$450',
     is_popular: true,
@@ -90,15 +93,17 @@ export const INITIAL_SERVICES: ServiceItem[] = [
     domain: 'solar',
     name: 'Solar & Renewable Energy Systems',
     slug: 'solar-electrical-installations',
-    tagline: 'Clean, reliable power generation with hybrid inverters and lithium backup.',
-    description: 'Cut grid dependency and power outages with high-efficiency solar panel arrays, smart hybrid inverters, industrial battery banks, and certified electrical wiring for commercial and residential properties.',
+    tagline: 'Clean, reliable power generation with hybrid inverters, lithium backup & solar street lights.',
+    description: 'Cut grid dependency and power outages with high-efficiency solar panel arrays, smart hybrid inverters, industrial battery banks, solar street lighting, and certified electrical wiring for commercial and residential properties.',
     icon: 'fa-sun-o',
     features_json: JSON.stringify([
+      'Solar/Inverter & Battery Installation',
       'Solar Panel Installation (Tier 1)',
       'Solar Maintenance & Efficiency Audits',
       'Hybrid & Off-Grid Inverter Installation',
       'Inverter Sales & Spare Distribution',
       'Lithium & Gel Battery Backup Systems',
+      'Solar Street Light Installation',
       'Residential & Industrial Electrical Installations'
     ]),
     pricing_starting: '$850',
@@ -144,6 +149,48 @@ export const INITIAL_SERVICES: ServiceItem[] = [
     pricing_starting: '$250',
     is_popular: false,
     order_index: 5
+  },
+  {
+    id: 6,
+    domain: 'tracking',
+    name: 'Car Tracking & Fleet Monitoring',
+    slug: 'car-tracking-fleet-monitoring',
+    tagline: 'Real-time GPS vehicle tracking, fleet dispatch & anti-theft systems.',
+    description: 'Monitor your vehicles and fleet with live GPS trackers, geofencing alerts, engine immobilizers, and a web-based fleet management dashboard for businesses and private vehicle owners.',
+    icon: 'fa-map-marker',
+    features_json: JSON.stringify([
+      'Vehicle GPS Tracker Installation',
+      'Real-Time Live Fleet Monitoring Dashboard',
+      'Geofencing & Zone Alert Notifications',
+      'Engine Immobilizer & Remote Cut-Off',
+      'Anti-Theft Tracking & Recovery Support',
+      'Multi-Vehicle Fleet Management',
+      'Driver Behavior & Mileage Reporting'
+    ]),
+    pricing_starting: '$120',
+    is_popular: false,
+    order_index: 6
+  },
+  {
+    id: 7,
+    domain: 'street-power',
+    name: 'Solar Street Lights & Outdoor Power',
+    slug: 'solar-street-lights-outdoor-power',
+    tagline: 'Autonomous solar-powered street lights, estate roads & compound illumination.',
+    description: 'Illuminate estate roads, parking lots, warehouses, and perimeter fences with all-in-one solar street lights featuring built-in lithium batteries, motion sensors, and auto dusk-to-dawn controls — zero electricity bill.',
+    icon: 'fa-lightbulb-o',
+    features_json: JSON.stringify([
+      'All-In-One Solar Street Light Supply & Installation',
+      'Estate Road & Compound Lighting Design',
+      'Motion-Activated & Dusk-to-Dawn Control',
+      'Built-In Lithium Battery Solar Lights',
+      'Commercial Parking Lot & Warehouse Lighting',
+      'Perimeter Fence Solar Flood Lights',
+      'Maintenance & Replacement Services'
+    ]),
+    pricing_starting: '$200',
+    is_popular: false,
+    order_index: 7
   }
 ];
 

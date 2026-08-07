@@ -12,7 +12,9 @@ export default async function ServicesPage() {
     security: 'fa-shield',
     solar: 'fa-sun-o',
     networking: 'fa-sitemap',
-    'it-support': 'fa-wrench'
+    'it-support': 'fa-wrench',
+    tracking: 'fa-map-marker',
+    'street-power': 'fa-lightbulb-o'
   };
 
   return (
