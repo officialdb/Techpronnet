@@ -2,26 +2,32 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { adminLoginSchema, type AdminLoginInput } from '@/lib/validations/admin';
 
 export default function AdminLoginPage() {
   const router = useRouter();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
 
-  const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<AdminLoginInput>({
+    resolver: zodResolver(adminLoginSchema),
+    defaultValues: { email: '', password: '' },
+  });
+
+  const onSubmit = async (data: AdminLoginInput) => {
     setError('');
-
     try {
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/api/v1/auth/login`,
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, password }),
+          body: JSON.stringify(data),
         }
       );
 
@@ -30,14 +36,13 @@ export default function AdminLoginPage() {
         throw new Error(body.detail || 'Invalid email or password.');
       }
 
-      const data = await res.json();
-      // Store JWT — for production, switch to httpOnly cookie via a Next.js API route
-      localStorage.setItem('tpn_admin_token', data.access_token);
+      const resData = await res.json();
+      localStorage.setItem('tpn_admin_token', resData.access_token);
+      document.cookie = `tpn_admin_token=${resData.access_token}; path=/; max-age=28800; SameSite=Strict`;
+      
       router.push('/admin/dashboard');
     } catch (err: any) {
       setError(err.message || 'Login failed. Please check your credentials and try again.');
-    } finally {
-      setIsLoading(false);
     }
   };
 
@@ -64,7 +69,7 @@ export default function AdminLoginPage() {
           </div>
         )}
 
-        <form onSubmit={handleLogin} className="space-y-4 text-white">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 text-white">
           <div>
             <label htmlFor="admin-email" className="text-xs font-bold text-slate-300 block mb-1">
               Admin Email
@@ -74,14 +79,15 @@ export default function AdminLoginPage() {
               <input
                 id="admin-email"
                 type="email"
-                required
                 autoComplete="username"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                {...register('email')}
                 placeholder="you@techpronnet.com"
-                className="w-full bg-[#0A1A23] border border-white/10 text-xs pl-9 pr-3 py-3 rounded-xl focus:ring-2 focus:ring-[#1FA971] focus:outline-none placeholder:text-slate-600"
+                className={`w-full bg-[#0A1A23] border text-xs pl-9 pr-3 py-3 rounded-xl focus:ring-2 focus:outline-none placeholder:text-slate-600 ${
+                  errors.email ? 'border-red-500 focus:ring-red-500' : 'border-white/10 focus:ring-[#1FA971]'
+                }`}
               />
             </div>
+            {errors.email && <p className="text-red-400 text-[10px] mt-1 font-bold">{errors.email.message}</p>}
           </div>
 
           <div>
@@ -93,22 +99,23 @@ export default function AdminLoginPage() {
               <input
                 id="admin-password"
                 type="password"
-                required
                 autoComplete="current-password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                {...register('password')}
                 placeholder="••••••••"
-                className="w-full bg-[#0A1A23] border border-white/10 text-xs pl-9 pr-3 py-3 rounded-xl focus:ring-2 focus:ring-[#1FA971] focus:outline-none placeholder:text-slate-600"
+                className={`w-full bg-[#0A1A23] border text-xs pl-9 pr-3 py-3 rounded-xl focus:ring-2 focus:outline-none placeholder:text-slate-600 ${
+                  errors.password ? 'border-red-500 focus:ring-red-500' : 'border-white/10 focus:ring-[#1FA971]'
+                }`}
               />
             </div>
+            {errors.password && <p className="text-red-400 text-[10px] mt-1 font-bold">{errors.password.message}</p>}
           </div>
 
           <button
             type="submit"
-            disabled={isLoading}
+            disabled={isSubmitting}
             className="w-full bg-[#1FA971] hover:bg-emerald-600 text-white font-bold text-sm py-3.5 rounded-xl shadow-lg flex items-center justify-center gap-2 transition-colors disabled:opacity-50"
           >
-            {isLoading ? (
+            {isSubmitting ? (
               <>
                 <i className="fa fa-spinner fa-spin" />
                 <span>Authenticating...</span>

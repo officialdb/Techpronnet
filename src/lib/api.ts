@@ -17,6 +17,16 @@ export async function fetchServices(domain?: string): Promise<ServiceItem[]> {
   }
 }
 
+export async function fetchServiceBySlug(slug: string): Promise<ServiceItem | null> {
+  try {
+    const res = await fetch(`${API_BASE_URL}/api/v1/services/${slug}`, { cache: 'no-store' });
+    if (!res.ok) throw new Error('Not found');
+    return await res.json();
+  } catch (error) {
+    return INITIAL_SERVICES.find(s => s.slug === slug) ?? null;
+  }
+}
+
 export async function fetchProjects(domain?: string): Promise<ProjectItem[]> {
   try {
     const url = domain && domain !== 'all' ? `${API_BASE_URL}/api/v1/portfolio?domain=${domain}` : `${API_BASE_URL}/api/v1/portfolio`;

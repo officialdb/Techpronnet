@@ -60,6 +60,9 @@ class ProjectBase(BaseModel):
     completion_date: str = Field(..., max_length=50)
     is_featured: bool = False
 
+class ProjectCreate(ProjectBase):
+    pass
+
 class ProjectResponse(ProjectBase):
     id: int
     created_at: datetime
@@ -135,6 +138,27 @@ class ReviewResponse(BaseModel):
 class CMSSettingSchema(BaseModel):
     key: str = Field(..., max_length=100)
     value_json: str
+
+# ─── Blog Post ───────────────────────────────────────────────────────────────
+
+class BlogPostBase(BaseModel):
+    title: str = Field(..., max_length=300)
+    slug: str = Field(..., max_length=300)
+    content: str
+    excerpt: str = Field(..., max_length=1000)
+    author: str = Field(..., max_length=100)
+    read_time: str = Field(..., max_length=50)
+    tags_json: str
+    image_url: str = Field(..., max_length=600)
+
+class BlogPostCreate(BlogPostBase):
+    pass
+
+class BlogPostResponse(BlogPostBase):
+    id: int
+    published_at: datetime
+    class Config:
+        from_attributes = True
 
 # ─── Auth ─────────────────────────────────────────────────────────────────────
 

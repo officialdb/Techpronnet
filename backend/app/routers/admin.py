@@ -11,7 +11,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
 from ..database import get_db
-from ..models import Lead, QuoteRequest, Service, Project, Review, CMSSetting, AuditLog
+from ..models import Lead, QuoteRequest, Service, Project, Review, CMSSetting, AuditLog, BlogPost
 from ..auth import get_current_admin
 
 # ── Router — JWT required on all routes below ─────────────────────────────────
@@ -43,6 +43,23 @@ def get_dashboard_stats(db: Session = Depends(get_db)):
 @router.get("/leads")
 def get_leads(db: Session = Depends(get_db)):
     return db.query(Lead).order_by(Lead.id.desc()).all()
+
+
+@router.post("/leads")
+def create_lead_admin(lead: dict, db: Session = Depends(get_db)):
+    db_lead = Lead(
+        name=lead.get("name", ""),
+        email=lead.get("email", ""),
+        phone=lead.get("phone", ""),
+        company=lead.get("company", ""),
+        source=lead.get("source", "Manual Entry"),
+        notes=lead.get("notes", ""),
+        status="NEW",
+    )
+    db.add(db_lead)
+    db.commit()
+    db.refresh(db_lead)
+    return db_lead
 
 
 @router.patch("/leads/{lead_id}")
@@ -153,6 +170,75 @@ def update_cms_setting(key: str, payload: dict, db: Session = Depends(get_db)):
         db.add(setting)
     db.commit()
     return {"status": "updated", "key": key}
+
+
+# ── Projects / Portfolio CRUD ─────────────────────────────────────────────────
+
+@router.get("/projects")
+def get_all_projects(db: Session = Depends(get_db)):
+    return db.query(Project).order_by(Project.id.desc()).all()
+
+@router.post("/projects")
+def create_project(project: dict, db: Session = Depends(get_db)):
+    db_project = Project(**project)
+    db.add(db_project)
+    db.commit()
+    db.refresh(db_project)
+    return db_project
+
+@router.patch("/projects/{project_id}")
+def update_project(project_id: int, updates: dict, db: Session = Depends(get_db)):
+    project = db.query(Project).filter(Project.id == project_id).first()
+    if not project:
+        raise HTTPException(status_code=404, detail="Project not found.")
+    for key, value in updates.items():
+        if hasattr(project, key):
+            setattr(project, key, value)
+    db.commit()
+    return project
+
+@router.delete("/projects/{project_id}")
+def delete_project(project_id: int, db: Session = Depends(get_db)):
+    project = db.query(Project).filter(Project.id == project_id).first()
+    if not project:
+        raise HTTPException(status_code=404, detail="Project not found.")
+    db.delete(project)
+    db.commit()
+    return {"status": "deleted", "id": project_id}
+
+# ── Blog Posts CRUD ───────────────────────────────────────────────────────────
+
+@router.get("/blog")
+def get_all_blog_posts(db: Session = Depends(get_db)):
+    return db.query(BlogPost).order_by(BlogPost.published_at.desc()).all()
+
+@router.post("/blog")
+def create_blog_post(post: dict, db: Session = Depends(get_db)):
+    db_post = BlogPost(**post)
+    db.add(db_post)
+    db.commit()
+    db.refresh(db_post)
+    return db_post
+
+@router.patch("/blog/{post_id}")
+def update_blog_post(post_id: int, updates: dict, db: Session = Depends(get_db)):
+    post = db.query(BlogPost).filter(BlogPost.id == post_id).first()
+    if not post:
+        raise HTTPException(status_code=404, detail="Blog post not found.")
+    for key, value in updates.items():
+        if hasattr(post, key):
+            setattr(post, key, value)
+    db.commit()
+    return post
+
+@router.delete("/blog/{post_id}")
+def delete_blog_post(post_id: int, db: Session = Depends(get_db)):
+    post = db.query(BlogPost).filter(BlogPost.id == post_id).first()
+    if not post:
+        raise HTTPException(status_code=404, detail="Blog post not found.")
+    db.delete(post)
+    db.commit()
+    return {"status": "deleted", "id": post_id}
 
 
 # ── Audit Logs ────────────────────────────────────────────────────────────────

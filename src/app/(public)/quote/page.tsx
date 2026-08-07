@@ -3,28 +3,46 @@
 import React, { useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { submitQuoteRequest } from '@/lib/api';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { quoteSchema, type QuoteInput } from '@/lib/validations/quote';
 
 function QuoteFormContent() {
   const searchParams = useSearchParams();
   const initialDomain = searchParams.get('domain') || 'software';
 
-  const [domain, setDomain] = useState(initialDomain);
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    watch,
+    trigger,
+    formState: { errors, isSubmitting },
+  } = useForm<QuoteInput>({
+    resolver: zodResolver(quoteSchema),
+    defaultValues: {
+      domain: initialDomain as any,
+      requirements: [],
+      customNotes: '',
+      budgetRange: '$1,000 - $5,000',
+      urgency: '1-2 Weeks',
+      name: '',
+      email: '',
+      phone: '',
+      company: '',
+      address: '',
+    }
+  });
+
+  const domain = watch('domain');
+  const requirements = watch('requirements');
+  const budgetRange = watch('budgetRange');
+  const urgency = watch('urgency');
+  const name = watch('name');
+  const email = watch('email');
+
   const [step, setStep] = useState(1);
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [successResult, setSuccessResult] = useState<any>(null);
-
-  // Form Fields State
-  const [requirements, setRequirements] = useState<string[]>([]);
-  const [customNotes, setCustomNotes] = useState('');
-  const [budgetRange, setBudgetRange] = useState('$1,000 - $5,000');
-  const [urgency, setUrgency] = useState('1-2 Weeks');
-
-  // Contact Info State
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [company, setCompany] = useState('');
-  const [address, setAddress] = useState('');
 
   const domainConfigs: Record<string, { title: string; icon: string; options: string[] }> = {
     software: {
@@ -121,42 +139,40 @@ function QuoteFormContent() {
 
   const handleRequirementToggle = (option: string) => {
     if (requirements.includes(option)) {
-      setRequirements(requirements.filter((item) => item !== option));
+      setValue('requirements', requirements.filter((item) => item !== option), { shouldValidate: true });
     } else {
-      setRequirements([...requirements, option]);
+      setValue('requirements', [...requirements, option], { shouldValidate: true });
     }
   };
 
-  const handleNextStep = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleNextStep = async (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
     if (step === 1) {
-      setStep(2);
+      const isValid = await trigger(['domain']);
+      if (isValid) setStep(2);
     } else if (step === 2) {
-      setStep(3);
+      const isValid = await trigger(['requirements', 'budgetRange', 'urgency', 'customNotes']);
+      if (isValid) setStep(3);
     }
   };
 
-  const handleSubmitFinal = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+  const onSubmit = async (data: QuoteInput) => {
     try {
       const response = await submitQuoteRequest({
-        domain,
-        requirements_json: JSON.stringify(requirements),
-        custom_notes: customNotes,
-        budget_range: budgetRange,
-        urgency: urgency,
-        client_name: name,
-        client_email: email,
-        client_phone: phone,
-        client_company: company,
-        location: address
+        domain: data.domain,
+        requirements_json: JSON.stringify(data.requirements),
+        custom_notes: data.customNotes,
+        budget_range: data.budgetRange,
+        urgency: data.urgency,
+        client_name: data.name,
+        client_email: data.email,
+        client_phone: data.phone,
+        client_company: data.company,
+        location: data.address
       });
       setSuccessResult(response);
     } catch (err) {
       console.error(err);
-    } finally {
-      setIsSubmitting(false);
     }
   };
 
@@ -246,7 +262,7 @@ function QuoteFormContent() {
                   <button
                     key={domKey}
                     type="button"
-                    onClick={() => setDomain(domKey)}
+                    onClick={() => setValue('domain', domKey as any, { shouldValidate: true })}
                     className={`p-5 rounded-lg border text-left transition-all ${
                       isSelected
                         ? 'bg-[#0D3B5B] text-white border-[#0D3B5B] shadow-md'
@@ -269,7 +285,7 @@ function QuoteFormContent() {
             <div className="pt-6 flex justify-end">
               <button
                 type="button"
-                onClick={() => setStep(2)}
+                onClick={() => handleNextStep()}
                 className="bg-[#1FA971] hover:bg-emerald-600 text-white font-extrabold text-xs px-8 py-3.5 rounded-lg flex items-center gap-2"
               >
                 <span>Continue to Specifications</span>
@@ -281,7 +297,7 @@ function QuoteFormContent() {
 
         {/* Step 2: Configure Specs */}
         {step === 2 && (
-          <form onSubmit={handleNextStep} className="space-y-6">
+          <form onSubmit={(e) => { e.preventDefault(); handleNextStep(e); }} className="space-y-6">
             <div className="space-y-2 mb-4">
               <span className="text-xs font-bold text-[#1FA971] uppercase tracking-wider">
                 Domain: {domain.toUpperCase()}
@@ -316,11 +332,11 @@ function QuoteFormContent() {
               <label className="text-xs font-bold text-[#0D3B5B] block mb-1">Additional Project Specifications / Notes</label>
               <textarea
                 rows={3}
-                value={customNotes}
-                onChange={(e) => setCustomNotes(e.target.value)}
+                {...register('customNotes')}
                 placeholder="Specify camera counts, estimated kVA load, user counts, or software features..."
-                className="w-full text-xs p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#1FA971]"
+                className={`w-full text-xs p-3 border rounded-lg focus:ring-2 focus:outline-none ${errors.customNotes ? 'border-red-500 focus:ring-red-500' : 'border-slate-300 focus:ring-[#1FA971]'}`}
               />
+              {errors.customNotes && <p className="text-red-500 text-[10px] mt-1 font-bold">{errors.customNotes.message}</p>}
             </div>
 
             {/* Budget & Timeline */}
@@ -328,9 +344,8 @@ function QuoteFormContent() {
               <div>
                 <label className="text-xs font-bold text-[#0D3B5B] block mb-1">Estimated Budget Range</label>
                 <select
-                  value={budgetRange}
-                  onChange={(e) => setBudgetRange(e.target.value)}
-                  className="w-full text-xs p-3 border border-slate-300 rounded-lg"
+                  {...register('budgetRange')}
+                  className={`w-full text-xs p-3 border rounded-lg focus:ring-2 focus:outline-none ${errors.budgetRange ? 'border-red-500 focus:ring-red-500' : 'border-slate-300 focus:ring-[#1FA971]'}`}
                 >
                   <option>$500 - $1,000 (Small/Basic Setup)</option>
                   <option>$1,000 - $5,000 (Standard Commercial)</option>
@@ -342,9 +357,8 @@ function QuoteFormContent() {
               <div>
                 <label className="text-xs font-bold text-[#0D3B5B] block mb-1">Desired Timeline</label>
                 <select
-                  value={urgency}
-                  onChange={(e) => setUrgency(e.target.value)}
-                  className="w-full text-xs p-3 border border-slate-300 rounded-lg"
+                  {...register('urgency')}
+                  className={`w-full text-xs p-3 border rounded-lg focus:ring-2 focus:outline-none ${errors.urgency ? 'border-red-500 focus:ring-red-500' : 'border-slate-300 focus:ring-[#1FA971]'}`}
                 >
                   <option>Immediate / Emergency</option>
                   <option>1-2 Weeks</option>
@@ -377,7 +391,7 @@ function QuoteFormContent() {
 
         {/* Step 3: Contact Details */}
         {step === 3 && (
-          <form onSubmit={handleSubmitFinal} className="space-y-6">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             <div className="space-y-2 mb-4">
               <h2 className="text-2xl font-bold text-[#0D3B5B]">Step 3: Client &amp; Location Details</h2>
               <p className="text-xs text-slate-500">Provide contact details so we can deliver your detailed proposal.</p>
@@ -388,24 +402,22 @@ function QuoteFormContent() {
                 <label className="text-xs font-bold text-[#0D3B5B] block mb-1">Full Name *</label>
                 <input
                   type="text"
-                  required
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  {...register('name')}
                   placeholder="e.g. Sarah Connor"
-                  className="w-full text-xs p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#1FA971]"
+                  className={`w-full text-xs p-3 border rounded-lg focus:ring-2 focus:outline-none ${errors.name ? 'border-red-500 focus:ring-red-500' : 'border-slate-300 focus:ring-[#1FA971]'}`}
                 />
+                {errors.name && <p className="text-red-500 text-[10px] mt-1 font-bold">{errors.name.message}</p>}
               </div>
 
               <div>
                 <label className="text-xs font-bold text-[#0D3B5B] block mb-1">Email Address *</label>
                 <input
                   type="email"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  {...register('email')}
                   placeholder="e.g. sarah@cyberdyne.com"
-                  className="w-full text-xs p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#1FA971]"
+                  className={`w-full text-xs p-3 border rounded-lg focus:ring-2 focus:outline-none ${errors.email ? 'border-red-500 focus:ring-red-500' : 'border-slate-300 focus:ring-[#1FA971]'}`}
                 />
+                {errors.email && <p className="text-red-500 text-[10px] mt-1 font-bold">{errors.email.message}</p>}
               </div>
             </div>
 
@@ -414,23 +426,22 @@ function QuoteFormContent() {
                 <label className="text-xs font-bold text-[#0D3B5B] block mb-1">Phone Number *</label>
                 <input
                   type="tel"
-                  required
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
+                  {...register('phone')}
                   placeholder="e.g. +234 802 345 6789"
-                  className="w-full text-xs p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#1FA971]"
+                  className={`w-full text-xs p-3 border rounded-lg focus:ring-2 focus:outline-none ${errors.phone ? 'border-red-500 focus:ring-red-500' : 'border-slate-300 focus:ring-[#1FA971]'}`}
                 />
+                {errors.phone && <p className="text-red-500 text-[10px] mt-1 font-bold">{errors.phone.message}</p>}
               </div>
 
               <div>
                 <label className="text-xs font-bold text-[#0D3B5B] block mb-1">Company / Organization</label>
                 <input
                   type="text"
-                  value={company}
-                  onChange={(e) => setCompany(e.target.value)}
+                  {...register('company')}
                   placeholder="e.g. Cyberdyne Systems"
-                  className="w-full text-xs p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#1FA971]"
+                  className={`w-full text-xs p-3 border rounded-lg focus:ring-2 focus:outline-none ${errors.company ? 'border-red-500 focus:ring-red-500' : 'border-slate-300 focus:ring-[#1FA971]'}`}
                 />
+                {errors.company && <p className="text-red-500 text-[10px] mt-1 font-bold">{errors.company.message}</p>}
               </div>
             </div>
 
@@ -438,11 +449,11 @@ function QuoteFormContent() {
               <label className="text-xs font-bold text-[#0D3B5B] block mb-1">Site / Installation Location</label>
               <input
                 type="text"
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
+                {...register('address')}
                 placeholder="e.g. Ikeja Industrial Estate, Lagos"
-                className="w-full text-xs p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-[#1FA971]"
+                className={`w-full text-xs p-3 border rounded-lg focus:ring-2 focus:outline-none ${errors.address ? 'border-red-500 focus:ring-red-500' : 'border-slate-300 focus:ring-[#1FA971]'}`}
               />
+              {errors.address && <p className="text-red-500 text-[10px] mt-1 font-bold">{errors.address.message}</p>}
             </div>
 
             <div className="pt-4 flex justify-between">

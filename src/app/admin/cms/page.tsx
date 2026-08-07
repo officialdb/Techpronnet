@@ -1,20 +1,62 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AdminSidebar from '@/components/admin/AdminSidebar';
 import { Save, CheckCircle2 } from 'lucide-react';
 
 export default function AdminCMSPage() {
-  const [headline, setHeadline] = useState('Engineering Next-Gen Tech Solutions For Business & Home');
-  const [subheadline, setSubheadline] = useState('From enterprise software engineering and AI workflow automation to solar microgrids, CCTV security, structured networking, and 24/7 IT support.');
-  const [phone, setPhone] = useState('+234 (0) 803 123 4567');
-  const [hotline, setHotline] = useState('+234 (0) 800 TECHPRONNET');
+  const [headline, setHeadline] = useState('');
+  const [subheadline, setSubheadline] = useState('');
+  const [phone, setPhone] = useState('');
+  const [hotline, setHotline] = useState('');
   const [savedSuccess, setSavedSuccess] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const handleSave = (e: React.FormEvent) => {
+  useEffect(() => {
+    const fetchCMS = async () => {
+      const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+      try {
+        const res = await fetch(`${API_BASE}/api/v1/cms/homepage_hero`);
+        if (res.ok) {
+          const data = await res.json();
+          if (data.value) {
+            const parsed = JSON.parse(data.value);
+            setHeadline(parsed.headline || '');
+            setSubheadline(parsed.subheadline || '');
+            setPhone(parsed.phone || '');
+            setHotline(parsed.hotline || '');
+          }
+        }
+      } catch (err) {
+        console.error('Failed to load CMS data:', err);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchCMS();
+  }, []);
+
+  const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSavedSuccess(true);
-    setTimeout(() => setSavedSuccess(false), 2500);
+    const token = localStorage.getItem('tpn_admin_token');
+    const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+    try {
+      const payload = JSON.stringify({ headline, subheadline, phone, hotline });
+      const res = await fetch(`${API_BASE}/api/v1/admin/cms/homepage_hero`, {
+        method: 'PUT',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ value: payload })
+      });
+      if (res.ok) {
+        setSavedSuccess(true);
+        setTimeout(() => setSavedSuccess(false), 2500);
+      }
+    } catch (err) {
+      console.error('Failed to save CMS data:', err);
+    }
   };
 
   return (

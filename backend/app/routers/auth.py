@@ -54,4 +54,4 @@ def admin_login(payload: AuthLoginRequest, request: Request, db: Session = Depen
     db.add(audit)
     db.commit()
 
-    return {"access_token": token, "token_type": "bearer"}
+    return {"access_token": token, "token_type": "bearer"}  # nosec B105

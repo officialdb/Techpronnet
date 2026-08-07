@@ -3,7 +3,7 @@ Public router — all endpoints here require NO authentication.
 Rate limiting is applied to mutating endpoints (POST leads, POST quotes).
 """
 import json
-import random
+import secrets
 import datetime
 from typing import List, Optional
 
@@ -13,10 +13,10 @@ from slowapi import Limiter
 from slowapi.util import get_remote_address
 
 from ..database import get_db
-from ..models import Service, Project, Review, Lead, QuoteRequest, AuditLog, CMSSetting
+from ..models import Service, Project, Review, Lead, QuoteRequest, AuditLog, CMSSetting, BlogPost
 from ..schemas import (
     ServiceResponse, ProjectResponse, ReviewResponse, ReviewCreate,
-    LeadCreate, LeadResponse, QuoteRequestCreate, QuoteRequestResponse,
+    LeadCreate, LeadResponse, QuoteRequestCreate, QuoteRequestResponse, BlogPostResponse,
 )
 
 router = APIRouter(tags=["Public"])
@@ -78,6 +78,21 @@ def get_portfolio(
     if featured_only:
         query = query.filter(Project.is_featured == True)  # noqa: E712
     return query.order_by(Project.id.desc()).all()
+
+
+# ── Blog ──────────────────────────────────────────────────────────────────────
+
+@router.get("/api/v1/blog", response_model=List[BlogPostResponse])
+def get_blog_posts(db: Session = Depends(get_db)):
+    return db.query(BlogPost).order_by(BlogPost.published_at.desc()).all()
+
+
+@router.get("/api/v1/blog/{slug}", response_model=BlogPostResponse)
+def get_blog_post_by_slug(slug: str, db: Session = Depends(get_db)):
+    post = db.query(BlogPost).filter(BlogPost.slug == slug).first()
+    if not post:
+        raise HTTPException(status_code=404, detail="Blog post not found.")
+    return post
 
 
 # ── Reviews ───────────────────────────────────────────────────────────────────
@@ -172,7 +187,7 @@ def create_lead(request: Request, lead: LeadCreate, db: Session = Depends(get_db
 def create_quote_request(
     request: Request, quote: QuoteRequestCreate, db: Session = Depends(get_db)
 ):
-    ref_code = f"TPN-{datetime.datetime.now().strftime('%Y%m%d')}-{random.randint(1000, 9999)}"
+    ref_code = f"TPN-{datetime.datetime.now().strftime('%Y%m%d')}-{secrets.randbelow(9000) + 1000}"
 
     db_quote = QuoteRequest(
         reference_code=ref_code,

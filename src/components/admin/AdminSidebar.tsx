@@ -14,13 +14,14 @@ export default function AdminSidebar() {
     { label: 'CMS Content', href: '/admin/cms', icon: 'fa-file-text' },
     { label: 'Services Manager', href: '/admin/services', icon: 'fa-wrench' },
     { label: 'Portfolio Projects', href: '/admin/portfolio', icon: 'fa-folder-open' },
+    { label: 'Blog Posts', href: '/admin/blog', icon: 'fa-pencil-square-o', badge: 'New' },
     { label: 'Google Reviews', href: '/admin/reviews', icon: 'fa-star', badge: '5.0' },
     { label: 'SEO & Metadata', href: '/admin/seo', icon: 'fa-search' },
     { label: 'Audit & Settings', href: '/admin/settings', icon: 'fa-cog' },
   ];
 
   return (
-    <aside className="w-64 bg-[#0A1A23] text-slate-300 min-h-screen border-r border-white/10 flex flex-col justify-between p-4 shrink-0">
+    <aside className="w-64 bg-[#0A1A23] text-slate-300 h-screen sticky top-0 overflow-y-auto border-r border-white/10 flex flex-col justify-between p-4 shrink-0">
       <div className="space-y-6">
         
         {/* Brand Header */}
@@ -78,13 +79,17 @@ export default function AdminSidebar() {
           </div>
         </div>
 
-        <Link
-          href="/"
+        <button
+          onClick={() => {
+            localStorage.removeItem('tpn_admin_token');
+            document.cookie = 'tpn_admin_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+            window.location.href = '/admin/login';
+          }}
           className="w-full bg-[#0D3B5B] hover:bg-red-600/30 hover:text-red-300 text-slate-300 text-xs font-bold py-2 rounded-xl flex items-center justify-center gap-2 transition-colors border border-white/10"
         >
           <i className="fa fa-sign-out" />
           <span>Exit Admin Portal</span>
-        </Link>
+        </button>
       </div>
 
     </aside>

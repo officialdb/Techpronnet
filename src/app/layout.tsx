@@ -1,9 +1,6 @@
 import type { Metadata } from 'next';
 import { Space_Grotesk, Inter, Manrope } from 'next/font/google';
 import './globals.css';
-import Navbar from '@/components/layout/Navbar';
-import Footer from '@/components/layout/Footer';
-import TopBar from '@/components/layout/TopBar';
 import AOSInit from '@/components/AOSInit';
 
 const spaceGrotesk = Space_Grotesk({
@@ -65,14 +62,9 @@ export default function RootLayout({
           referrerPolicy="no-referrer"
         />
       </head>
-      <body className="antialiased min-h-screen flex flex-col justify-between">
+      <body className="antialiased min-h-screen">
         <AOSInit />
-        <div>
-          <TopBar />
-          <Navbar />
-          <main>{children}</main>
-        </div>
-        <Footer />
+        {children}
       </body>
     </html>
   );

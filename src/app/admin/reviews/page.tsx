@@ -1,14 +1,35 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AdminSidebar from '@/components/admin/AdminSidebar';
-import { INITIAL_REVIEWS } from '@/lib/initial-data';
 import { Star, RefreshCw, Sparkles, CheckCircle2 } from 'lucide-react';
 
 export default function AdminReviewsPage() {
-  const [reviews, setReviews] = useState(INITIAL_REVIEWS);
+  const [reviews, setReviews] = useState<any[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [isSyncing, setIsSyncing] = useState(false);
   const [syncedAlert, setSyncedAlert] = useState(false);
+
+  useEffect(() => {
+    const fetchReviews = async () => {
+      const token = localStorage.getItem('tpn_admin_token');
+      const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+      try {
+        const res = await fetch(`${API_BASE}/api/v1/admin/reviews`, {
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+        if (res.ok) {
+          const data = await res.json();
+          setReviews(data);
+        }
+      } catch (err) {
+        console.error('Failed to load reviews:', err);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchReviews();
+  }, []);
 
   const handleSyncGoogle = () => {
     setIsSyncing(true);
@@ -19,8 +40,25 @@ export default function AdminReviewsPage() {
     }, 1500);
   };
 
-  const togglePin = (id: number) => {
-    setReviews(reviews.map(r => r.id === id ? { ...r, is_pinned: !r.is_pinned } : r));
+  const togglePin = async (id: number) => {
+    const review = reviews.find(r => r.id === id);
+    if (!review) return;
+    const newPinned = !review.is_pinned;
+    
+    // Optimistic update
+    setReviews(reviews.map(r => r.id === id ? { ...r, is_pinned: newPinned } : r));
+
+    // API Call
+    const token = localStorage.getItem('tpn_admin_token');
+    const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+    try {
+      await fetch(`${API_BASE}/api/v1/admin/reviews/${id}?is_pinned=${newPinned}`, {
+        method: 'PATCH',
+        headers: { 'Authorization': `Bearer ${token}` }
+      });
+    } catch (err) {
+      console.error('Failed to pin review:', err);
+    }
   };
 
   return (

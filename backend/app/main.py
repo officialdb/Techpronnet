@@ -6,7 +6,7 @@ Responsibilities:
   - Register CORS middleware (locked to allowed origins from env)
   - Register slowapi rate-limit error handler
   - Mount all routers
-  - Auto-create database tables on startup
+  - Auto-create database tables on startup (with retry logic)
 
 All business logic lives in app/routers/:
   - routers/auth.py   → POST /api/v1/auth/login
@@ -14,6 +14,10 @@ All business logic lives in app/routers/:
   - routers/admin.py  → JWT-protected admin/CRM endpoints
 """
 import os
+import time
+import logging
+from contextlib import asynccontextmanager
+
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
@@ -24,6 +28,39 @@ from slowapi.util import get_remote_address
 from .database import engine, Base
 from .routers import auth, public, admin
 
+logger = logging.getLogger("techpronnet")
+
+# ── Startup / Shutdown Lifespan ───────────────────────────────────────────────
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """
+    On startup: create all DB tables, retrying on transient network failures.
+    On shutdown: nothing special needed (SQLAlchemy pool cleans up automatically).
+    """
+    max_retries = 5
+    retry_delay = 2  # seconds
+
+    for attempt in range(1, max_retries + 1):
+        try:
+            Base.metadata.create_all(bind=engine)
+            logger.info("✅ Database tables verified / created successfully.")
+            break
+        except Exception as exc:
+            if attempt < max_retries:
+                logger.warning(
+                    f"⚠️  DB connection attempt {attempt}/{max_retries} failed: {exc}. "
+                    f"Retrying in {retry_delay}s..."
+                )
+                time.sleep(retry_delay)
+            else:
+                logger.error(
+                    f"❌ Could not connect to database after {max_retries} attempts. "
+                    "Server will start but DB-dependent routes will fail until connection is restored."
+                )
+
+    yield  # ← server is now running and handling requests
+
 # ── App ───────────────────────────────────────────────────────────────────────
 
 app = FastAPI(
@@ -33,6 +70,7 @@ app = FastAPI(
         "All /api/v1/admin/* routes require a valid JWT Bearer token."
     ),
     version="2.0.0",
+    lifespan=lifespan,
     # Disable auto-generated docs in production (set DOCS_ENABLED=true to re-enable)
     docs_url="/docs" if os.getenv("DOCS_ENABLED", "false").lower() == "true" else None,
     redoc_url="/redoc" if os.getenv("DOCS_ENABLED", "false").lower() == "true" else None,
@@ -60,12 +98,9 @@ app.add_middleware(
     allow_headers=["Authorization", "Content-Type"],
 )
 
-# ── Database ──────────────────────────────────────────────────────────────────
-
-Base.metadata.create_all(bind=engine)
-
 # ── Routers ───────────────────────────────────────────────────────────────────
 
 app.include_router(auth.router)
 app.include_router(public.router)
 app.include_router(admin.router)
+

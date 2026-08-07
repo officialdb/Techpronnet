@@ -1,18 +1,58 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AdminSidebar from '@/components/admin/AdminSidebar';
 import { Search, Save, CheckCircle2, Globe, FileCode } from 'lucide-react';
 
 export default function AdminSEOPage() {
-  const [metaTitle, setMetaTitle] = useState('Techpronnet Technologies | Your General Tech Solution Providers');
-  const [metaDesc, setMetaDesc] = useState('Enterprise technology solutions spanning Software Development, Security CCTV & Access Control, Solar & Renewable Energy, Networking Infrastructure, and Managed IT Support.');
+  const [metaTitle, setMetaTitle] = useState('');
+  const [metaDesc, setMetaDesc] = useState('');
   const [savedAlert, setSavedAlert] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const handleSaveSEO = (e: React.FormEvent) => {
+  useEffect(() => {
+    const fetchSEO = async () => {
+      const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+      try {
+        const res = await fetch(`${API_BASE}/api/v1/cms/global_seo`);
+        if (res.ok) {
+          const data = await res.json();
+          if (data.value) {
+            const parsed = JSON.parse(data.value);
+            setMetaTitle(parsed.metaTitle || '');
+            setMetaDesc(parsed.metaDesc || '');
+          }
+        }
+      } catch (err) {
+        console.error('Failed to load SEO data:', err);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchSEO();
+  }, []);
+
+  const handleSaveSEO = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSavedAlert(true);
-    setTimeout(() => setSavedAlert(false), 2500);
+    const token = localStorage.getItem('tpn_admin_token');
+    const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+    try {
+      const payload = JSON.stringify({ metaTitle, metaDesc });
+      const res = await fetch(`${API_BASE}/api/v1/admin/cms/global_seo`, {
+        method: 'PUT',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ value: payload })
+      });
+      if (res.ok) {
+        setSavedAlert(true);
+        setTimeout(() => setSavedAlert(false), 2500);
+      }
+    } catch (err) {
+      console.error('Failed to save SEO data:', err);
+    }
   };
 
   return (
