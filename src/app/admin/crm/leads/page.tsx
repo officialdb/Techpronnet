@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import AdminSidebar from '@/components/admin/AdminSidebar';
-import { Users, Filter, Plus, Search, CheckCircle2, Clock, X } from 'lucide-react';
+import { Users, Filter, Plus, Search, CheckCircle2, Clock, X, Copy, Check, Eye } from 'lucide-react';
 import { TableSkeleton } from '@/components/admin/SkeletonLoader';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -12,6 +12,23 @@ export default function AdminLeadsPage() {
   const [leads, setLeads] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
+  const [selectedLead, setSelectedLead] = useState<any | null>(null);
+  const [copiedText, setCopiedText] = useState<string | null>(null);
+
+  const CopyButton = ({ text }: { text: string }) => (
+    <button 
+      onClick={(e) => {
+        e.stopPropagation();
+        navigator.clipboard.writeText(text);
+        setCopiedText(text);
+        setTimeout(() => setCopiedText(null), 2000);
+      }}
+      className="ml-2 text-slate-400 hover:text-[#0D3B5B] transition-colors"
+      title="Copy to clipboard"
+    >
+      {copiedText === text ? <Check className="w-3.5 h-3.5 text-emerald-500" /> : <Copy className="w-3.5 h-3.5" />}
+    </button>
+  );
   
   const {
     register,
@@ -133,15 +150,15 @@ export default function AdminLeadsPage() {
               </thead>
               <tbody className="divide-y divide-slate-100">
                 {leads.map((l) => (
-                  <tr key={l.id} className="hover:bg-slate-50">
+                  <tr key={l.id} className="hover:bg-slate-50 cursor-pointer" onClick={() => setSelectedLead(l)}>
                     <td className="py-4 px-4 font-bold text-[#0D3B5B]">
                       <div>{l.name}</div>
-                      <div className="text-[10px] text-slate-400">{l.email} • {l.phone}</div>
+                      <div className="text-[10px] text-slate-400 flex items-center">{l.email} <CopyButton text={l.email} /></div>
                     </td>
                     <td className="py-4 px-4 font-semibold">{l.company || '-'}</td>
                     <td className="py-4 px-4 text-slate-500">{l.source}</td>
-                    <td className="py-4 px-4 text-slate-600 max-w-xs">{l.notes}</td>
-                    <td className="py-4 px-4">
+                    <td className="py-4 px-4 text-slate-600 max-w-xs truncate">{l.notes}</td>
+                    <td className="py-4 px-4" onClick={(e) => e.stopPropagation()}>
                       <span className={`px-2.5 py-1 rounded-full text-[10px] font-bold ${
                         l.status === 'NEW' ? 'bg-blue-100 text-blue-800' :
                         l.status === 'PROPOSAL_SENT' ? 'bg-amber-100 text-amber-800' :
@@ -150,7 +167,7 @@ export default function AdminLeadsPage() {
                         {l.status}
                       </span>
                     </td>
-                    <td className="py-4 px-4">
+                    <td className="py-4 px-4" onClick={(e) => e.stopPropagation()}>
                       <select
                         value={l.status}
                         onChange={(e) => updateStatus(l.id, e.target.value)}
@@ -221,6 +238,67 @@ export default function AdminLeadsPage() {
                 </button>
               </div>
             </form>
+          </div>
+        </div>
+      )}
+
+      {/* View Lead Details Modal */}
+      {selectedLead && (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl w-full max-w-2xl max-h-[90vh] flex flex-col shadow-xl overflow-hidden">
+            <div className="p-5 bg-slate-50 border-b border-slate-100 flex justify-between items-center shrink-0">
+              <div>
+                <h2 className="font-extrabold text-[#0D3B5B] text-lg">Lead Details</h2>
+                <p className="text-xs text-slate-500 mt-1">Source: {selectedLead.source}</p>
+              </div>
+              <button onClick={() => setSelectedLead(null)} className="text-slate-400 hover:text-slate-600 bg-white p-1.5 rounded-full shadow-sm">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            
+            <div className="p-6 overflow-y-auto flex-1 space-y-6 text-sm">
+              <div className="grid grid-cols-2 gap-6">
+                <div>
+                  <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Contact Info</h3>
+                  <div className="space-y-2">
+                    <p><span className="font-semibold text-slate-600">Name:</span> {selectedLead.name}</p>
+                    <p className="flex items-center"><span className="font-semibold text-slate-600 mr-2">Email:</span> {selectedLead.email} <CopyButton text={selectedLead.email} /></p>
+                    <p className="flex items-center"><span className="font-semibold text-slate-600 mr-2">Phone:</span> {selectedLead.phone} <CopyButton text={selectedLead.phone} /></p>
+                    {selectedLead.company && <p><span className="font-semibold text-slate-600">Company:</span> {selectedLead.company}</p>}
+                  </div>
+                </div>
+                
+                <div>
+                  <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Lead Status</h3>
+                  <div className="space-y-2">
+                    <p><span className="font-semibold text-slate-600">Status:</span> 
+                      <span className="ml-2 bg-amber-100 text-amber-800 px-2 py-0.5 rounded text-[10px] font-bold">
+                        {selectedLead.status}
+                      </span>
+                    </p>
+                    <p><span className="font-semibold text-slate-600">Created At:</span> {new Date(selectedLead.created_at).toLocaleDateString()}</p>
+                  </div>
+                </div>
+              </div>
+
+              {selectedLead.notes && (
+                <div>
+                  <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Notes</h3>
+                  <div className="bg-[#0A1A23] p-4 rounded-xl overflow-x-auto text-slate-300">
+                    {selectedLead.notes}
+                  </div>
+                </div>
+              )}
+            </div>
+            
+            <div className="p-4 bg-slate-50 border-t border-slate-100 flex justify-end shrink-0">
+              <button 
+                onClick={() => setSelectedLead(null)}
+                className="bg-[#0D3B5B] hover:bg-[#124b73] text-white px-6 py-2.5 rounded-xl font-bold text-sm transition-colors"
+              >
+                Close Window
+              </button>
+            </div>
           </div>
         </div>
       )}
