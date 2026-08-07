@@ -5,7 +5,7 @@ const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
 export async function fetchServices(domain?: string): Promise<ServiceItem[]> {
   try {
     const url = domain ? `${API_BASE_URL}/api/v1/services?domain=${domain}` : `${API_BASE_URL}/api/v1/services`;
-    const res = await fetch(url, { cache: 'no-store' });
+    const res = await fetch(url, { next: { revalidate: 60 } });
     if (!res.ok) throw new Error('Failed to fetch services');
     return await res.json();
   } catch (error) {
@@ -19,7 +19,7 @@ export async function fetchServices(domain?: string): Promise<ServiceItem[]> {
 
 export async function fetchServiceBySlug(slug: string): Promise<ServiceItem | null> {
   try {
-    const res = await fetch(`${API_BASE_URL}/api/v1/services/${slug}`, { cache: 'no-store' });
+    const res = await fetch(`${API_BASE_URL}/api/v1/services/${slug}`, { next: { revalidate: 60 } });
     if (!res.ok) throw new Error('Not found');
     return await res.json();
   } catch (error) {
@@ -30,7 +30,7 @@ export async function fetchServiceBySlug(slug: string): Promise<ServiceItem | nu
 export async function fetchProjects(domain?: string): Promise<ProjectItem[]> {
   try {
     const url = domain && domain !== 'all' ? `${API_BASE_URL}/api/v1/portfolio?domain=${domain}` : `${API_BASE_URL}/api/v1/portfolio`;
-    const res = await fetch(url, { cache: 'no-store' });
+    const res = await fetch(url, { next: { revalidate: 60 } });
     if (!res.ok) throw new Error('Failed to fetch projects');
     return await res.json();
   } catch (error) {
@@ -43,7 +43,7 @@ export async function fetchProjects(domain?: string): Promise<ProjectItem[]> {
 
 export async function fetchReviews(): Promise<{ summary: any; reviews: ReviewItem[] }> {
   try {
-    const res = await fetch(`${API_BASE_URL}/api/v1/reviews`, { cache: 'no-store' });
+    const res = await fetch(`${API_BASE_URL}/api/v1/reviews`, { next: { revalidate: 60 } });
     if (!res.ok) throw new Error('Failed to fetch reviews');
     return await res.json();
   } catch (error) {
