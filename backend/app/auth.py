@@ -24,9 +24,9 @@ def _get_secret() -> str:
     global _SECRET_KEY
     if _SECRET_KEY is None:
         _SECRET_KEY = os.getenv("JWT_SECRET_KEY", "")
-        if not _SECRET_KEY or len(_SECRET_KEY) < 32:
+        if not _SECRET_KEY or len(_SECRET_KEY) < 16:
             raise RuntimeError(
-                "JWT_SECRET_KEY is missing or too short (min 32 chars). "
+                "JWT_SECRET_KEY is missing or too short (min 16 chars). "
                 "Set it in backend/.env or your hosting provider's environment config."
             )
     return _SECRET_KEY
