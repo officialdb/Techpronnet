@@ -190,23 +190,23 @@ export default function AdminLeadsPage() {
 
       {/* Add Lead Modal */}
       {showModal && (
-        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl w-full max-w-md shadow-xl overflow-hidden">
-            <div className="p-4 bg-slate-50 border-b border-slate-100 flex justify-between items-center">
-              <h2 className="font-extrabold text-[#0D3B5B]">Add New Lead manually</h2>
-              <button onClick={() => setShowModal(false)} className="text-slate-400 hover:text-slate-600">
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-3 sm:p-4">
+          <div className="bg-white rounded-2xl w-full max-w-md max-h-[92vh] flex flex-col shadow-2xl overflow-hidden">
+            <div className="p-4 bg-slate-50 border-b border-slate-100 flex justify-between items-center shrink-0">
+              <h2 className="font-extrabold text-[#0D3B5B] text-base sm:text-lg">Add New Lead Manually</h2>
+              <button onClick={() => setShowModal(false)} className="text-slate-400 hover:text-slate-600 bg-white p-1 rounded-full shadow-sm">
                 <X className="w-5 h-5" />
               </button>
             </div>
             
-            <form onSubmit={handleSubmit(handleAddLead)} className="p-6 space-y-4">
+            <form onSubmit={handleSubmit(handleAddLead)} className="p-4 sm:p-6 overflow-y-auto space-y-4 text-xs sm:text-sm">
               <div>
                 <label className="block text-xs font-bold text-slate-600 mb-1">Full Name *</label>
                 <input {...register('name')} type="text" className={`w-full border rounded-lg p-2.5 text-sm outline-none ${errors.name ? 'border-red-500 focus:border-red-500' : 'border-slate-200 focus:border-[#1FA971]'}`} placeholder="e.g. John Doe" />
                 {errors.name && <p className="text-red-500 text-[10px] mt-1 font-bold">{errors.name.message}</p>}
               </div>
               
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-bold text-slate-600 mb-1">Email *</label>
                   <input {...register('email')} type="email" className={`w-full border rounded-lg p-2.5 text-sm outline-none ${errors.email ? 'border-red-500 focus:border-red-500' : 'border-slate-200 focus:border-[#1FA971]'}`} placeholder="john@company.com" />
@@ -231,9 +231,9 @@ export default function AdminLeadsPage() {
                 {errors.notes && <p className="text-red-500 text-[10px] mt-1 font-bold">{errors.notes.message}</p>}
               </div>
 
-              <div className="pt-4 flex justify-end gap-3">
-                <button type="button" onClick={() => setShowModal(false)} className="px-4 py-2.5 text-sm font-bold text-slate-500 hover:text-slate-700">Cancel</button>
-                <button type="submit" disabled={isSubmitting} className="bg-[#1FA971] disabled:opacity-50 text-white px-6 py-2.5 rounded-xl font-bold text-sm shadow hover:bg-emerald-600 transition-colors">
+              <div className="pt-4 flex flex-col sm:flex-row justify-end gap-3">
+                <button type="button" onClick={() => setShowModal(false)} className="px-4 py-2.5 text-sm font-bold text-slate-500 hover:text-slate-700 order-2 sm:order-1">Cancel</button>
+                <button type="submit" disabled={isSubmitting} className="bg-[#1FA971] disabled:opacity-50 text-white px-6 py-2.5 rounded-xl font-bold text-sm shadow hover:bg-emerald-600 transition-colors order-1 sm:order-2">
                   {isSubmitting ? 'Saving...' : 'Save Lead'}
                 </button>
               </div>
@@ -244,39 +244,39 @@ export default function AdminLeadsPage() {
 
       {/* View Lead Details Modal */}
       {selectedLead && (
-        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl w-full max-w-2xl max-h-[90vh] flex flex-col shadow-xl overflow-hidden">
-            <div className="p-5 bg-slate-50 border-b border-slate-100 flex justify-between items-center shrink-0">
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-3 sm:p-4">
+          <div className="bg-white rounded-2xl w-full max-w-2xl max-h-[92vh] sm:max-h-[90vh] flex flex-col shadow-2xl overflow-hidden">
+            <div className="p-4 sm:p-5 bg-slate-50 border-b border-slate-100 flex justify-between items-center shrink-0">
               <div>
-                <h2 className="font-extrabold text-[#0D3B5B] text-lg">Lead Details</h2>
-                <p className="text-xs text-slate-500 mt-1">Source: {selectedLead.source}</p>
+                <h2 className="font-extrabold text-[#0D3B5B] text-base sm:text-lg">Lead Details</h2>
+                <p className="text-xs text-slate-500 mt-0.5">Source: {selectedLead.source}</p>
               </div>
               <button onClick={() => setSelectedLead(null)} className="text-slate-400 hover:text-slate-600 bg-white p-1.5 rounded-full shadow-sm">
                 <X className="w-5 h-5" />
               </button>
             </div>
             
-            <div className="p-6 overflow-y-auto flex-1 space-y-6 text-sm">
-              <div className="grid grid-cols-2 gap-6">
-                <div>
+            <div className="p-4 sm:p-6 overflow-y-auto flex-1 space-y-6 text-xs sm:text-sm">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                <div className="bg-slate-50/70 sm:bg-transparent p-3.5 sm:p-0 rounded-xl sm:rounded-none border sm:border-0 border-slate-100 space-y-2">
                   <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Contact Info</h3>
-                  <div className="space-y-2">
-                    <p><span className="font-semibold text-slate-600">Name:</span> {selectedLead.name}</p>
-                    <p className="flex items-center"><span className="font-semibold text-slate-600 mr-2">Email:</span> {selectedLead.email} <CopyButton text={selectedLead.email} /></p>
-                    <p className="flex items-center"><span className="font-semibold text-slate-600 mr-2">Phone:</span> {selectedLead.phone} <CopyButton text={selectedLead.phone} /></p>
-                    {selectedLead.company && <p><span className="font-semibold text-slate-600">Company:</span> {selectedLead.company}</p>}
+                  <div className="space-y-2 text-slate-700">
+                    <p><span className="font-semibold text-slate-500">Name:</span> <span className="font-bold text-[#0D3B5B]">{selectedLead.name}</span></p>
+                    <p className="flex flex-wrap items-center gap-1 min-w-0 break-all"><span className="font-semibold text-slate-500 mr-1">Email:</span> <span className="font-medium">{selectedLead.email}</span> <CopyButton text={selectedLead.email} /></p>
+                    <p className="flex flex-wrap items-center gap-1 min-w-0"><span className="font-semibold text-slate-500 mr-1">Phone:</span> <span className="font-medium">{selectedLead.phone}</span> <CopyButton text={selectedLead.phone} /></p>
+                    {selectedLead.company && <p><span className="font-semibold text-slate-500">Company:</span> <span className="font-medium">{selectedLead.company}</span></p>}
                   </div>
                 </div>
                 
-                <div>
+                <div className="bg-slate-50/70 sm:bg-transparent p-3.5 sm:p-0 rounded-xl sm:rounded-none border sm:border-0 border-slate-100 space-y-2">
                   <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Lead Status</h3>
-                  <div className="space-y-2">
-                    <p><span className="font-semibold text-slate-600">Status:</span> 
-                      <span className="ml-2 bg-amber-100 text-amber-800 px-2 py-0.5 rounded text-[10px] font-bold">
+                  <div className="space-y-2 text-slate-700">
+                    <p className="flex items-center gap-2"><span className="font-semibold text-slate-500">Status:</span> 
+                      <span className="bg-amber-100 text-amber-800 px-2 py-0.5 rounded text-[10px] font-bold">
                         {selectedLead.status}
                       </span>
                     </p>
-                    <p><span className="font-semibold text-slate-600">Created At:</span> {new Date(selectedLead.created_at).toLocaleDateString()}</p>
+                    <p><span className="font-semibold text-slate-500">Created At:</span> <span className="font-medium">{new Date(selectedLead.created_at).toLocaleDateString()}</span></p>
                   </div>
                 </div>
               </div>
@@ -284,17 +284,17 @@ export default function AdminLeadsPage() {
               {selectedLead.notes && (
                 <div>
                   <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Notes</h3>
-                  <div className="bg-[#0A1A23] p-4 rounded-xl overflow-x-auto text-slate-300">
+                  <div className="bg-[#0A1A23] p-3.5 sm:p-4 rounded-xl overflow-x-auto text-slate-300 whitespace-pre-wrap break-all text-xs font-mono">
                     {selectedLead.notes}
                   </div>
                 </div>
               )}
             </div>
             
-            <div className="p-4 bg-slate-50 border-t border-slate-100 flex justify-end shrink-0">
+            <div className="p-3.5 sm:p-4 bg-slate-50 border-t border-slate-100 flex justify-end shrink-0">
               <button 
                 onClick={() => setSelectedLead(null)}
-                className="bg-[#0D3B5B] hover:bg-[#124b73] text-white px-6 py-2.5 rounded-xl font-bold text-sm transition-colors"
+                className="w-full sm:w-auto bg-[#0D3B5B] hover:bg-[#124b73] text-white px-6 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-colors shadow-sm"
               >
                 Close Window
               </button>

@@ -160,39 +160,39 @@ export default function AdminQuotesPage() {
 
       {/* View Quote Details Modal */}
       {selectedQuote && (
-        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl w-full max-w-2xl max-h-[90vh] flex flex-col shadow-xl overflow-hidden">
-            <div className="p-5 bg-slate-50 border-b border-slate-100 flex justify-between items-center shrink-0">
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-3 sm:p-4">
+          <div className="bg-white rounded-2xl w-full max-w-2xl max-h-[92vh] sm:max-h-[90vh] flex flex-col shadow-2xl overflow-hidden">
+            <div className="p-4 sm:p-5 bg-slate-50 border-b border-slate-100 flex justify-between items-center shrink-0">
               <div>
-                <h2 className="font-extrabold text-[#0D3B5B] text-lg">Quote Request Details</h2>
-                <p className="text-xs text-slate-500 font-mono mt-1">Ref: {selectedQuote.reference_code}</p>
+                <h2 className="font-extrabold text-[#0D3B5B] text-base sm:text-lg">Quote Request Details</h2>
+                <p className="text-xs text-slate-500 font-mono mt-0.5">Ref: {selectedQuote.reference_code}</p>
               </div>
               <button onClick={() => setSelectedQuote(null)} className="text-slate-400 hover:text-slate-600 bg-white p-1.5 rounded-full shadow-sm">
                 <X className="w-5 h-5" />
               </button>
             </div>
             
-            <div className="p-6 overflow-y-auto flex-1 space-y-6 text-sm">
-              <div className="grid grid-cols-2 gap-6">
-                <div>
+            <div className="p-4 sm:p-6 overflow-y-auto flex-1 space-y-6 text-xs sm:text-sm">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                <div className="bg-slate-50/70 sm:bg-transparent p-3.5 sm:p-0 rounded-xl sm:rounded-none border sm:border-0 border-slate-100 space-y-2">
                   <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Customer Info</h3>
-                  <div className="space-y-2">
-                    <p><span className="font-semibold text-slate-600">Name:</span> {selectedQuote.name}</p>
-                    <p className="flex items-center"><span className="font-semibold text-slate-600 mr-2">Email:</span> {selectedQuote.email} <CopyButton text={selectedQuote.email} /></p>
-                    <p className="flex items-center"><span className="font-semibold text-slate-600 mr-2">Phone:</span> {selectedQuote.phone} <CopyButton text={selectedQuote.phone} /></p>
-                    {selectedQuote.company && <p><span className="font-semibold text-slate-600">Company:</span> {selectedQuote.company}</p>}
-                    {selectedQuote.address && <p><span className="font-semibold text-slate-600">Address:</span> {selectedQuote.address}</p>}
+                  <div className="space-y-2 text-slate-700">
+                    <p><span className="font-semibold text-slate-500">Name:</span> <span className="font-bold text-[#0D3B5B]">{selectedQuote.name}</span></p>
+                    <p className="flex flex-wrap items-center gap-1 min-w-0 break-all"><span className="font-semibold text-slate-500 mr-1">Email:</span> <span className="font-medium">{selectedQuote.email}</span> <CopyButton text={selectedQuote.email} /></p>
+                    <p className="flex flex-wrap items-center gap-1 min-w-0"><span className="font-semibold text-slate-500 mr-1">Phone:</span> <span className="font-medium">{selectedQuote.phone}</span> <CopyButton text={selectedQuote.phone} /></p>
+                    {selectedQuote.company && <p><span className="font-semibold text-slate-500">Company:</span> <span className="font-medium">{selectedQuote.company}</span></p>}
+                    {selectedQuote.address && <p><span className="font-semibold text-slate-500">Address:</span> <span className="font-medium">{selectedQuote.address}</span></p>}
                   </div>
                 </div>
                 
-                <div>
+                <div className="bg-slate-50/70 sm:bg-transparent p-3.5 sm:p-0 rounded-xl sm:rounded-none border sm:border-0 border-slate-100 space-y-2">
                   <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Project Scope</h3>
-                  <div className="space-y-2">
-                    <p><span className="font-semibold text-slate-600">Domain:</span> <span className="uppercase text-[#1FA971] font-bold">{selectedQuote.domain}</span></p>
-                    <p><span className="font-semibold text-slate-600">Budget:</span> <span className="font-numbers">{selectedQuote.budget_range || 'Not specified'}</span></p>
-                    <p><span className="font-semibold text-slate-600">Urgency:</span> {selectedQuote.urgency}</p>
-                    <p><span className="font-semibold text-slate-600">Status:</span> 
-                      <span className="ml-2 bg-amber-100 text-amber-800 px-2 py-0.5 rounded text-[10px] font-bold">
+                  <div className="space-y-2 text-slate-700">
+                    <p><span className="font-semibold text-slate-500">Domain:</span> <span className="uppercase text-[#1FA971] font-bold">{selectedQuote.domain}</span></p>
+                    <p><span className="font-semibold text-slate-500">Budget:</span> <span className="font-numbers font-bold text-[#0D3B5B]">{selectedQuote.budget_range || 'Not specified'}</span></p>
+                    <p><span className="font-semibold text-slate-500">Urgency:</span> <span className="font-medium">{selectedQuote.urgency}</span></p>
+                    <p className="flex items-center gap-2"><span className="font-semibold text-slate-500">Status:</span> 
+                      <span className="bg-amber-100 text-amber-800 px-2 py-0.5 rounded text-[10px] font-bold">
                         {selectedQuote.status}
                       </span>
                     </p>
@@ -202,8 +202,8 @@ export default function AdminQuotesPage() {
 
               <div>
                 <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Technical Requirements</h3>
-                <div className="bg-[#0A1A23] p-4 rounded-xl overflow-x-auto">
-                  <pre className="text-[11px] font-mono text-[#1FA971]">
+                <div className="bg-[#0A1A23] p-3.5 sm:p-4 rounded-xl overflow-x-auto">
+                  <pre className="text-[11px] font-mono text-[#1FA971] whitespace-pre-wrap break-all sm:break-normal">
                     {(() => {
                       try {
                         const reqs = JSON.parse(selectedQuote.requirements_json || '{}');
@@ -217,10 +217,10 @@ export default function AdminQuotesPage() {
               </div>
             </div>
             
-            <div className="p-4 bg-slate-50 border-t border-slate-100 flex justify-end shrink-0">
+            <div className="p-3.5 sm:p-4 bg-slate-50 border-t border-slate-100 flex justify-end shrink-0">
               <button 
                 onClick={() => setSelectedQuote(null)}
-                className="bg-[#0D3B5B] hover:bg-[#124b73] text-white px-6 py-2.5 rounded-xl font-bold text-sm transition-colors"
+                className="w-full sm:w-auto bg-[#0D3B5B] hover:bg-[#124b73] text-white px-6 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-colors shadow-sm"
               >
                 Close Window
               </button>
