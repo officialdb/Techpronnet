@@ -56,10 +56,10 @@ export default function AdminSEOPage() {
   };
 
   return (
-    <div className="flex bg-[#F6F6F6] min-h-screen text-[#0A1A23]">
+    <div className="flex flex-col lg:flex-row bg-[#F6F6F6] min-h-screen text-[#0A1A23]">
       <AdminSidebar />
 
-      <main className="flex-1 p-8 space-y-6 overflow-y-auto">
+      <main className="flex-1 p-4 sm:p-6 lg:p-8 space-y-6 min-w-0 overflow-y-auto">
         <div className="border-b border-slate-200 pb-4">
           <h1 className="text-2xl font-extrabold text-[#0D3B5B]">Site-wide SEO & Schema.org JSON-LD Manager</h1>
           <p className="text-xs text-slate-500">Configure global Search Engine Meta tags, OpenGraph previews, Sitemap, and LocalBusiness schema.</p>

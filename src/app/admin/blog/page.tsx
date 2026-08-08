@@ -94,9 +94,9 @@ export default function AdminBlogPage() {
 
   if (view === 'list') {
     return (
-      <div className="flex bg-[#F6F6F6] min-h-screen text-[#0A1A23]">
+      <div className="flex flex-col lg:flex-row bg-[#F6F6F6] min-h-screen text-[#0A1A23]">
         <AdminSidebar />
-        <main className="flex-1 p-8 space-y-6 overflow-y-auto">
+        <main className="flex-1 p-4 sm:p-6 lg:p-8 space-y-6 min-w-0 overflow-y-auto">
           <div className="flex items-center justify-between border-b border-slate-200 pb-4">
             <div>
               <h1 className="text-2xl font-extrabold text-[#0D3B5B]">Blog Posts</h1>
@@ -159,9 +159,9 @@ export default function AdminBlogPage() {
   // ── EDITOR VIEW ────────────────────────────────────────────────────────────
 
   return (
-    <div className="flex bg-[#F0F2F5] min-h-screen text-[#0A1A23]">
+    <div className="flex flex-col lg:flex-row bg-[#F0F2F5] min-h-screen text-[#0A1A23]">
       <AdminSidebar />
-      <main className="flex-1 flex flex-col overflow-hidden">
+      <main className="flex-1 flex flex-col min-w-0 overflow-hidden">
         {/* Editor Top Bar */}
         <div className="flex items-center justify-between px-8 py-4 bg-white border-b border-slate-200 shadow-sm">
           <div className="flex items-center gap-4">

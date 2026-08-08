@@ -62,24 +62,24 @@ export default function AdminDashboardPage() {
   }, []);
 
   return (
-    <div className="flex bg-[#F6F6F6] min-h-screen text-[#0A1A23]">
+    <div className="flex flex-col lg:flex-row bg-[#F6F6F6] min-h-screen text-[#0A1A23]">
       <AdminSidebar />
 
-      <main className="flex-1 p-8 space-y-8 overflow-y-auto">
+      <main className="flex-1 p-4 sm:p-6 lg:p-8 space-y-6 sm:space-y-8 min-w-0 overflow-y-auto">
         
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 pb-6">
           <div>
-            <h1 className="text-3xl font-extrabold text-[#0D3B5B]">
+            <h1 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-[#0D3B5B]">
               Techpronnet Business Operating System
             </h1>
-            <p className="text-xs text-slate-500">
+            <p className="text-xs text-slate-500 mt-1">
               Real-time lead generation pipeline, CMS content, quote engine, and customer relationship analytics.
             </p>
           </div>
 
-          <div className="flex items-center gap-3">
-            <span className="text-xs bg-emerald-100 text-[#1FA971] px-3 py-1.5 rounded-full font-bold flex items-center gap-1.5">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+            <span className="text-[11px] sm:text-xs bg-emerald-100 text-[#1FA971] px-3 py-1.5 rounded-full font-bold flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full bg-[#1FA971] animate-ping" />
               Python FastAPI Backend Connected
             </span>
