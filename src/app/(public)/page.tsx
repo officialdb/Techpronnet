@@ -4,23 +4,24 @@ import ServicesGrid from '@/components/home/ServicesGrid';
 import PortfolioSection from '@/components/home/PortfolioSection';
 import ReviewsSection from '@/components/home/ReviewsSection';
 import QuickQuoteWidget from '@/components/home/QuickQuoteWidget';
-import { fetchServices, fetchProjects, fetchReviews } from '@/lib/api';
+import { fetchServices, fetchProjects, fetchReviews, fetchCMS } from '@/lib/api';
 import Link from 'next/link';
 import { COMPANY_DETAILS } from '@/lib/initial-data';
 
 export const revalidate = 60; // 1 minute ISR revalidation
 
 export default async function HomePage() {
-  const [services, projects, reviewsData] = await Promise.all([
+  const [services, projects, reviewsData, cmsData] = await Promise.all([
     fetchServices(),
     fetchProjects(),
-    fetchReviews()
+    fetchReviews(),
+    fetchCMS('homepage_hero')
   ]);
 
   return (
     <div className="space-y-0">
       {/* 1. Hero Section */}
-      <HeroSection />
+      <HeroSection cmsData={cmsData} />
 
       {/* 2. Quick Quote Configurator */}
       <QuickQuoteWidget />
@@ -49,7 +50,7 @@ export default async function HomePage() {
 
           <div className="pt-4 flex flex-wrap justify-center items-center gap-4">
             <a
-              href={`tel:${COMPANY_DETAILS.hotline}`}
+              href={`tel:${cmsData?.hotline || COMPANY_DETAILS.hotline}`}
               className="bg-[#F5B400] hover:bg-yellow-400 text-[#0A1A23] font-bold text-sm px-7 py-3.5 rounded-lg shadow-lg flex items-center gap-2"
             >
               <i className="fa fa-exclamation-triangle" />

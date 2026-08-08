@@ -3,7 +3,14 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 
-export default function HeroSection() {
+interface HeroSectionProps {
+  cmsData?: {
+    headline?: string;
+    subheadline?: string;
+  } | null;
+}
+
+export default function HeroSection({ cmsData }: HeroSectionProps) {
   const phrases = [
     "Enterprise Software & AI",
     "Solar Microgrids & Inverters",
@@ -100,9 +107,15 @@ export default function HeroSection() {
           
           {/* Main Headline */}
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.15]" data-aos="fade-up">
-            Engineering Next-Gen <br />
-            <span className="text-[#1FA971]">Tech Solutions</span> For <br />
-            Business &amp; Home
+            {cmsData?.headline ? (
+              <span dangerouslySetInnerHTML={{ __html: cmsData.headline }} />
+            ) : (
+              <>
+                Engineering Next-Gen <br />
+                <span className="text-[#1FA971]">Tech Solutions</span> For <br />
+                Business &amp; Home
+              </>
+            )}
           </h1>
 
           {/* High-Tech Typing Effect Subheadline */}
@@ -115,7 +128,7 @@ export default function HeroSection() {
           </div>
 
           <p className="text-base sm:text-lg text-slate-300 max-w-3xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="250">
-            Techpronnet Technologies integrates software development, solar microgrid energy, high-definition CCTV security, structured networking, and 24/7 IT support into one seamless digital operating system.
+            {cmsData?.subheadline || "Techpronnet Technologies integrates software development, solar microgrid energy, high-definition CCTV security, structured networking, and 24/7 IT support into one seamless digital operating system."}
           </p>
 
           {/* CTA Buttons */}

@@ -59,6 +59,17 @@ export async function fetchReviews(): Promise<{ summary: any; reviews: ReviewIte
   }
 }
 
+export async function fetchCMS(key: string): Promise<any> {
+  try {
+    const res = await fetch(`${API_BASE_URL}/api/v1/cms/${key}`, { next: { revalidate: 60 } });
+    if (!res.ok) throw new Error('Failed to fetch CMS data');
+    const data = await res.json();
+    return data.value ? JSON.parse(data.value) : null;
+  } catch (error) {
+    return null;
+  }
+}
+
 export async function submitQuoteRequest(payload: any) {
   try {
     const res = await fetch(`${API_BASE_URL}/api/v1/quotes`, {

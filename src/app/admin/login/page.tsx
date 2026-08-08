@@ -58,7 +58,7 @@ export default function AdminLoginPage() {
             TECHPRONNET ADMIN
           </h1>
           <p className="text-xs text-slate-400">
-            Enterprise Management Platform — Authorised Access Only
+            Enterprise Management Platform. Authorised Access Only
           </p>
         </div>
 

@@ -48,7 +48,7 @@ export default async function BlogPage() {
           {posts.length === 0 ? (
             <div className="text-center py-20 text-slate-400">
               <p className="text-5xl mb-4">📝</p>
-              <p className="font-bold text-lg text-slate-600">No posts yet — check back soon!</p>
+              <p className="font-bold text-lg text-slate-600">No posts yet. Check back soon!</p>
               <p className="text-sm mt-1">Our engineering team is working on some great content.</p>
             </div>
           ) : (

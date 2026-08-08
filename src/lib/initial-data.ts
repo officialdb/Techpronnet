@@ -177,7 +177,7 @@ export const INITIAL_SERVICES: ServiceItem[] = [
     name: 'Solar Street Lights & Outdoor Power',
     slug: 'solar-street-lights-outdoor-power',
     tagline: 'Autonomous solar-powered street lights, estate roads & compound illumination.',
-    description: 'Illuminate estate roads, parking lots, warehouses, and perimeter fences with all-in-one solar street lights featuring built-in lithium batteries, motion sensors, and auto dusk-to-dawn controls — zero electricity bill.',
+    description: 'Illuminate estate roads, parking lots, warehouses, and perimeter fences with all-in-one solar street lights featuring built-in lithium batteries, motion sensors, and auto dusk-to-dawn controls, zero electricity bill.',
     icon: 'fa-lightbulb-o',
     features_json: JSON.stringify([
       'All-In-One Solar Street Light Supply & Installation',

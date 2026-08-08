@@ -42,6 +42,17 @@ const domainAccent: Record<string, string> = {
   'street-power':'#f59e0b',
 };
 
+// Map each domain to its hero image in /public
+const domainImages: Record<string, string> = {
+  software:       '/img-software.jpg',
+  security:       '/img-cctv-security.jpg',
+  solar:          '/img-solar.jpg',
+  networking:     '/img-networking.jpg',
+  'it-support':   '/img-it-support.jpg',
+  tracking:       '/img-cctv-security.jpg',      // closest available
+  'street-power': '/img-solar.jpg',              // closest available
+};
+
 const whyChoosePoints = [
   { icon: 'fa-clock-o',   title: 'Rapid Deployment',     desc: 'From survey to completion, our project timelines are tight and fully communicated upfront.' },
   { icon: 'fa-shield',    title: 'Quality Guaranteed',   desc: 'Every installation and deployment is backed by workmanship warranties and post-delivery SLA support.' },
@@ -58,19 +69,35 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
   const features: string[] = JSON.parse(service.features_json || '[]');
   const gradient = domainGradients[service.domain] || domainGradients.software;
   const accent   = domainAccent[service.domain] || '#1FA971';
+  const heroImage = domainImages[service.domain] || '/img-software.jpg';
 
   return (
     <div className="bg-white text-[#0A1A23]">
 
       {/* ── Hero ──────────────────────────────────────────────────────────── */}
-      <section className={`bg-gradient-to-br ${gradient} text-white py-24 relative overflow-hidden`}>
-        {/* Decorative blobs */}
-        <div className="absolute inset-0 opacity-10 pointer-events-none">
-          <div className="absolute top-10 right-10 w-80 h-80 rounded-full blur-3xl" style={{ background: accent }} />
-          <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full blur-3xl bg-white" />
-        </div>
+      <section className="relative text-white overflow-hidden min-h-[600px] lg:min-h-[680px] flex items-center">
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Full-bleed background image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${heroImage})` }}
+        />
+
+        {/* Strong dark gradient overlay — left heavy for text legibility */}
+        <div
+          className={`absolute inset-0 bg-gradient-to-r ${gradient} opacity-90`}
+        />
+
+        {/* Subtle noise / vignette layer */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/10" />
+
+        {/* Decorative accent glow */}
+        <div
+          className="absolute top-10 right-[15%] w-72 h-72 rounded-full blur-3xl opacity-20 pointer-events-none hidden lg:block"
+          style={{ background: accent }}
+        />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full py-24">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-xs text-white/60 mb-8">
             <Link href="/" className="hover:text-white transition-colors">Home</Link>
@@ -81,18 +108,14 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
           </nav>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* ── Left: Text Content ── */}
             <div className="space-y-6">
-              {/* Domain badge */}
-              <span className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-widest px-4 py-1.5 rounded-full border border-white/20 bg-white/10 backdrop-blur-sm">
-                <i className={`fa ${service.icon}`} />
-                {service.domain.replace('-', ' ')} domain
-              </span>
 
-              <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight tracking-tight">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight drop-shadow-lg">
                 {service.name}
               </h1>
 
-              <p className="text-lg text-white/80 leading-relaxed font-medium">
+              <p className="text-lg text-white/85 leading-relaxed font-medium">
                 {service.tagline}
               </p>
 
@@ -116,18 +139,57 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
               </div>
             </div>
 
-            {/* Pricing Card */}
-            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-8 space-y-6 text-center">
+            {/* ── Right: Image Panel with Pricing Card ── */}
+            <div className="relative hidden lg:block">
+              {/* Framed image window */}
+              <div className="relative rounded-3xl overflow-hidden border border-white/20 shadow-2xl h-[380px]">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={heroImage}
+                  alt={service.name}
+                  className="w-full h-full object-cover"
+                />
+                {/* Bottom gradient fade */}
+                <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/60 to-transparent" />
+
+                {/* Floating price badge on top of image */}
+                <div className="absolute bottom-5 left-5 right-5 bg-black/50 backdrop-blur-md border border-white/20 rounded-2xl px-5 py-4 flex items-center justify-between">
+                  <div>
+                    <div className="text-[10px] font-bold uppercase tracking-widest text-white/50 mb-0.5">Starting From</div>
+                    <div className="text-3xl font-extrabold" style={{ color: accent }}>
+                      {service.pricing_starting || 'Custom'}
+                    </div>
+                  </div>
+                  <Link
+                    href={`/quote?domain=${service.domain}`}
+                    className="text-xs font-extrabold px-4 py-2.5 rounded-xl text-white transition-all hover:opacity-90 shadow-lg"
+                    style={{ background: accent }}
+                  >
+                    Get Quote →
+                  </Link>
+                </div>
+              </div>
+
+              {/* Stats strip below image */}
+              <div className="mt-4 grid grid-cols-3 gap-3">
+                {['Free Site Survey', 'SLA Warranty', '24/7 Support'].map((tag) => (
+                  <div key={tag} className="bg-white/10 backdrop-blur-sm border border-white/15 rounded-xl px-3 py-2.5 flex items-center justify-center gap-1.5">
+                    <i className="fa fa-check-circle text-[#1FA971] text-xs shrink-0" />
+                    <span className="text-[10px] font-bold text-white/80 uppercase tracking-wide">{tag}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* ── Mobile: Compact pricing card ── */}
+            <div className="lg:hidden bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 space-y-4 text-center">
               <div className="text-xs font-bold uppercase tracking-widest text-white/60">Starting Assessment Price</div>
-              <div className="text-5xl font-extrabold" style={{ color: accent }}>
+              <div className="text-4xl font-extrabold" style={{ color: accent }}>
                 {service.pricing_starting || 'Custom'}
               </div>
-              <p className="text-xs text-white/60 leading-relaxed">
-                Includes initial site survey, engineering specifications, hardware sourcing, and installation with post-deployment SLA coverage.
-              </p>
-              <div className="space-y-2.5 pt-2 text-left">
-                {['Free Initial Engineering Survey', 'Certified Installation Engineers', 'Hardware Warranty Included', '24/7 Post-Installation Support', 'Detailed Project Report'].map((point) => (
-                  <div key={point} className="flex items-center gap-2.5 text-xs text-white/80">
+              <div className="space-y-2 text-left">
+                {['Free Initial Engineering Survey', 'Certified Installation Engineers', 'Hardware Warranty Included', '24/7 Post-Installation Support'].map((point) => (
+                  <div key={point} className="flex items-center gap-2 text-xs text-white/80">
                     <i className="fa fa-check-circle text-[#1FA971]" />
                     <span>{point}</span>
                   </div>
@@ -150,7 +212,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-extrabold text-[#0D3B5B]">
-              What's Included in This Service
+              What&apos;s Included in This Service
             </h2>
             <p className="text-sm text-slate-500 mt-2">
               A full breakdown of every deliverable included under the {service.name} package.
@@ -186,7 +248,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
               Why Choose Techpronnet?
             </h2>
             <p className="text-sm text-slate-500 mt-2">
-              The difference between us and the rest — built into every project.
+              The difference between us and the rest. Built into every project.
             </p>
           </div>
 
@@ -208,13 +270,18 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
       </section>
 
       {/* ── CTA Banner ────────────────────────────────────────────────────── */}
-      <section className={`bg-gradient-to-br ${gradient} py-20`}>
-        <div className="max-w-3xl mx-auto px-4 text-center space-y-6">
+      <section className={`bg-gradient-to-br ${gradient} py-20 relative overflow-hidden`}>
+        {/* Reuse hero image as subtle CTA background */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
+          style={{ backgroundImage: `url(${heroImage})` }}
+        />
+        <div className="max-w-3xl mx-auto px-4 text-center space-y-6 relative z-10">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
             Ready to Get Started?
           </h2>
           <p className="text-white/70 text-sm leading-relaxed">
-            Talk to one of our senior engineers today. We'll assess your requirements, recommend the right solution, and send you a detailed proposal — all at zero cost.
+            Talk to one of our senior engineers today. We&apos;ll assess your requirements, recommend the right solution, and send you a detailed proposal at zero cost.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
