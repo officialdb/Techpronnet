@@ -1,44 +1,36 @@
 "use client";
 
-import { CheckCircle2, History } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
-import { FadeIn, StaggerContainer, StaggerItem } from "@/components/MotionWrapper";
+import { FadeIn } from "@/components/MotionWrapper";
 
 export function OurStory() {
   const milestones = [
     {
       year: "2019",
       title: "Founding & Systems Architecture",
-      subtitle: "The Genesis of Techpronnet",
       description:
-        "Techpronnet Technologies was founded with a singular conviction: growing businesses deserve software that conforms to their unique operational DNA, not the other way around. We began by engineering tailored internal tools and custom business systems for regional commerce and service providers.",
-      takeaway: "Established high-reliability development standards and client-first engineering.",
+        "Techpronnet Technologies was founded to solve a clear problem: growing organizations were stuck between rigid off-the-shelf software that didn't fit, and fragile scripts that broke under load. We began by engineering tailored internal tools and custom business systems for regional commerce and service providers.",
+      impact: "Established high-reliability engineering standards and client-first delivery.",
     },
     {
       year: "2021",
-      title: "Enterprise Workflows & Unified Portals",
-      subtitle: "Scaling Operational Capabilities",
+      title: "Enterprise Workflows & Customer Portals",
       description:
-        "As client operations matured, the challenge shifted from building isolated software to unifying fragmented ecosystems. We broadened our practice to include cross-platform mobile apps, customer self-service portals, and robust automated workflow engines that connected existing tools into synchronized business pipelines.",
-      takeaway: "Eliminated thousands of hours of manual data entry for growing teams.",
+        "As client operations scaled, the focus expanded from standalone tools to connected ecosystems. We broadened our practice to include cross-platform mobile apps, customer self-service portals, and automated workflow engines that eliminated hundreds of hours of manual administrative data entry.",
+      impact: "Connected multi-channel tools into synchronized, automated operational pipelines.",
     },
     {
       year: "2023",
       title: "Serverless Cloud & Resilient Data Engines",
-      subtitle: "Architectural Evolution",
       description:
-        "To deliver sub-second response times and zero-maintenance reliability, we modernized our engineering stack around modern serverless cloud infrastructure, reactive frontends, and managed Postgres databases (including Neon). This gave our clients enterprise-grade performance without enterprise operational bloat.",
-      takeaway: "Achieved sub-100ms global query execution and 99.9% uptime across managed systems.",
+        "To deliver sub-second response times and zero-maintenance reliability, we modernized our engineering stack around resilient cloud infrastructure, reactive frontends, and managed Postgres databases (including Neon). This gave our clients enterprise-grade performance without operational bloat.",
+      impact: "Achieved sub-100ms global query execution and 99.9% uptime across all managed client systems.",
     },
     {
       year: "2025 – Present",
-      title: "End-to-End Digital Engineering",
-      subtitle: "The Modern Techpronnet Partner",
+      title: "End-to-End Digital Engineering & SLA Support",
       description:
-        "Today, Techpronnet serves organizations across Healthcare, Logistics, Commerce, and Professional Services. We operate as an embedded senior technology partner, delivering everything from user-facing web portals to multi-warehouse automation pipelines, accompanied by dedicated ongoing maintenance and SLA-backed support.",
-      takeaway: "Continuously helping forward-looking businesses scale with confidence.",
+        "Today, Techpronnet serves organizations across Healthcare, Logistics, Commerce, Legal, and Professional Services. We operate as an embedded senior technology partner, delivering custom software, hospital systems, portals, and multi-warehouse automation pipelines backed by continuous SLA support.",
+      impact: "Continuously helping forward-looking businesses scale with confidence.",
     },
   ];
 
@@ -49,28 +41,28 @@ export function OurStory() {
           {/* Left Narrative Column */}
           <div className="lg:col-span-5 lg:sticky lg:top-28">
             <FadeIn direction="up">
-              <Badge variant="outline" className="mb-4 uppercase tracking-[.14em] text-[10px] sm:text-xs font-semibold text-muted bg-sand border-line py-1 px-3">
-                Our Genesis & Evolution
-              </Badge>
+              <p className="eyebrow uppercase text-[11px] sm:text-xs font-semibold text-muted mb-4">
+                Our Genesis &amp; Evolution
+              </p>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-[-.045em] leading-tight text-ink">
-                Built to solve real business bottlenecks.
+                Our story since 2019.
               </h2>
               <p className="mt-5 text-base sm:text-lg text-muted leading-relaxed">
                 Most software either forces your business into someone else&apos;s rigid template or is built so hastily that it crumbles under growth. Techpronnet was created to deliver the middle path: software engineered with architectural rigor, intuitive simplicity, and deep alignment with how you actually operate.
               </p>
 
-              <div className="mt-8 pt-6 border-t border-line space-y-4 text-sm text-muted">
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="size-4.5 text-navy shrink-0 mt-0.5" />
+              <div className="mt-8 pt-6 border-t border-line space-y-3 text-sm text-muted">
+                <div className="flex items-baseline gap-3">
+                  <span className="font-mono text-navy font-semibold text-xs">01</span>
                   <span>Founded in 2019 with an unwavering focus on durability.</span>
                 </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="size-4.5 text-navy shrink-0 mt-0.5" />
-                  <span>100% in-house engineering and architectural leadership.</span>
+                <div className="flex items-baseline gap-3">
+                  <span className="font-mono text-navy font-semibold text-xs">02</span>
+                  <span>Direct developer-to-client collaboration with zero bureaucratic layers.</span>
                 </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="size-4.5 text-navy shrink-0 mt-0.5" />
-                  <span>Direct developer-to-client collaboration without bureaucratic layers.</span>
+                <div className="flex items-baseline gap-3">
+                  <span className="font-mono text-navy font-semibold text-xs">03</span>
+                  <span>Complete client ownership of all written source code and data.</span>
                 </div>
               </div>
             </FadeIn>
@@ -78,40 +70,26 @@ export function OurStory() {
 
           {/* Right Chronological Timeline */}
           <div className="lg:col-span-7">
-            <StaggerContainer className="space-y-8" staggerDelay={0.15}>
-              {milestones.map((milestone, idx) => (
-                <StaggerItem key={milestone.year}>
-                  <Card className="border-line bg-paper shadow-2xs hover:border-navy/40 transition-colors">
-                    <CardHeader className="pb-3">
-                      <div className="flex items-center justify-between gap-3 mb-2">
-                        <Badge variant="sage" className="font-mono text-xs px-2.5 py-0.5">
-                          {milestone.year}
-                        </Badge>
-                        <span className="text-xs font-mono text-muted uppercase tracking-wider">
-                          Milestone 0{idx + 1}
-                        </span>
-                      </div>
-                      <CardTitle className="text-xl sm:text-2xl text-ink">
-                        {milestone.title}
-                      </CardTitle>
-                      <CardDescription className="text-xs sm:text-sm text-navy font-medium">
-                        {milestone.subtitle}
-                      </CardDescription>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                      <p className="text-sm text-muted leading-relaxed">
-                        {milestone.description}
-                      </p>
-                      <Separator />
-                      <div className="flex items-center gap-2 text-xs font-medium text-ink bg-sand/80 px-3 py-2 border border-line/60">
-                        <History className="size-3.5 text-navy shrink-0" />
-                        <span>Key Impact: {milestone.takeaway}</span>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </StaggerItem>
+            <div className="divide-y divide-line">
+              {milestones.map((milestone) => (
+                <article key={milestone.year} className="py-7 first:pt-0 last:pb-0">
+                  <div className="flex items-center gap-3 mb-2">
+                    <span className="font-mono text-xs font-bold text-navy bg-sand px-2 py-0.5 border border-line">
+                      {milestone.year}
+                    </span>
+                    <h3 className="text-lg sm:text-xl font-semibold text-ink">
+                      {milestone.title}
+                    </h3>
+                  </div>
+                  <p className="text-sm text-muted leading-relaxed mt-2.5">
+                    {milestone.description}
+                  </p>
+                  <p className="text-xs font-mono text-navy/90 mt-3 pt-2 border-t border-line/60">
+                    &rarr; {milestone.impact}
+                  </p>
+                </article>
               ))}
-            </StaggerContainer>
+            </div>
           </div>
         </div>
       </div>

@@ -22,13 +22,13 @@ export function FadeIn({
   const getInitialPosition = () => {
     switch (direction) {
       case "up":
-        return { opacity: 0, y: 24 };
+        return { opacity: 0, y: 16 };
       case "down":
-        return { opacity: 0, y: -24 };
+        return { opacity: 0, y: -16 };
       case "left":
-        return { opacity: 0, x: 24 };
+        return { opacity: 0, x: 12 };
       case "right":
-        return { opacity: 0, x: -24 };
+        return { opacity: 0, x: -12 };
       case "none":
       default:
         return { opacity: 0 };

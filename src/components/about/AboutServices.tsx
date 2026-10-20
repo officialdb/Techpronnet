@@ -1,19 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import {
-  Monitor,
-  Smartphone,
-  Layers,
-  Cpu,
-  Plug,
-  Wrench,
-  ArrowRight,
-  CheckCircle2,
-} from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card";
-import { FadeIn, StaggerContainer, StaggerItem } from "@/components/MotionWrapper";
+import { ArrowRight, Check } from "lucide-react";
+import { FadeIn } from "@/components/MotionWrapper";
 
 export function AboutServices() {
   const serviceMatrix = [
@@ -21,165 +10,138 @@ export function AboutServices() {
       id: "web",
       num: "01",
       title: "Websites & Digital Portals",
-      icon: Monitor,
       description:
-        "High-performance corporate websites, customer self-service portals, booking platforms, and client dashboards built with modern Next.js and React.",
-      capabilities: [
-        "Customer Portals & Dashboards",
-        "Interactive Booking Engines",
-        "SEO-Engineered Brand Platforms",
-        "Secure User Authentication",
+        "High-performance corporate websites, client self-service portals, booking platforms, and consultation intake engines designed with modern Next.js and clean UI engineering.",
+      deliverables: [
+        "Corporate & Professional Services Sites (e.g. Law Firm Portals)",
+        "Client Self-Service & Appointment Booking Engines",
+        "Secure User Authentication & Account Dashboards",
       ],
       servicePrefill: "Website or web portal",
     },
     {
-      id: "mobile",
+      id: "healthcare",
       num: "02",
-      title: "Mobile Applications",
-      icon: Smartphone,
+      title: "Hospital & Healthcare Systems",
       description:
-        "Native-grade iOS and Android mobile experiences engineered for on-the-go customer access and field workforce coordination.",
-      capabilities: [
-        "Cross-Platform Native Apps",
-        "Offline-First Data Sync",
-        "Push Notifications & Telemetry",
-        "Role-Based Driver / Field Access",
-      ],
-      servicePrefill: "Mobile application",
-    },
-    {
-      id: "software",
-      num: "03",
-      title: "Custom Business Software",
-      icon: Layers,
-      description:
-        "Tailor-made ERP systems, inventory management, operational dispatch consoles, and reporting systems reflecting your actual business logic.",
-      capabilities: [
-        "Internal Operations Consoles",
-        "Inventory & Order Tracking",
-        "Role & Permission Hierarchies",
-        "Audit Logging & Governance",
+        "Specialized clinical management platforms, outpatient triage queues, electronic patient intake, and automated appointment communication systems.",
+      deliverables: [
+        "Patient Intake & Outpatient Clinic Schedulers",
+        "Doctor Shift Rosters & Department Management",
+        "Automated Patient Reminders via SMS & WhatsApp",
       ],
       servicePrefill: "Custom business software",
     },
     {
-      id: "automation",
-      num: "04",
-      title: "Workflow Automation",
-      icon: Cpu,
+      id: "software",
+      num: "03",
+      title: "Custom Business Software & ERP",
       description:
-        "Automated data pipelines, webhook consumers, and document generators that connect separated applications to eliminate manual human intervention.",
-      capabilities: [
-        "Automated Invoicing & Alerts",
-        "Multi-Tool Webhook Bridges",
-        "Scheduled Data Pipelines",
-        "Error Alerting & Recovery",
+        "Tailor-made management dashboards, dispatch consoles, inventory reconciliation, and operational audit tools that match your specific organizational processes.",
+      deliverables: [
+        "Centralized Operational Dispatch Consoles",
+        "Multi-Warehouse Inventory & SKU Tracking",
+        "Role-Based Access Controls & Audit Logging",
+      ],
+      servicePrefill: "Custom business software",
+    },
+    {
+      id: "mobile",
+      num: "04",
+      title: "Mobile Applications",
+      description:
+        "Cross-platform iOS and Android mobile experiences engineered for customer interaction, field service teams, and on-the-go driver dispatch coordination.",
+      deliverables: [
+        "Responsive Native-Grade Mobile Apps",
+        "Offline-First Synchronization & Geolocation",
+        "Driver Telematics & Push Notification Alerts",
+      ],
+      servicePrefill: "Mobile application",
+    },
+    {
+      id: "automation",
+      num: "05",
+      title: "Workflow Automation & APIs",
+      description:
+        "Automated data pipelines, webhook consumers, and third-party API bridges that connect separated business tools to eliminate manual repetitive work.",
+      deliverables: [
+        "Payment Gateway & Invoice Automation",
+        "CRM & Logistics Webhook Bridges",
+        "Automated Document & Report Generation",
       ],
       servicePrefill: "Workflow automation",
     },
     {
-      id: "integration",
-      num: "05",
-      title: "APIs & System Integrations",
-      icon: Plug,
-      description:
-        "Custom REST & GraphQL endpoints, third-party payment gateway bridges, CRM integrations, and database synchronizers.",
-      capabilities: [
-        "Stripe / Payment Gateways",
-        "CRM & Logistics Webhooks",
-        "Legacy Database Bridges",
-        "Rate-Limited Secure APIs",
-      ],
-      servicePrefill: "API or software integration",
-    },
-    {
       id: "support",
       num: "06",
-      title: "Maintenance & SLA Support",
-      icon: Wrench,
+      title: "Cloud Infrastructure & Support",
       description:
-        "Continuous performance monitoring, database optimization, security patch application, and SLA-backed engineering coverage.",
-      capabilities: [
-        "24/7 Health Monitoring",
-        "Postgres Query Optimization",
-        "Dependency & Security Audits",
-        "Priority Bug Fix Escalation",
+        "Serverless database tuning (Postgres/Neon), continuous performance monitoring, security patches, and SLA-backed engineering coverage.",
+      deliverables: [
+        "Database Indexing & Query Tuning",
+        "Zero-Downtime Cloud Cutover & Deployments",
+        "Ongoing Security Updates & Maintenance",
       ],
       servicePrefill: "Maintenance and support",
     },
   ];
 
   return (
-    <section className="section-space border-b border-line bg-sand/40">
+    <section className="section-space border-b border-line bg-sand/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl mb-12 sm:mb-16">
           <FadeIn direction="up">
-            <Badge variant="outline" className="mb-4 uppercase tracking-[.14em] text-[10px] sm:text-xs font-semibold text-muted bg-white border-line py-1 px-3">
+            <p className="eyebrow uppercase text-[11px] sm:text-xs font-semibold text-muted mb-4">
               Core Capabilities
-            </Badge>
+            </p>
             <h2 className="text-3xl sm:text-5xl font-semibold tracking-[-.045em] leading-tight text-ink">
-              Comprehensive technical services.
+              Services explained clearly.
             </h2>
             <p className="mt-4 text-base sm:text-lg text-muted leading-relaxed">
-              We cover the entire lifecycle of modern digital products, from exploratory architecture through to multi-year maintenance.
+              We design and build complete digital products tailored specifically to how your business operates.
             </p>
           </FadeIn>
         </div>
 
-        <StaggerContainer
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
-          staggerDelay={0.08}
-        >
-          {serviceMatrix.map((item) => {
-            const Icon = item.icon;
-            return (
-              <StaggerItem key={item.id}>
-                <Card className="h-full border-line bg-white shadow-xs hover:border-ink transition-colors flex flex-col justify-between group">
-                  <CardHeader className="pb-4">
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="size-10 bg-sand text-navy flex items-center justify-center group-hover:bg-sage transition-colors">
-                        <Icon className="size-5" />
-                      </div>
-                      <span className="font-mono text-xs text-muted font-semibold">
-                        {item.num}
-                      </span>
-                    </div>
-                    <CardTitle className="text-xl sm:text-2xl text-ink">
-                      {item.title}
-                    </CardTitle>
-                    <p className="text-sm text-muted leading-relaxed mt-2">
-                      {item.description}
-                    </p>
-                  </CardHeader>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12">
+          {serviceMatrix.map((item) => (
+            <article
+              key={item.id}
+              className="pt-7 border-t border-line flex flex-col justify-between"
+            >
+              <div>
+                <span className="font-mono text-xs text-muted block mb-2">
+                  {item.num} / CAPABILITY
+                </span>
+                <h3 className="text-xl font-semibold tracking-tight text-ink mb-3">
+                  {item.title}
+                </h3>
+                <p className="text-sm text-muted leading-relaxed mb-5">
+                  {item.description}
+                </p>
 
-                  <CardContent className="pt-0 pb-6 flex-1">
-                    <p className="text-xs font-mono uppercase text-navy font-semibold mb-3">
-                      Key Deliverables
-                    </p>
-                    <ul className="space-y-2">
-                      {item.capabilities.map((cap) => (
-                        <li key={cap} className="flex items-center gap-2 text-xs text-muted">
-                          <CheckCircle2 className="size-3.5 text-navy shrink-0" />
-                          <span>{cap}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </CardContent>
+                <ul className="space-y-2 mb-6">
+                  {item.deliverables.map((deliv) => (
+                    <li key={deliv} className="flex items-start gap-2 text-xs text-ink/80">
+                      <Check className="size-3.5 text-navy mt-0.5 shrink-0" />
+                      <span>{deliv}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-                  <CardFooter className="pt-4 border-t border-line/60">
-                    <Link
-                      href="/#contact"
-                      className="inline-flex items-center gap-2 text-xs font-semibold text-ink group-hover:text-navy transition-colors"
-                    >
-                      <span>Inquire about this capability</span>
-                      <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
-                    </Link>
-                  </CardFooter>
-                </Card>
-              </StaggerItem>
-            );
-          })}
-        </StaggerContainer>
+              <div>
+                <Link
+                  href="/#contact"
+                  className="inline-flex items-center gap-2 text-xs font-medium text-ink hover:text-navy transition-colors pb-1 border-b border-line hover:border-navy"
+                >
+                  <span>Discuss this capability</span>
+                  <ArrowRight className="size-3.5" />
+                </Link>
+              </div>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );
