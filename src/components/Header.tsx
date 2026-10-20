@@ -48,6 +48,12 @@ export function Header() {
             Services
           </Link>
           <Link
+            href="/work"
+            className="hover:text-ink font-medium transition-colors"
+          >
+            Our Work
+          </Link>
+          <Link
             href="/#process"
             className="hover:text-ink font-medium transition-colors"
           >
@@ -104,6 +110,13 @@ export function Header() {
               className="px-3 py-2.5 hover:bg-sand transition-colors"
             >
               Services
+            </Link>
+            <Link
+              href="/work"
+              onClick={() => setMobileMenuOpen(false)}
+              className="px-3 py-2.5 hover:bg-sand transition-colors"
+            >
+              Our Work
             </Link>
             <Link
               href="/#process"

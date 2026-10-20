@@ -29,8 +29,9 @@ export default function ServicesPage() {
       tagline: "Designed for high-trust conversions and frictionless client interaction.",
       description:
         "We build fast, responsive websites and confidential self-service portals tailored for professional practices and commercial businesses. From corporate legal portals to client intake engines, we eliminate disjointed email chains and replace them with secure, brand-aligned digital platforms.",
-      exemplarName: "Sterling & Partners Legal Counsel",
+      exemplarName: "Sterling & Partners Legal Counsel Portal",
       exemplarUrl: "https://sterlingpartners.legal",
+      imageSrc: "/images/projects/law.png",
       previewType: "law-firm" as const,
       isReversed: false,
       capabilities: [
@@ -45,13 +46,14 @@ export default function ServicesPage() {
     {
       id: "healthcare-systems",
       num: "02",
-      category: "Healthcare & Clinics",
+      category: "Healthcare & Hospitals",
       title: "Hospital & Clinical Management Systems",
       tagline: "Streamlining outpatient triage, patient records, and doctor scheduling.",
       description:
-        "Healthcare organizations require systems where reliability is non-negotiable. We engineer comprehensive clinic platforms that manage patient flow, outpatient triage, doctor shift allocations, and automated appointment communications, reducing missed visits and eliminating waiting room gridlock.",
-      exemplarName: "St. Jude Metropolitan Health System",
-      exemplarUrl: "https://portal.stjude-health.org",
+        "Healthcare organizations require systems where reliability is non-negotiable. We engineer comprehensive hospital platforms that manage patient flow, outpatient triage, doctor shift allocations, and automated appointment communications, reducing missed visits and eliminating waiting room gridlock.",
+      exemplarName: "Hospital Clinical Operations System",
+      exemplarUrl: "https://portal.hospital-system.org",
+      imageSrc: "/images/projects/hospotal.png",
       previewType: "hospital" as const,
       isReversed: true,
       capabilities: [
@@ -71,8 +73,9 @@ export default function ServicesPage() {
       tagline: "Reflecting the exact operational logic of how your business operates.",
       description:
         "Off-the-shelf software forces teams into awkward workarounds. We build custom operational dashboards, dispatch consoles, and inventory tracking engines that mirror your exact business rules, giving managers immediate real-time visibility and eliminating manual spreadsheets.",
-      exemplarName: "Apex Freight Global Operations",
+      exemplarName: "Apex Freight Global Dispatch & Telematics",
       exemplarUrl: "https://dispatch.apexlogistics.com",
+      imageSrc: "/images/projects/logistics.png",
       previewType: "logistics" as const,
       isReversed: false,
       capabilities: [
@@ -85,51 +88,53 @@ export default function ServicesPage() {
       contactService: "Custom business software",
     },
     {
-      id: "mobile-apps",
+      id: "clinic-scheduling",
       num: "04",
-      category: "Mobile Engineering",
-      title: "Cross-Platform Mobile Applications",
-      tagline: "Native-grade mobile tools for field workforces and customer engagement.",
+      category: "Clinical ERP & Booking",
+      title: "Clinic ERP & Outpatient Appointment Booking Suite",
+      tagline: "Empowering specialized practices with frictionless scheduling and billing.",
       description:
-        "We develop iOS and Android mobile experiences engineered for users in motion. Whether equipping field drivers with offline waypoint navigation and digital signature capture, or giving customers on-demand access to services, our mobile apps run smoothly across all modern devices.",
-      exemplarName: "FieldOps Mobile Suite",
-      exemplarUrl: "https://fieldops.techpronnet.com",
-      previewType: "mobile-app" as const,
+        "Designed specifically for private medical practices, clinics, and diagnostic centers. This system unifies doctor appointment availability, multi-channel booking reminders, patient record histories, and digital billing into an accessible web platform.",
+      exemplarName: "Clinic ERP & Appointment Suite",
+      exemplarUrl: "https://clinic.metrocare.org",
+      imageSrc: "/images/projects/clinic_erp_and_appointment_booking.png",
+      previewType: "hospital" as const,
       isReversed: true,
       capabilities: [
-        "Offline-first local data caching with automatic background cloud sync",
-        "Digital signature capture, camera document scanning, and geofencing",
-        "Low-latency push notifications for alerts, milestones, and dispatches",
-        "Unified codebase running natively on both iOS and Android",
+        "Interactive doctor appointment calendar with real-time slot locks",
+        "Automated notification triggers via SMS, WhatsApp, and email",
+        "Digital patient intake forms with medical history logging",
+        "Instant billing invoicing and prescription documentation",
       ],
-      deliverables: "iOS & Android Builds, Offline Engine, Background Sync",
-      contactService: "Mobile application",
+      deliverables: "Patient Booking Portal, Doctor Console, SMS Integration",
+      contactService: "Website or web portal",
     },
     {
-      id: "workflow-automation",
+      id: "enterprise-platform",
       num: "05",
-      category: "Automation & Integration",
-      title: "Workflow Automation & API Integrations",
-      tagline: "Connecting disconnected business tools into synchronized pipelines.",
+      category: "Enterprise Software & Cloud Platforms",
+      title: "Aenbase Custom Business Platform & Operations Hub",
+      tagline: "Custom reactive platforms built on serverless cloud databases.",
       description:
-        "Manual data reentry between software tools is the largest hidden tax on growing organizations. We engineer resilient webhook bridges, event-driven pipelines, and API integrations that connect your payment providers, accounting systems, CRM, and databases into one cohesive machine.",
-      exemplarName: "Automated Multi-Step Event Pipeline",
-      exemplarUrl: "https://events.techpronnet.com",
+        "For growing commercial platforms with custom business workflows, we develop unified web hubs that integrate transactional data, account hierarchies, and automated report generation, delivering sub-second execution speeds without technical overhead.",
+      exemplarName: "Aenbase Custom Business Platform",
+      exemplarUrl: "https://aenbase.com",
+      imageSrc: "/images/projects/aenbase.png",
       previewType: "automation" as const,
       isReversed: false,
       capabilities: [
-        "Automated multi-step event triggers and webhook consumers",
-        "Payment gateway synchronization with automatic invoice generation",
-        "Scheduled data aggregation pipelines with error recovery and alerts",
-        "Custom REST and GraphQL API endpoints for internal & partner use",
+        "Custom administrative portal with role-based permissions",
+        "Serverless database queries with sub-30ms response times",
+        "Automated audit trails and transaction reconciliations",
+        "High-performance responsive rendering across mobile & desktop",
       ],
-      deliverables: "Webhook Pipelines, Stripe Integration, Automated Docs",
-      contactService: "Workflow automation",
+      deliverables: "Custom Business Portal, Neon Postgres Architecture, API",
+      contactService: "Custom business software",
     },
     {
       id: "cloud-infrastructure",
       num: "06",
-      category: "Cloud & Support",
+      category: "Cloud Infrastructure & Support",
       title: "Cloud Infrastructure, Neon Postgres & SLA Support",
       tagline: "High-availability cloud architectures backed by continuous technical care.",
       description:
@@ -193,19 +198,19 @@ export default function ServicesPage() {
             <div className="mt-14 sm:mt-20 border-t border-line pt-6 flex flex-wrap gap-x-8 gap-y-3 text-xs font-mono text-muted">
               <span className="text-navy font-semibold uppercase">Jump to:</span>
               <a href="#web-portals" className="hover:text-ink transition-colors">
-                01. Web &amp; Portals
+                01. Legal &amp; Web Portals
               </a>
               <a href="#healthcare-systems" className="hover:text-ink transition-colors">
                 02. Hospital Systems
               </a>
               <a href="#custom-software" className="hover:text-ink transition-colors">
-                03. Custom Software
+                03. Logistics &amp; ERP
               </a>
-              <a href="#mobile-apps" className="hover:text-ink transition-colors">
-                04. Mobile Apps
+              <a href="#clinic-scheduling" className="hover:text-ink transition-colors">
+                04. Clinic ERP Suite
               </a>
-              <a href="#workflow-automation" className="hover:text-ink transition-colors">
-                05. Automation &amp; APIs
+              <a href="#enterprise-platform" className="hover:text-ink transition-colors">
+                05. Aenbase Platform
               </a>
               <a href="#cloud-infrastructure" className="hover:text-ink transition-colors">
                 06. Cloud &amp; SLA
@@ -225,7 +230,7 @@ export default function ServicesPage() {
           >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-                {/* Visual UI Frame Column */}
+                {/* Visual UI Screenshot Frame Column */}
                 <div
                   className={`lg:col-span-6 ${
                     section.isReversed ? "order-2 lg:order-1" : "order-2 lg:order-2"
@@ -234,8 +239,11 @@ export default function ServicesPage() {
                   <FadeIn direction="up">
                     <ProjectPreviewFrame
                       type={section.previewType}
+                      imageSrc={section.imageSrc}
+                      imageAlt={section.title}
                       url={section.exemplarUrl}
                       title={section.exemplarName}
+                      tag={section.category}
                     />
                   </FadeIn>
                 </div>

@@ -13,7 +13,7 @@ export function ProjectShowcase() {
       client: "Sterling & Partners Legal Counsel",
       domain: "Legal & Professional Services",
       url: "https://sterlingpartners.legal",
-      frameType: "law-firm" as const,
+      imageSrc: "/images/projects/law.png",
       summary:
         "An understated, high-trust digital platform featuring practice area briefings, partner credentials, confidential client intake, and encrypted document exchange for commercial litigation and M&A counsel.",
       deliverables: [
@@ -30,17 +30,17 @@ export function ProjectShowcase() {
     },
     {
       id: "hospital",
-      title: "Comprehensive Hospital & Clinical Patient Management System",
-      client: "St. Jude Metropolitan Health System",
-      domain: "Healthcare & Specialized Clinics",
-      url: "https://portal.stjude-health.org",
-      frameType: "hospital" as const,
+      title: "Comprehensive Hospital & Clinical Management System",
+      client: "Metropolitan Healthcare Center",
+      domain: "Healthcare & Hospital Administration",
+      url: "https://portal.hospital-system.org",
+      imageSrc: "/images/projects/hospotal.png",
       summary:
-        "A multi-department clinical operations system streamlining outpatient appointment scheduling, doctor shift management, digital patient intake, and automated appointment reminders.",
+        "A multi-department clinical operations system streamlining outpatient triage queues, bed occupancy management, doctor shift allocation, and real-time patient status monitoring.",
       deliverables: [
-        "Real-time triage queue and outpatient clinic calendar",
+        "Real-time patient triage queue and ward occupancy boards",
         "Automated patient appointment reminders via SMS & WhatsApp",
-        "Fast EHR indexing across 25,000+ patient records",
+        "Fast EHR indexing across 25,000+ patient records with audit logs",
       ],
       results: [
         "65% Reduction in patient appointment no-shows",
@@ -55,7 +55,7 @@ export function ProjectShowcase() {
       client: "Apex Freight Global",
       domain: "Logistics & Supply Chain",
       url: "https://dispatch.apexlogistics.com",
-      frameType: "logistics" as const,
+      imageSrc: "/images/projects/logistics.png",
       summary:
         "A centralized operations dashboard replacing manual phone calls and paper manifests with live GPS telemetry, dynamic route optimization, and digital proof-of-delivery timestamps.",
       deliverables: [
@@ -67,6 +67,48 @@ export function ProjectShowcase() {
         "-42% Turnaround time for driver dispatch assignments",
         "100% Digital delivery proof logging with zero lost manifests",
         "Direct API integration with central warehouse database",
+      ],
+      servicePrefill: "Custom business software",
+    },
+    {
+      id: "clinic-erp",
+      title: "Clinic ERP & Outpatient Appointment Booking Suite",
+      client: "MetroCare Health Partners",
+      domain: "Clinical Operations & Scheduling",
+      url: "https://clinic.metrocare.org",
+      imageSrc: "/images/projects/clinic_erp_and_appointment_booking.png",
+      summary:
+        "Specialized clinic ERP managing patient onboarding, doctor calendars, automated consultation reminders, and billing receipts in one unified interface.",
+      deliverables: [
+        "Interactive doctor appointment booking calendar",
+        "Automated patient reminder pipeline via SMS & email",
+        "Clinical billing invoices and prescription logging",
+      ],
+      results: [
+        "+54% Online patient self-service booking adoption",
+        "Saved 3.5 front-desk hours per clinic location daily",
+        "Sub-second patient history lookup times",
+      ],
+      servicePrefill: "Website or web portal",
+    },
+    {
+      id: "aenbase",
+      title: "Aenbase Custom Business Platform & Operations Hub",
+      client: "Aenbase Technologies",
+      domain: "Enterprise Software & Cloud Platforms",
+      url: "https://aenbase.com",
+      imageSrc: "/images/projects/aenbase.png",
+      summary:
+        "A custom web portal and operational management system engineered with reactive Next.js frontend, Neon Postgres backend, and automated workflow triggers.",
+      deliverables: [
+        "Custom administrative portal with role-based permissions",
+        "Serverless database queries with sub-30ms response times",
+        "Automated audit trails and transaction reconciliations",
+      ],
+      results: [
+        "100% Custom workflow match with zero external software bloat",
+        "Zero downtime recorded across continuous production updates",
+        "High-performance responsive rendering across mobile & desktop",
       ],
       servicePrefill: "Custom business software",
     },
@@ -84,7 +126,7 @@ export function ProjectShowcase() {
               Systems in production.
             </h2>
             <p className="mt-4 text-base sm:text-lg text-muted leading-relaxed">
-              Explore concrete examples of custom business software, portals, and automated workflows engineered by Techpronnet Technologies.
+              Explore concrete examples of custom business software, portals, healthcare systems, and automated workflows engineered by Techpronnet Technologies. Click any screenshot to view in full resolution.
             </p>
           </FadeIn>
         </div>
@@ -96,12 +138,14 @@ export function ProjectShowcase() {
               className={`pt-10 sm:pt-14 ${idx !== 0 ? "border-t border-line" : ""}`}
             >
               <div className="grid lg:grid-cols-12 gap-8 lg:gap-14 items-start">
-                {/* Visual UI Frame */}
+                {/* Visual UI Screenshot Frame */}
                 <div className="lg:col-span-7 order-2 lg:order-1">
                   <ProjectPreviewFrame
-                    type={project.frameType}
+                    imageSrc={project.imageSrc}
+                    imageAlt={project.title}
                     url={project.url}
                     title={project.title}
+                    tag={project.domain}
                   />
                 </div>
 
@@ -152,7 +196,7 @@ export function ProjectShowcase() {
                       href="/#contact"
                       className="inline-flex items-center gap-2 text-xs font-semibold text-ink hover:text-navy transition-colors pb-1 border-b border-line hover:border-navy"
                     >
-                      <span>Inquire about a similar system</span>
+                      <span>Discuss a similar solution for your business</span>
                       <ArrowRight className="size-3.5" />
                     </Link>
                   </div>

@@ -116,7 +116,10 @@ export function Hero() {
 
               <div className="border-t border-line pt-4 sm:pt-5 flex flex-col xs:flex-row items-start xs:items-center justify-between gap-2 text-xs">
                 <span className="text-muted">Designed around your workflow</span>
-                <span className="font-medium text-navy">Built with purpose.</span>
+                <Link href="/work" className="font-medium text-navy hover:underline inline-flex items-center gap-1">
+                  <span>Explore Live Systems</span>
+                  <ArrowRight className="size-3" />
+                </Link>
               </div>
             </div>
           </div>

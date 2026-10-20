@@ -55,6 +55,9 @@ export function Footer() {
             <Link href="/services" className="hover:text-ink transition-colors">
               Services
             </Link>
+            <Link href="/work" className="hover:text-ink transition-colors">
+              Our Work
+            </Link>
             <Link href="/#process" className="hover:text-ink transition-colors">
               Process
             </Link>
