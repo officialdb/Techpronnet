@@ -42,10 +42,10 @@ export function Header() {
             The Challenge
           </Link>
           <Link
-            href="/#solutions"
+            href="/services"
             className="hover:text-ink font-medium transition-colors"
           >
-            Our Services
+            Services
           </Link>
           <Link
             href="/#process"
@@ -99,11 +99,11 @@ export function Header() {
               The Challenge
             </Link>
             <Link
-              href="/#solutions"
+              href="/services"
               onClick={() => setMobileMenuOpen(false)}
               className="px-3 py-2.5 hover:bg-sand transition-colors"
             >
-              Our Services
+              Services
             </Link>
             <Link
               href="/#process"

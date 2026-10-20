@@ -52,7 +52,7 @@ export function Footer() {
             <Link href="/about" className="hover:text-ink transition-colors">
               About Us
             </Link>
-            <Link href="/#solutions" className="hover:text-ink transition-colors">
+            <Link href="/services" className="hover:text-ink transition-colors">
               Services
             </Link>
             <Link href="/#process" className="hover:text-ink transition-colors">
