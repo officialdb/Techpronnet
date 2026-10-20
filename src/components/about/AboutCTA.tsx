@@ -43,11 +43,19 @@ export function AboutCTA() {
                   <ArrowRight className="size-4" />
                 </Link>
 
-                <a
-                  href="mailto:contact@techpronnet.com"
+                <Link
+                  href="/work"
                   className="inline-flex items-center justify-center gap-2 border border-line bg-paper px-6 py-3.5 text-xs font-mono font-medium text-ink hover:border-ink transition-colors text-center w-full sm:w-auto"
                 >
-                  <Mail className="size-3.5 text-navy" />
+                  <span>Explore Our Work &amp; Case Studies</span>
+                  <ArrowRight className="size-3.5" />
+                </Link>
+
+                <a
+                  href="mailto:contact@techpronnet.com"
+                  className="inline-flex items-center justify-center gap-2 text-xs font-mono text-muted hover:text-ink transition-colors text-center"
+                >
+                  <Mail className="size-3 text-navy" />
                   <span>contact@techpronnet.com</span>
                 </a>
               </div>
