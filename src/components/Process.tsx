@@ -52,7 +52,7 @@ export function Process() {
             <span className="w-6 h-0.5 bg-[#8EDE35] rounded-full" />
           </div>
 
-          <h2 className="text-3xl sm:text-5xl lg:text-[52px] font-extrabold tracking-tight text-[#181B1E] leading-[1.12]">
+          <h2 className="text-2xl sm:text-4xl lg:text-[52px] font-extrabold tracking-tight text-[#181B1E] leading-[1.12]">
             A Clear Process. No Unnecessary{" "}
             <span className="bg-[#8EDE35] text-[#181B1E] px-3.5 py-0.5 rounded-xl inline-block shadow-xs">
               Complexity.
@@ -63,8 +63,8 @@ export function Process() {
           </p>
         </div>
 
-        {/* 2. Desktop Undulating Wave Flow (Carefully calibrated to prevent line collision) */}
-        <div className="hidden md:block relative w-full h-[620px] select-none">
+        {/* 2. Desktop Undulating Wave Flow (Screens >= lg) */}
+        <div className="hidden lg:block relative w-full h-[620px] select-none">
           {/* Continuous Smooth Fluid Bezier Wave SVG Line */}
           <svg
             className="w-full h-full absolute inset-0 pointer-events-none"
@@ -187,18 +187,18 @@ export function Process() {
           </div>
         </div>
 
-        {/* 3. Mobile Responsive Vertical Flow (For screens < 768px) */}
-        <div className="block md:hidden relative pl-6 space-y-10 border-l-2 border-[#181B1E] ml-4 my-8">
+        {/* 3. Mobile Responsive Vertical Flow (Screens < lg) */}
+        <div className="block lg:hidden relative pl-6 sm:pl-8 space-y-10 border-l-2 border-[#181B1E] ml-6 sm:ml-8 my-8">
           {steps.map((s) => {
             const Icon = s.icon;
             const isDark = s.theme === "dark";
 
             return (
-              <div key={s.num} className="relative pl-6">
+              <div key={s.num} className="relative pl-4 sm:pl-6">
                 {/* Floating Node on Vertical Line */}
-                <div className="absolute -left-[35px] top-0">
+                <div className="absolute -left-[35px] sm:-left-[39px] top-0">
                   <div
-                    className={`size-12 rounded-xl flex items-center justify-center shadow-md border ${
+                    className={`size-11 sm:size-12 rounded-xl flex items-center justify-center shadow-md border ${
                       isDark
                         ? "bg-[#181B1E] text-[#8EDE35] border-[#2D333B]"
                         : "bg-white text-[#181B1E] border-[#E5E7EB]"

@@ -30,7 +30,7 @@ export function Problems() {
           <span className="text-[#4D9218] font-mono text-xs font-semibold uppercase tracking-wider block mb-3">
             The Challenge We Solve
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#181B1E] leading-[1.15]">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#181B1E] leading-[1.15]">
             Your Business Deserves Better{" "}
             <span className="bg-[#8EDE35] text-[#181B1E] px-3.5 py-0.5 rounded-xl inline-block shadow-xs">
               Tools.

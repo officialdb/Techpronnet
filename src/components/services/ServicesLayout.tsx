@@ -241,7 +241,7 @@ export function ServicesLayout() {
     <div className="w-full bg-[#FAF9F6]">
       {/* 1. Services Hero Banner: Matte Green with Circuit Tracings matching user template */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-10">
-        <div className="relative rounded-3xl bg-[#8EDE35] border border-[#7ECC28] overflow-hidden py-14 sm:py-20 px-6 sm:px-12 text-center shadow-sm">
+        <div className="relative rounded-3xl bg-[#8EDE35] border border-[#7ECC28] overflow-hidden py-12 sm:py-20 px-5 sm:px-10 lg:px-12 text-center shadow-sm">
           {/* Subtle Circuit Board Vector Pattern Overlay */}
           <svg
             className="absolute inset-0 w-full h-full opacity-20 pointer-events-none"
@@ -273,7 +273,7 @@ export function ServicesLayout() {
           </svg>
 
           <div className="relative z-10">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#181B1E]">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#181B1E]">
               Services
             </h1>
             <div className="flex items-center justify-center gap-2 text-xs sm:text-sm font-medium text-[#181B1E]/80 mt-3 font-mono">
@@ -294,7 +294,7 @@ export function ServicesLayout() {
           <span className="text-[#4D9218] font-bold text-xs sm:text-sm uppercase tracking-wider block mb-3 font-mono">
             Our Services
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold tracking-tight text-[#181B1E] leading-[1.2]">
+          <h2 className="text-2xl sm:text-4xl lg:text-[44px] font-extrabold tracking-tight text-[#181B1E] leading-tight">
             Our Mission Is To Make Your{" "}
             <span className="bg-[#8EDE35] text-[#181B1E] px-3 py-0.5 rounded-md inline-block shadow-xs">
               Business
@@ -346,7 +346,7 @@ export function ServicesLayout() {
             return (
               <div
                 key={item.id}
-                className={`${cardBg} rounded-3xl p-7 sm:p-9 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl relative group overflow-hidden`}
+                className={`${cardBg} rounded-3xl p-6 sm:p-8 lg:p-9 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl relative group overflow-hidden`}
               >
                 <div>
                   {/* Top Header: Circular Icon + Tag + Preview Button */}
@@ -433,7 +433,7 @@ export function ServicesLayout() {
             <span className="text-[#4D9218] font-mono text-xs font-semibold uppercase tracking-wider block mb-3">
               Pricing Plan
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold tracking-tight text-[#181B1E] leading-[1.2]">
+            <h2 className="text-2xl sm:text-4xl lg:text-[44px] font-extrabold tracking-tight text-[#181B1E] leading-tight">
               We Make IT Simple, Faster, And Less Expensive
             </h2>
             <p className="text-sm sm:text-base text-muted max-w-2xl mx-auto mt-4 leading-relaxed">
@@ -453,7 +453,7 @@ export function ServicesLayout() {
                     isDark
                       ? "bg-[#181B1E] text-white border border-[#2D333B] shadow-xl"
                       : "bg-white text-[#181B1E] border border-[#E5E7EB] shadow-md hover:border-[#8EDE35]"
-                  } rounded-3xl p-8 sm:p-10 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1`}
+                  } rounded-3xl p-6 sm:p-8 lg:p-10 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1`}
                 >
                   <div>
                     {/* Plan Header */}
@@ -467,7 +467,7 @@ export function ServicesLayout() {
 
                     {/* Price */}
                     <div className="flex items-baseline gap-1.5 mb-3">
-                      <span className={`text-4xl sm:text-5xl font-extrabold ${plan.badgeColor}`}>
+                      <span className={`text-3xl sm:text-4xl lg:text-5xl font-extrabold ${plan.badgeColor}`}>
                         {plan.price}
                       </span>
                       <span className={`text-sm ${isDark ? "text-gray-400" : "text-muted"}`}>

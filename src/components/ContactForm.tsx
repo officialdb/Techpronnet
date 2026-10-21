@@ -151,7 +151,7 @@ export function ContactForm() {
     <form
       onSubmit={handleSubmit}
       noValidate
-      className="bg-white border border-line p-5 sm:p-9 space-y-5 sm:space-y-6 shadow-xs"
+      className="space-y-5 sm:space-y-6"
     >
       {/* Global Server Error Banner */}
       {serverResult && !serverResult.success && (

@@ -11,7 +11,7 @@ export function ContactSection() {
             <span className="text-[#4D9218] font-mono text-xs font-semibold uppercase tracking-wider block mb-3">
               Start A Conversation
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#181B1E] leading-[1.15]">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#181B1E] leading-tight">
               Have A Project In{" "}
               <span className="bg-[#8EDE35] text-[#181B1E] px-3.5 py-0.5 rounded-xl inline-block shadow-xs">
                 Mind?
@@ -49,7 +49,7 @@ export function ContactSection() {
           </div>
 
           {/* Right Form Column */}
-          <div className="lg:col-span-7 bg-white border border-[#E5E7EB] rounded-3xl p-6 sm:p-10 shadow-sm">
+          <div className="lg:col-span-7 bg-white border border-[#E5E7EB] rounded-3xl p-5 sm:p-8 lg:p-10 shadow-sm">
             <ContactForm />
           </div>
         </div>

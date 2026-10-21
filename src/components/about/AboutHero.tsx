@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-import { FadeIn } from "@/components/MotionWrapper";
 
 export function AboutHero() {
   const stats = [
@@ -32,41 +31,39 @@ export function AboutHero() {
     <section className="border-b border-[#E5E7EB] bg-[#FAF9F6]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-28">
         <div className="max-w-3xl">
-          <FadeIn direction="up">
-            <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#4D9218] block mb-4 sm:mb-6">
-              About Techpronnet Technologies · Established 2019
-            </span>
+          <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#4D9218] block mb-4 sm:mb-6">
+            About Techpronnet Technologies · Established 2019
+          </span>
 
-            <h1 className="text-[38px] sm:text-6xl lg:text-[72px] leading-[1.06] tracking-[-.05em] font-extrabold text-[#181B1E]">
-              Software built around{" "}
-              <span className="block mt-1 sm:mt-2">
-                <span className="bg-[#8EDE35] text-[#181B1E] px-3.5 py-0.5 rounded-xl inline-block shadow-xs">
-                  your business.
-                </span>
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-[72px] leading-[1.08] sm:leading-[1.06] tracking-[-.05em] font-extrabold text-[#181B1E]">
+            Software built around{" "}
+            <span className="block mt-1 sm:mt-2">
+              <span className="bg-[#8EDE35] text-[#181B1E] px-3.5 py-0.5 rounded-xl inline-block shadow-xs">
+                your business.
               </span>
-            </h1>
+            </span>
+          </h1>
 
-            <p className="mt-6 sm:mt-8 text-base sm:text-lg text-muted leading-relaxed max-w-2xl">
-              Since 2019, Techpronnet Technologies has partnered with emerging enterprises and established organizations to eliminate operational friction, build resilient custom platforms, and automate mission-critical workflows.
-            </p>
+          <p className="mt-6 sm:mt-8 text-base sm:text-lg text-muted leading-relaxed max-w-2xl">
+            Since 2019, Techpronnet Technologies has partnered with emerging enterprises and established organizations to eliminate operational friction, build resilient custom platforms, and automate mission-critical workflows.
+          </p>
 
-            <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-3.5 sm:gap-4">
-              <Link
-                href="/#contact"
-                className="inline-flex items-center justify-center gap-2.5 bg-[#8EDE35] text-[#181B1E] font-bold px-8 py-4 rounded-xl text-sm hover:bg-[#7ECC28] active:scale-[0.98] transition-all duration-150 shadow-xs text-center w-full sm:w-auto"
-              >
-                <span>Discuss a Project</span>
-                <ArrowRight className="size-4" />
-              </Link>
-              <Link
-                href="#story"
-                className="inline-flex items-center justify-center gap-2.5 bg-[#181B1E] text-white font-medium px-8 py-4 rounded-xl text-sm hover:bg-[#334655] active:scale-[0.98] transition-all duration-150 shadow-xs text-center w-full sm:w-auto"
-              >
-                <span>Our Story &amp; Approach</span>
-                <ArrowUpRight className="size-4" />
-              </Link>
-            </div>
-          </FadeIn>
+          <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-3.5 sm:gap-4">
+            <Link
+              href="/#contact"
+              className="inline-flex items-center justify-center gap-2.5 bg-[#8EDE35] text-[#181B1E] font-bold px-8 py-4 rounded-xl text-sm hover:bg-[#7ECC28] active:scale-[0.98] transition-all duration-150 shadow-xs text-center w-full sm:w-auto"
+            >
+              <span>Discuss a Project</span>
+              <ArrowRight className="size-4" />
+            </Link>
+            <Link
+              href="#story"
+              className="inline-flex items-center justify-center gap-2.5 bg-[#181B1E] text-white font-medium px-8 py-4 rounded-xl text-sm hover:bg-[#334655] active:scale-[0.98] transition-all duration-150 shadow-xs text-center w-full sm:w-auto"
+            >
+              <span>Our Story &amp; Approach</span>
+              <ArrowUpRight className="size-4" />
+            </Link>
+          </div>
         </div>
 
         {/* Minimalist Linear Stats Cards */}

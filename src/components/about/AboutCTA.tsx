@@ -9,13 +9,13 @@ export function AboutCTA() {
     <section className="section-space bg-[#FAF9F6] border-b border-[#E5E7EB]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <FadeIn direction="up">
-          <div className="bg-white border border-[#E5E7EB] rounded-3xl p-8 sm:p-14 lg:p-16 shadow-xs">
+          <div className="bg-white border border-[#E5E7EB] rounded-3xl p-6 sm:p-10 lg:p-16 shadow-xs">
             <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
               <div className="lg:col-span-8">
                 <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#4D9218] mb-3 sm:mb-4 block">
                   Start A Conversation
                 </span>
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#181B1E] leading-tight">
+                <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#181B1E] leading-tight">
                   Ready to build software that moves your business forward?
                 </h2>
                 <p className="mt-4 sm:mt-5 text-base sm:text-lg text-muted leading-relaxed max-w-2xl">

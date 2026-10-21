@@ -6,7 +6,7 @@ export function Hero() {
     <section className="border-b border-[#E5E7EB] bg-[#FAF9F6]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-28">
         <div className="max-w-3xl">
-          <h1 className="text-[38px] sm:text-6xl lg:text-[72px] leading-[1.06] tracking-[-.05em] font-extrabold text-[#181B1E] break-words">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-[72px] leading-[1.08] sm:leading-[1.06] tracking-[-.05em] font-extrabold text-[#181B1E] break-words">
             Better technology.
             <span className="block mt-1 sm:mt-2 font-extrabold text-[#181B1E]">
               Better{" "}

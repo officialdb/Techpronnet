@@ -206,7 +206,7 @@ export function WorkLayout() {
           </svg>
 
           <div className="relative z-10">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#181B1E]">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#181B1E]">
               Our Work
             </h1>
             <div className="flex items-center justify-center gap-2 text-xs sm:text-sm font-medium text-[#181B1E]/80 mt-3 font-mono">
@@ -226,7 +226,7 @@ export function WorkLayout() {
           <span className="text-[#4D9218] font-mono text-xs font-semibold uppercase tracking-wider block mb-3">
             Case Studies &amp; Systems
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold tracking-tight text-[#181B1E] leading-[1.2]">
+          <h2 className="text-2xl sm:text-4xl lg:text-[44px] font-extrabold tracking-tight text-[#181B1E] leading-tight">
             Proven Systems Delivered For Real{" "}
             <span className="bg-[#8EDE35] text-[#181B1E] px-3 py-0.5 rounded-md inline-block shadow-xs">
               Business
@@ -266,7 +266,7 @@ export function WorkLayout() {
               <div
                 key={project.id}
                 id={project.id}
-                className="scroll-mt-24 rounded-3xl bg-white border border-[#E5E7EB] shadow-md hover:shadow-xl transition-all duration-300 p-6 sm:p-10 lg:p-12 relative overflow-hidden group"
+                className="scroll-mt-24 rounded-3xl bg-white border border-[#E5E7EB] shadow-md hover:shadow-xl transition-all duration-300 p-5 sm:p-8 lg:p-12 relative overflow-hidden group"
               >
                 {/* Card Top Strip */}
                 <div className="flex flex-wrap items-center justify-between gap-4 pb-6 mb-8 border-b border-[#E5E7EB]">
@@ -361,7 +361,7 @@ export function WorkLayout() {
                   {/* Editorial Details Column */}
                   <div className={`lg:col-span-5 space-y-6 ${isEven ? "lg:order-1" : "lg:order-2"}`}>
                     <div>
-                      <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#181B1E] leading-tight">
+                      <h3 className="text-xl sm:text-2xl lg:text-3xl font-extrabold tracking-tight text-[#181B1E] leading-tight">
                         {project.title}
                       </h3>
                       <p className="text-sm text-muted leading-relaxed mt-4">
@@ -437,7 +437,7 @@ export function WorkLayout() {
             <span className="text-[#4D9218] font-mono text-xs font-semibold uppercase tracking-wider block mb-3">
               Engineering Architecture
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold tracking-tight text-[#181B1E] leading-tight">
+            <h2 className="text-2xl sm:text-4xl lg:text-[42px] font-extrabold tracking-tight text-[#181B1E] leading-tight">
               The Technology Foundation Behind Every Deployment
             </h2>
             <p className="text-sm sm:text-base text-muted max-w-2xl mx-auto mt-4 leading-relaxed">
@@ -446,7 +446,7 @@ export function WorkLayout() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-[#FAF9F6] border border-[#E5E7EB] rounded-3xl p-8 hover:border-[#8EDE35] transition-all">
+            <div className="bg-[#FAF9F6] border border-[#E5E7EB] rounded-3xl p-6 sm:p-8 hover:border-[#8EDE35] transition-all">
               <div className="size-12 rounded-full bg-[#181B1E] text-[#8EDE35] flex items-center justify-center mb-6">
                 <Database className="size-5" />
               </div>
@@ -458,7 +458,7 @@ export function WorkLayout() {
               </p>
             </div>
 
-            <div className="bg-[#FAF9F6] border border-[#E5E7EB] rounded-3xl p-8 hover:border-[#8EDE35] transition-all">
+            <div className="bg-[#FAF9F6] border border-[#E5E7EB] rounded-3xl p-6 sm:p-8 hover:border-[#8EDE35] transition-all">
               <div className="size-12 rounded-full bg-[#181B1E] text-[#8EDE35] flex items-center justify-center mb-6">
                 <Code2 className="size-5" />
               </div>
@@ -470,7 +470,7 @@ export function WorkLayout() {
               </p>
             </div>
 
-            <div className="bg-[#FAF9F6] border border-[#E5E7EB] rounded-3xl p-8 hover:border-[#8EDE35] transition-all">
+            <div className="bg-[#FAF9F6] border border-[#E5E7EB] rounded-3xl p-6 sm:p-8 hover:border-[#8EDE35] transition-all">
               <div className="size-12 rounded-full bg-[#181B1E] text-[#8EDE35] flex items-center justify-center mb-6">
                 <ShieldCheck className="size-5" />
               </div>
@@ -487,14 +487,14 @@ export function WorkLayout() {
 
       {/* 5. Closing Project Inquiry Call-To-Action (Matte Green, No Glowing Blur) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
-        <div className="relative rounded-3xl bg-[#181B1E] text-white p-8 sm:p-14 lg:p-16 shadow-xl overflow-hidden border border-[#2D333B]">
+        <div className="relative rounded-3xl bg-[#181B1E] text-white p-6 sm:p-10 lg:p-16 shadow-xl overflow-hidden border border-[#2D333B]">
           {/* Note: NO radial blur or glow layer here! Pure matte finish */}
           <div className="relative z-10 grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             <div className="lg:col-span-8">
               <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#8EDE35] block mb-3">
                 Initiate A Project
               </span>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
+              <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
                 Ready to build your next digital platform?
               </h2>
               <p className="mt-4 sm:mt-5 text-sm sm:text-base text-gray-300 leading-relaxed max-w-2xl">

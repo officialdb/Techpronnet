@@ -39,7 +39,7 @@ export function CoreValues() {
             <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#4D9218] block mb-3">
               The Techpronnet Standard
             </span>
-            <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[#181B1E]">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#181B1E]">
               Values that anchor our engineering.
             </h2>
             <p className="mt-4 text-base sm:text-lg text-muted leading-relaxed">

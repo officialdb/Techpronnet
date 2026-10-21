@@ -39,7 +39,7 @@ export function FadeIn({
     <motion.div
       initial={getInitialPosition()}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
+      viewport={{ once: true }}
       transition={{
         duration,
         delay,
@@ -66,7 +66,7 @@ export function StaggerContainer({
     <motion.div
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, margin: "-50px" }}
+      viewport={{ once: true }}
       variants={{
         hidden: {},
         show: {

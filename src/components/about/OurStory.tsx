@@ -44,7 +44,7 @@ export function OurStory() {
               <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#4D9218] block mb-3">
                 Our Genesis &amp; Evolution
               </span>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#181B1E] leading-tight">
+              <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#181B1E] leading-tight">
                 Our story since{" "}
                 <span className="bg-[#8EDE35] text-[#181B1E] px-2.5 py-0.5 rounded-lg inline-block">
                   2019.

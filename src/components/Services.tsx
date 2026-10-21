@@ -178,7 +178,7 @@ export function Services() {
           <span className="text-[#4D9218] font-bold text-xs sm:text-sm uppercase tracking-wider block mb-3 font-mono">
             Our Services
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold tracking-tight text-[#181B1E] leading-[1.2]">
+          <h2 className="text-2xl sm:text-4xl lg:text-[44px] font-extrabold tracking-tight text-[#181B1E] leading-[1.2]">
             Our Mission Is To Make Your{" "}
             <span className="bg-[#8EDE35] text-[#181B1E] px-3.5 py-0.5 rounded-xl inline-block shadow-xs">
               Business
@@ -307,7 +307,7 @@ export function Services() {
         <div className="mt-14 sm:mt-16 text-center flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link
             href="/services"
-            className="inline-flex items-center justify-center gap-2.5 bg-[#181B1E] text-white font-bold px-8 py-4 rounded-xl text-sm hover:bg-[#334655] transition-colors shadow-xs"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-[#181B1E] text-white font-bold px-8 py-4 rounded-xl text-sm hover:bg-[#334655] transition-colors shadow-xs"
           >
             <span>Explore Full Services &amp; Pricing Plans</span>
             <ArrowRight className="size-4" />
@@ -315,7 +315,7 @@ export function Services() {
 
           <Link
             href="/work"
-            className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl border border-[#E5E7EB] bg-[#FAF9F6] text-[#181B1E] hover:border-[#8EDE35] text-sm font-medium transition-colors"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl border border-[#E5E7EB] bg-[#FAF9F6] text-[#181B1E] hover:border-[#8EDE35] text-sm font-medium transition-colors"
           >
             <span>View All Production Case Studies</span>
             <ArrowUpRight className="size-4 text-[#4D9218]" />

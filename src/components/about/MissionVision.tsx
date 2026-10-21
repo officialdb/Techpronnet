@@ -12,7 +12,7 @@ export function MissionVision() {
             <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#4D9218] block mb-3">
               Guiding Directives
             </span>
-            <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[#181B1E]">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#181B1E]">
               Mission &amp; Vision
             </h2>
             <p className="mt-4 text-base sm:text-lg text-muted leading-relaxed">
@@ -23,7 +23,7 @@ export function MissionVision() {
 
         <div className="grid md:grid-cols-2 gap-8 lg:gap-10">
           {/* Mission Card */}
-          <div className="bg-white border border-[#E5E7EB] rounded-3xl p-8 sm:p-10 flex flex-col justify-between shadow-xs hover:border-[#8EDE35] transition-all">
+          <div className="bg-white border border-[#E5E7EB] rounded-3xl p-6 sm:p-8 lg:p-10 flex flex-col justify-between shadow-xs hover:border-[#8EDE35] transition-all">
             <div>
               <div className="flex items-center gap-3 mb-6">
                 <div className="size-11 rounded-xl bg-[#181B1E] text-[#8EDE35] flex items-center justify-center">
@@ -33,7 +33,7 @@ export function MissionVision() {
                   Our Mission
                 </span>
               </div>
-              <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#181B1E] mb-4 leading-snug">
+              <h3 className="text-xl sm:text-2xl lg:text-3xl font-extrabold tracking-tight text-[#181B1E] mb-4 leading-snug">
                 To engineer software that removes friction and fuels sustainable business momentum.
               </h3>
               <p className="text-sm sm:text-base text-muted leading-relaxed">
@@ -54,7 +54,7 @@ export function MissionVision() {
           </div>
 
           {/* Vision Card */}
-          <div className="bg-white border border-[#E5E7EB] rounded-3xl p-8 sm:p-10 flex flex-col justify-between shadow-xs hover:border-[#8EDE35] transition-all">
+          <div className="bg-white border border-[#E5E7EB] rounded-3xl p-6 sm:p-8 lg:p-10 flex flex-col justify-between shadow-xs hover:border-[#8EDE35] transition-all">
             <div>
               <div className="flex items-center gap-3 mb-6">
                 <div className="size-11 rounded-xl bg-[#181B1E] text-[#8EDE35] flex items-center justify-center">
@@ -64,7 +64,7 @@ export function MissionVision() {
                   Our Vision
                 </span>
               </div>
-              <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#181B1E] mb-4 leading-snug">
+              <h3 className="text-xl sm:text-2xl lg:text-3xl font-extrabold tracking-tight text-[#181B1E] mb-4 leading-snug">
                 To be the trusted technology backbone for organizations demanding uncompromising quality.
               </h3>
               <p className="text-sm sm:text-base text-muted leading-relaxed">

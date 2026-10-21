@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Link from "next/link";
 import { ArrowUpRight, Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -137,10 +136,10 @@ export function Header() {
             <Link
               href="/#contact"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center justify-center gap-2 w-full bg-ink text-white px-5 py-3.5 text-sm font-medium hover:bg-navy transition-colors text-center"
+              className="flex items-center justify-center gap-2 w-full bg-[#8EDE35] text-[#181B1E] px-5 py-3.5 text-sm font-bold rounded-xl hover:bg-[#7ECC28] active:scale-[0.98] transition-all text-center shadow-xs"
             >
-              Discuss a Project
-              <ArrowUpRight className="w-4 h-4" />
+              <span>Discuss a Project</span>
+              <ArrowUpRight className="size-4" />
             </Link>
           </div>
         </div>

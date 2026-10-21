@@ -90,7 +90,7 @@ export function AboutProcessTimeline() {
             <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#4D9218] block mb-3">
               Delivery Methodology
             </span>
-            <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[#181B1E]">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#181B1E]">
               Process timeline.
             </h2>
             <p className="mt-4 text-base sm:text-lg text-muted leading-relaxed">
@@ -293,17 +293,17 @@ export function AboutProcessTimeline() {
         </div>
 
         {/* 2. Mobile Responsive Vertical Flow (Screens < lg) */}
-        <div className="block lg:hidden relative pl-6 space-y-10 border-l-2 border-[#181B1E] ml-4 my-8">
+        <div className="block lg:hidden relative pl-6 sm:pl-8 space-y-10 border-l-2 border-[#181B1E] ml-6 sm:ml-8 my-8">
           {steps.map((s) => {
             const Icon = s.icon;
             const isDark = s.theme === "dark";
 
             return (
-              <div key={s.step} className="relative pl-6">
+              <div key={s.step} className="relative pl-4 sm:pl-6">
                 {/* Floating Node on Vertical Line */}
-                <div className="absolute -left-[35px] top-0">
+                <div className="absolute -left-[35px] sm:-left-[39px] top-0">
                   <div
-                    className={`size-12 rounded-xl flex items-center justify-center shadow-md border ${
+                    className={`size-11 sm:size-12 rounded-xl flex items-center justify-center shadow-md border ${
                       isDark
                         ? "bg-[#181B1E] text-[#8EDE35] border-[#2D333B]"
                         : "bg-white text-[#181B1E] border-[#E5E7EB]"

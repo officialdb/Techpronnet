@@ -94,7 +94,7 @@ export function AboutServices() {
             <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#4D9218] block mb-3">
               Core Capabilities
             </span>
-            <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[#181B1E]">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#181B1E]">
               Services explained clearly.
             </h2>
             <p className="mt-4 text-base sm:text-lg text-muted leading-relaxed">
@@ -107,7 +107,7 @@ export function AboutServices() {
           {serviceMatrix.map((item) => (
             <article
               key={item.id}
-              className="bg-white border border-[#E5E7EB] rounded-2xl p-7 sm:p-8 flex flex-col justify-between shadow-xs hover:border-[#8EDE35] transition-all"
+              className="bg-white border border-[#E5E7EB] rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-xs hover:border-[#8EDE35] transition-all"
             >
               <div>
                 <span className="font-mono text-xs font-bold text-[#181B1E] bg-[#8EDE35] px-2.5 py-0.5 rounded-lg inline-block mb-3">
