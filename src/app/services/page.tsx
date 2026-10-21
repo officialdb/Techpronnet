@@ -9,7 +9,7 @@ import { ArrowRight, Check, ArrowUpRight, Clock, ShieldCheck, Mail } from "lucid
 export const metadata: Metadata = {
   title: "Services & Capabilities | Techpronnet Technologies — Software Built Around Your Business",
   description:
-    "Explore our core engineering disciplines: custom web applications, native-grade mobile apps, custom business software & ERPs, workflow automation, and Neon PostgreSQL cloud infrastructure.",
+    "Explore our core engineering disciplines: custom web applications, hospital and clinical management systems, logistics operations consoles, clinic ERP suites, financial commerce platforms, and Neon PostgreSQL cloud infrastructure.",
   openGraph: {
     title: "Services & Capabilities | Techpronnet Technologies",
     description:
@@ -43,91 +43,117 @@ export default function ServicesPage() {
       imageSrc: "/images/services/web-portals.jpg",
       badge: "Next.js 16 SSR",
       caseStudyLink: {
-        client: "Nnamdi I. Nwagwu, Esq. Legal Chambers",
+        client: "Nnamdi I. Nwagwu, Esq. — Legal Practice Portal",
         href: "/work#law-portal",
       },
     },
     {
-      id: "mobile-apps",
+      id: "healthcare-systems",
       num: "02",
-      category: "Mobile Application Engineering",
-      title: "Native-Grade Mobile Applications (iOS & Android)",
-      tagline: "Dependable mobile software engineered for on-the-go teams and real-time field operations.",
+      category: "Healthcare & Hospital Operations",
+      title: "Hospital Web Portals & Clinical Management Systems",
+      tagline: "Streamlining outpatient triage, patient records, and doctor scheduling.",
       problem:
-        "When field agents, delivery drivers, or healthcare practitioners operate away from a desk, web-only tools fail due to spotty cellular connections, laggy touch feedback, and poor hardware integration.",
+        "Healthcare organizations require systems where reliability is non-negotiable. Outdated paper records and manual coordination cause waiting room congestion and communication breakdowns.",
       approach:
-        "We design and engineer cross-platform iOS and Android mobile applications built on unified codebases. With offline-first SQLite caching, native 60fps gestures, and real-time background sync, your staff can complete tasks anywhere.",
+        "We engineer comprehensive hospital platforms that manage patient flow, outpatient triage, doctor shift allocations, and automated appointment communications, reducing missed visits and eliminating waiting room gridlock.",
       capabilities: [
-        "Cross-platform iOS & Android releases from a single, maintainable codebase",
-        "Offline-first SQLite local persistence with seamless background synchronization",
-        "Live GPS geolocation, vehicle telematics, and route optimization",
-        "Hardware integration: camera scanning, push notifications (APNs / FCM), and biometric auth",
+        "Real-time patient triage queue and department occupancy boards",
+        "Automated patient appointment reminders via SMS & WhatsApp",
+        "Doctor shift scheduling with consultation slot limits",
+        "Fast EHR indexing across patient records with audit logs",
       ],
-      deliverables: "App Store & Play Store Binaries, Offline Engine, Push Notification Hub",
-      contactService: "Mobile application",
-      isReversed: true,
-      imageSrc: "/images/services/mobile-apps.jpg",
-      badge: "React Native + Expo",
-      caseStudyLink: {
-        client: "Avex Logistics Mobile Fleet & Dispatch",
-        href: "/work#logistics-console",
-      },
-    },
-    {
-      id: "custom-erp",
-      num: "03",
-      category: "Business Software & Operations Consoles",
-      title: "Custom Business Software, ERP & Operations Consoles",
-      tagline: "Software that reflects the exact operational logic of how your business runs.",
-      problem:
-        "Off-the-shelf software packages force organizations into rigid workflows, expensive per-seat licensing, and disconnected spreadsheets that conceal critical operational bottlenecks.",
-      approach:
-        "We build tailor-made management consoles, hospital triage systems, and operations dashboards that mirror your exact operational rules. Managers get real-time operational visibility and staff save hours of repetitive admin daily.",
-      capabilities: [
-        "Centralized administrative consoles with multi-department visibility",
-        "Hospital outpatient triage, doctor scheduling, and electronic health records",
-        "Multi-warehouse inventory tracking and automated stock level alerts",
-        "Granular role-based access control (RBAC) with immutable audit logs",
-      ],
-      deliverables: "Central Operations Console, Department Rosters, Live Inventory Sync, Audit Logs",
+      deliverables: "Clinical EHR, Triage Dashboard, Emergency Routing, Cloud DB",
       contactService: "Custom business software",
-      isReversed: false,
+      isReversed: true,
       imageSrc: "/images/services/business-erp.jpg",
-      badge: "Operations Console",
+      badge: "Clinical Management",
       caseStudyLink: {
-        client: "Ogechi Hospital & ZidiClinic Systems",
+        client: "Ogechi Hospital — Clinical Management System",
         href: "/work#hospital-system",
       },
     },
     {
-      id: "automation",
-      num: "04",
-      category: "Workflow Automation & Integrations",
-      title: "Workflow Automation, Webhooks & API Pipelines",
-      tagline: "Eliminate manual repetitive entry and connect your business tools into one cohesive pipeline.",
+      id: "logistics-systems",
+      num: "03",
+      category: "Logistics & Supply Chain Operations",
+      title: "Freight, Cargo & Real-Time Shipment Tracking Consoles",
+      tagline: "Replacing manual manifests with live tracking, instant quotes, and verified route milestones.",
       problem:
-        "Copying information manually between booking engines, accounting software, databases, and customer communication channels wastes hundreds of team hours and invites human errors.",
+        "Logistics coordinators waste hundreds of hours each week on phone calls and paper waybills to answer basic questions about freight locations, quotes, and driver statuses.",
       approach:
-        "We engineer automated event pipelines that connect your existing tools. When an event occurs—such as a booking, an invoice payment, or a shipment update—our pipelines immediately validate, sync, and notify without human intervention.",
+        "We build integrated logistics portals featuring end-to-end cargo tracking by tracking ID, instant multi-modal freight quotes, driver assignment queues, and automated WhatsApp/email customer updates.",
       capabilities: [
-        "Event-driven webhook listeners with idempotency and automated retry queues",
-        "Multi-channel instant alerting via WhatsApp API, SMS, and transactional email",
-        "Automated invoice generation, payment reconciliation, and ledger synchronization",
-        "Custom middleware bridging legacy databases with modern cloud APIs",
+        "Real-time shipment tracking ID search with verified route milestones",
+        "Instant multi-modal freight quotes across road, air, and ocean cargo",
+        "Dynamic driver assignment queues and digital manifest generation",
+        "Direct multi-channel customer dispatch and WhatsApp integration",
       ],
-      deliverables: "Webhook Microservices, Multi-Channel Alert Pipelines, Sync Middleware",
-      contactService: "Workflow automation",
-      isReversed: true,
-      imageSrc: "/images/services/workflow-automation.jpg",
-      badge: "Idempotent Webhooks",
+      deliverables: "Operations Portal, Live Shipment Tracking, Quote Engine",
+      contactService: "Custom business software",
+      isReversed: false,
+      imageSrc: "/images/services/mobile-apps.jpg",
+      badge: "Live Tracking & Quotes",
       caseStudyLink: {
-        client: "Chaen Financial Commerce Infrastructure",
+        client: "Avex Logistics Services — Freight & Tracking Portal",
+        href: "/work#logistics-console",
+      },
+    },
+    {
+      id: "clinic-erp",
+      num: "04",
+      category: "Clinical Operations & ERP",
+      title: "Clinic ERP & Outpatient Appointment Booking Suites",
+      tagline: "Specialized operating systems unifying appointments, patient records, pharmacy, and billing.",
+      problem:
+        "Specialized private clinics and diagnostic centers often juggle three separate tools for appointments, pharmacy stock, and patient records, creating front-desk chaos.",
+      approach:
+        "We build unified clinic operating systems (Clinic OS) that integrate doctor appointment availability, multi-channel booking reminders, digital patient intake histories, and instant pharmacy billing into one cohesive interface.",
+      capabilities: [
+        "Interactive doctor appointment calendar with real-time slot locks",
+        "AI assistant for patient replies and appointment scheduling guidance",
+        "Digital patient intake forms with medical history logging",
+        "Instant billing invoicing and pharmacy inventory coordination",
+      ],
+      deliverables: "Patient Booking Portal, Doctor Console, AI Booking Assistant",
+      contactService: "Website or web portal",
+      isReversed: true,
+      imageSrc: "/images/projects/clinic_erp_and_appointment_booking.png",
+      badge: "Clinic OS Suite",
+      caseStudyLink: {
+        client: "ZidiClinic AI — Modern Clinic Operations System",
+        href: "/work#clinic-erp",
+      },
+    },
+    {
+      id: "financial-commerce",
+      num: "05",
+      category: "Financial Technology & Commerce Platforms",
+      title: "Financial Commerce Infrastructure & Digital Store Platforms",
+      tagline: "Virtual card issuance, isolated spend balances, and immutable ledger reconciliation.",
+      problem:
+        "Modern digital commerce platforms require sub-second payment execution, multi-currency virtual cards, and ironclad ledger reconciliation without relying on inflexible legacy banking software.",
+      approach:
+        "We engineer high-performance financial technology platforms with virtual Visa card issuance, isolated spend balances, 15-minute locked checkout rates on digital transactions, and atomic ledger reconciliation against Neon PostgreSQL.",
+      capabilities: [
+        "Virtual Visa card issuance engine funded from isolated balances",
+        "15-minute locked checkout rates on digital commerce transactions",
+        "Immutable ledger reconciliation with sub-second execution",
+        "High-performance responsive rendering across mobile & desktop",
+      ],
+      deliverables: "Financial Commerce Portal, Ledger Engine, Card Issuance API",
+      contactService: "Custom business software",
+      isReversed: false,
+      imageSrc: "/images/services/workflow-automation.jpg",
+      badge: "Commerce & Ledgers",
+      caseStudyLink: {
+        client: "Chaen — Financial Commerce Infrastructure & Digital Store",
         href: "/work#aenbase-platform",
       },
     },
     {
       id: "cloud-infrastructure",
-      num: "05",
+      num: "06",
       category: "Cloud Infrastructure & SLA Support",
       title: "Cloud Infrastructure, Neon Postgres & Maintenance",
       tagline: "High-availability serverless backends backed by continuous engineering care.",
@@ -143,11 +169,11 @@ export default function ServicesPage() {
       ],
       deliverables: "Database Tuning, Cloud Cutover, Continuous SLA Coverage",
       contactService: "Maintenance and support",
-      isReversed: false,
+      isReversed: true,
       imageSrc: "/images/services/cloud-infrastructure.jpg",
       badge: "Neon Serverless DB",
       caseStudyLink: {
-        client: "Serverless Neon Postgres Cloud Edge",
+        client: "Neon Postgres Serverless Architecture (Across All Deployments)",
         href: "/work",
       },
     },
@@ -228,17 +254,20 @@ export default function ServicesPage() {
               <a href="#web-portals" className="hover:text-ink transition-colors">
                 01. Web Portals &amp; Platforms
               </a>
-              <a href="#mobile-apps" className="hover:text-ink transition-colors">
-                02. Mobile Applications
+              <a href="#healthcare-systems" className="hover:text-ink transition-colors">
+                02. Hospital Systems
               </a>
-              <a href="#custom-erp" className="hover:text-ink transition-colors">
-                03. Business Software &amp; ERP
+              <a href="#logistics-systems" className="hover:text-ink transition-colors">
+                03. Logistics Consoles
               </a>
-              <a href="#automation" className="hover:text-ink transition-colors">
-                04. Workflow Automation
+              <a href="#clinic-erp" className="hover:text-ink transition-colors">
+                04. Clinic ERP Suite
+              </a>
+              <a href="#financial-commerce" className="hover:text-ink transition-colors">
+                05. Financial Commerce
               </a>
               <a href="#cloud-infrastructure" className="hover:text-ink transition-colors">
-                05. Cloud &amp; Neon Postgres
+                06. Cloud &amp; Neon Postgres
               </a>
             </div>
           </div>
