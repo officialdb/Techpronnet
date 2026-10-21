@@ -56,14 +56,14 @@ export function AboutProcessTimeline() {
   ];
 
   return (
-    <section className="section-space border-b border-line bg-white">
+    <section className="section-space border-b border-[#E5E7EB] bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl mb-12 sm:mb-16">
           <FadeIn direction="up">
-            <p className="eyebrow uppercase text-[11px] sm:text-xs font-semibold text-muted mb-4">
+            <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#4D9218] block mb-3">
               Delivery Methodology
-            </p>
-            <h2 className="text-3xl sm:text-5xl font-semibold tracking-[-.045em] leading-tight text-ink">
+            </span>
+            <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[#181B1E]">
               Process timeline.
             </h2>
             <p className="mt-4 text-base sm:text-lg text-muted leading-relaxed">
@@ -72,15 +72,22 @@ export function AboutProcessTimeline() {
           </FadeIn>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {steps.map((item) => (
-            <article key={item.step} className="pt-6 border-t border-line flex flex-col justify-between">
+            <article
+              key={item.step}
+              className="bg-[#FAF9F6] border border-[#E5E7EB] rounded-2xl p-6 sm:p-7 shadow-xs hover:border-[#8EDE35] transition-all flex flex-col justify-between"
+            >
               <div>
-                <div className="flex items-center justify-between mb-3 text-xs font-mono">
-                  <span className="font-bold text-ink">PHASE {item.step}</span>
-                  <span className="text-navy bg-sand px-2 py-0.5 border border-line">{item.duration}</span>
+                <div className="flex items-center justify-between mb-4 text-xs font-mono">
+                  <span className="font-bold text-[#181B1E] bg-[#8EDE35] px-2.5 py-0.5 rounded-lg">
+                    PHASE {item.step}
+                  </span>
+                  <span className="text-[#181B1E] font-semibold bg-white border border-[#E5E7EB] px-2 py-0.5 rounded-lg shadow-2xs">
+                    {item.duration}
+                  </span>
                 </div>
-                <h3 className="text-lg font-semibold text-ink mb-2.5">
+                <h3 className="text-lg font-extrabold text-[#181B1E] mb-2.5">
                   {item.name}
                 </h3>
                 <p className="text-xs sm:text-sm text-muted leading-relaxed mb-4">
@@ -88,10 +95,10 @@ export function AboutProcessTimeline() {
                 </p>
               </div>
 
-              <div className="pt-3 border-t border-line/60 space-y-1.5 text-xs text-muted">
+              <div className="pt-3 border-t border-[#E5E7EB] space-y-2 text-xs text-muted">
                 {item.points.map((p) => (
                   <div key={p} className="flex items-start gap-2">
-                    <Check className="size-3 text-navy mt-0.5 shrink-0" />
+                    <Check className="size-3.5 text-[#4D9218] mt-0.5 shrink-0" />
                     <span>{p}</span>
                   </div>
                 ))}

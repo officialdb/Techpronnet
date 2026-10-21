@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { FadeIn } from "@/components/MotionWrapper";
 
 export function AboutHero() {
@@ -29,19 +29,23 @@ export function AboutHero() {
   ];
 
   return (
-    <section className="border-b border-line bg-paper">
+    <section className="border-b border-[#E5E7EB] bg-[#FAF9F6]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-28">
         <div className="max-w-3xl">
           <FadeIn direction="up">
-            <p className="eyebrow uppercase text-[11px] sm:text-xs font-semibold text-muted mb-4 sm:mb-6">
+            <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#4D9218] block mb-4 sm:mb-6">
               About Techpronnet Technologies · Established 2019
-            </p>
-            <h1 className="text-[34px] sm:text-5xl lg:text-[64px] leading-[1.08] tracking-[-.05em] sm:tracking-[-.055em] font-semibold text-ink">
-              Software built around your business.
-              <span className="block text-muted font-normal mt-1 sm:mt-2">
-                Engineered with quiet precision.
+            </span>
+
+            <h1 className="text-[38px] sm:text-6xl lg:text-[72px] leading-[1.06] tracking-[-.05em] font-extrabold text-[#181B1E]">
+              Software built around{" "}
+              <span className="block mt-1 sm:mt-2">
+                <span className="bg-[#8EDE35] text-[#181B1E] px-3.5 py-0.5 rounded-xl inline-block shadow-xs">
+                  your business.
+                </span>
               </span>
             </h1>
+
             <p className="mt-6 sm:mt-8 text-base sm:text-lg text-muted leading-relaxed max-w-2xl">
               Since 2019, Techpronnet Technologies has partnered with emerging enterprises and established organizations to eliminate operational friction, build resilient custom platforms, and automate mission-critical workflows.
             </p>
@@ -49,32 +53,33 @@ export function AboutHero() {
             <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-3.5 sm:gap-4">
               <Link
                 href="/#contact"
-                className="inline-flex items-center justify-center gap-3 bg-ink text-white px-7 py-3.5 sm:py-4 text-sm font-medium hover:bg-navy transition-colors text-center w-full sm:w-auto"
+                className="inline-flex items-center justify-center gap-2.5 bg-[#8EDE35] text-[#181B1E] font-bold px-8 py-4 rounded-xl text-sm hover:bg-[#7ECC28] active:scale-[0.98] transition-all duration-150 shadow-xs text-center w-full sm:w-auto"
               >
-                Discuss a Project
+                <span>Discuss a Project</span>
                 <ArrowRight className="size-4" />
               </Link>
               <Link
                 href="#story"
-                className="inline-flex items-center justify-center gap-3 border border-line bg-white px-7 py-3.5 sm:py-4 text-sm font-medium text-ink hover:border-ink transition-colors text-center w-full sm:w-auto"
+                className="inline-flex items-center justify-center gap-2.5 bg-[#181B1E] text-white font-medium px-8 py-4 rounded-xl text-sm hover:bg-[#334655] active:scale-[0.98] transition-all duration-150 shadow-xs text-center w-full sm:w-auto"
               >
-                Our Story &amp; Approach
+                <span>Our Story &amp; Approach</span>
+                <ArrowUpRight className="size-4" />
               </Link>
             </div>
           </FadeIn>
         </div>
 
-        {/* Minimalist Linear Stats Strip */}
-        <div className="mt-14 sm:mt-20 border-y border-line py-6 sm:py-8 grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-          {stats.map((s, idx) => (
+        {/* Minimalist Linear Stats Cards */}
+        <div className="mt-14 sm:mt-20 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+          {stats.map((s) => (
             <div
               key={s.label}
-              className={`${idx !== 0 ? "lg:border-l lg:border-line lg:pl-8" : ""}`}
+              className="bg-white border border-[#E5E7EB] rounded-2xl p-6 shadow-xs hover:border-[#8EDE35] transition-all"
             >
-              <span className="font-mono text-3xl sm:text-4xl font-bold tracking-tight text-ink block">
+              <span className="font-mono text-3xl sm:text-4xl font-extrabold tracking-tight text-[#181B1E] block">
                 {s.value}
               </span>
-              <span className="text-sm font-semibold text-ink mt-1 block">
+              <span className="text-sm font-bold text-[#181B1E] mt-2 block">
                 {s.label}
               </span>
               <span className="text-xs text-muted mt-0.5 block">

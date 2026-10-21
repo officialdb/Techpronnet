@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowUpRight, Check } from "lucide-react";
 import { FadeIn } from "@/components/MotionWrapper";
 
 export function AboutServices() {
@@ -87,14 +87,14 @@ export function AboutServices() {
   ];
 
   return (
-    <section className="section-space border-b border-line bg-sand/30">
+    <section className="section-space border-b border-[#E5E7EB] bg-[#FAF9F6]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl mb-12 sm:mb-16">
           <FadeIn direction="up">
-            <p className="eyebrow uppercase text-[11px] sm:text-xs font-semibold text-muted mb-4">
+            <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#4D9218] block mb-3">
               Core Capabilities
-            </p>
-            <h2 className="text-3xl sm:text-5xl font-semibold tracking-[-.045em] leading-tight text-ink">
+            </span>
+            <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[#181B1E]">
               Services explained clearly.
             </h2>
             <p className="mt-4 text-base sm:text-lg text-muted leading-relaxed">
@@ -103,40 +103,40 @@ export function AboutServices() {
           </FadeIn>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {serviceMatrix.map((item) => (
             <article
               key={item.id}
-              className="pt-7 border-t border-line flex flex-col justify-between"
+              className="bg-white border border-[#E5E7EB] rounded-2xl p-7 sm:p-8 flex flex-col justify-between shadow-xs hover:border-[#8EDE35] transition-all"
             >
               <div>
-                <span className="font-mono text-xs text-muted block mb-2">
+                <span className="font-mono text-xs font-bold text-[#181B1E] bg-[#8EDE35] px-2.5 py-0.5 rounded-lg inline-block mb-3">
                   {item.num} / CAPABILITY
                 </span>
-                <h3 className="text-xl font-semibold tracking-tight text-ink mb-3">
+                <h3 className="text-xl font-extrabold tracking-tight text-[#181B1E] mb-3">
                   {item.title}
                 </h3>
                 <p className="text-sm text-muted leading-relaxed mb-5">
                   {item.description}
                 </p>
 
-                <ul className="space-y-2 mb-6">
+                <ul className="space-y-2.5 mb-6">
                   {item.deliverables.map((deliv) => (
-                    <li key={deliv} className="flex items-start gap-2 text-xs text-ink/80">
-                      <Check className="size-3.5 text-navy mt-0.5 shrink-0" />
+                    <li key={deliv} className="flex items-start gap-2.5 text-xs text-[#181B1E]/85">
+                      <Check className="size-3.5 text-[#4D9218] mt-0.5 shrink-0" />
                       <span>{deliv}</span>
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <div>
+              <div className="pt-4 border-t border-[#E5E7EB]">
                 <Link
                   href="/#contact"
-                  className="inline-flex items-center gap-2 text-xs font-medium text-ink hover:text-navy transition-colors pb-1 border-b border-line hover:border-navy"
+                  className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-[#181B1E] hover:text-[#4D9218] transition-colors"
                 >
                   <span>Discuss this capability</span>
-                  <ArrowRight className="size-3.5" />
+                  <ArrowUpRight className="size-3.5 text-[#4D9218]" />
                 </Link>
               </div>
             </article>

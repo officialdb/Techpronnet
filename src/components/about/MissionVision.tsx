@@ -1,17 +1,18 @@
 "use client";
 
 import { FadeIn } from "@/components/MotionWrapper";
+import { Target, Compass } from "lucide-react";
 
 export function MissionVision() {
   return (
-    <section className="section-space border-b border-line bg-sand/40">
+    <section className="section-space border-b border-[#E5E7EB] bg-[#FAF9F6]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl mb-12 sm:mb-16">
           <FadeIn direction="up">
-            <p className="eyebrow uppercase text-[11px] sm:text-xs font-semibold text-muted mb-4">
+            <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#4D9218] block mb-3">
               Guiding Directives
-            </p>
-            <h2 className="text-3xl sm:text-5xl font-semibold tracking-[-.045em] leading-tight text-ink">
+            </span>
+            <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[#181B1E]">
               Mission &amp; Vision
             </h2>
             <p className="mt-4 text-base sm:text-lg text-muted leading-relaxed">
@@ -20,14 +21,19 @@ export function MissionVision() {
           </FadeIn>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 lg:gap-14">
-          {/* Mission */}
-          <div className="bg-white border border-line p-7 sm:p-10 flex flex-col justify-between">
+        <div className="grid md:grid-cols-2 gap-8 lg:gap-10">
+          {/* Mission Card */}
+          <div className="bg-white border border-[#E5E7EB] rounded-3xl p-8 sm:p-10 flex flex-col justify-between shadow-xs hover:border-[#8EDE35] transition-all">
             <div>
-              <span className="font-mono text-xs uppercase text-navy font-semibold tracking-wider block mb-3">
-                Our Mission
-              </span>
-              <h3 className="text-2xl sm:text-3xl font-semibold tracking-tight text-ink mb-5 leading-snug">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="size-11 rounded-xl bg-[#181B1E] text-[#8EDE35] flex items-center justify-center">
+                  <Target className="size-5" />
+                </div>
+                <span className="font-mono text-xs uppercase text-[#4D9218] font-bold tracking-wider">
+                  Our Mission
+                </span>
+              </div>
+              <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#181B1E] mb-4 leading-snug">
                 To engineer software that removes friction and fuels sustainable business momentum.
               </h3>
               <p className="text-sm sm:text-base text-muted leading-relaxed">
@@ -35,25 +41,30 @@ export function MissionVision() {
               </p>
             </div>
 
-            <div className="mt-8 pt-6 border-t border-line space-y-2 text-xs text-muted">
-              <div className="flex items-baseline gap-2">
-                <span className="font-mono text-navy font-bold">&bull;</span>
+            <div className="mt-8 pt-6 border-t border-[#E5E7EB] space-y-3 text-xs sm:text-sm text-[#181B1E]/80">
+              <div className="flex items-start gap-2.5">
+                <span className="size-2 rounded-full bg-[#8EDE35] shrink-0 mt-1.5" />
                 <span>Replace manual tasks with unified, automated workflows.</span>
               </div>
-              <div className="flex items-baseline gap-2">
-                <span className="font-mono text-navy font-bold">&bull;</span>
+              <div className="flex items-start gap-2.5">
+                <span className="size-2 rounded-full bg-[#8EDE35] shrink-0 mt-1.5" />
                 <span>Deliver dependable, robust architectures designed for long-term growth.</span>
               </div>
             </div>
           </div>
 
-          {/* Vision */}
-          <div className="bg-white border border-line p-7 sm:p-10 flex flex-col justify-between">
+          {/* Vision Card */}
+          <div className="bg-white border border-[#E5E7EB] rounded-3xl p-8 sm:p-10 flex flex-col justify-between shadow-xs hover:border-[#8EDE35] transition-all">
             <div>
-              <span className="font-mono text-xs uppercase text-navy font-semibold tracking-wider block mb-3">
-                Our Vision
-              </span>
-              <h3 className="text-2xl sm:text-3xl font-semibold tracking-tight text-ink mb-5 leading-snug">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="size-11 rounded-xl bg-[#181B1E] text-[#8EDE35] flex items-center justify-center">
+                  <Compass className="size-5" />
+                </div>
+                <span className="font-mono text-xs uppercase text-[#4D9218] font-bold tracking-wider">
+                  Our Vision
+                </span>
+              </div>
+              <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#181B1E] mb-4 leading-snug">
                 To be the trusted technology backbone for organizations demanding uncompromising quality.
               </h3>
               <p className="text-sm sm:text-base text-muted leading-relaxed">
@@ -61,13 +72,13 @@ export function MissionVision() {
               </p>
             </div>
 
-            <div className="mt-8 pt-6 border-t border-line space-y-2 text-xs text-muted">
-              <div className="flex items-baseline gap-2">
-                <span className="font-mono text-navy font-bold">&bull;</span>
+            <div className="mt-8 pt-6 border-t border-[#E5E7EB] space-y-3 text-xs sm:text-sm text-[#181B1E]/80">
+              <div className="flex items-start gap-2.5">
+                <span className="size-2 rounded-full bg-[#8EDE35] shrink-0 mt-1.5" />
                 <span>Prioritize durability, maintainability, and data security above trends.</span>
               </div>
-              <div className="flex items-baseline gap-2">
-                <span className="font-mono text-navy font-bold">&bull;</span>
+              <div className="flex items-start gap-2.5">
+                <span className="size-2 rounded-full bg-[#8EDE35] shrink-0 mt-1.5" />
                 <span>Establish lasting client partnerships where software compounds in value.</span>
               </div>
             </div>
