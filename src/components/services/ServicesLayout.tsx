@@ -187,7 +187,7 @@ export function ServicesLayout() {
       description:
         "High-performance web applications, consultation booking engines, and secure client document portals.",
       theme: "dark",
-      badgeColor: "text-white",
+      badgeColor: "text-[#8EDE35]",
       features: [
         "Custom Next.js 16 SSR Architecture",
         "Online Consultation & Calendar Scheduling",
@@ -206,7 +206,7 @@ export function ServicesLayout() {
       description:
         "End-to-end custom business software, clinic management suites, or logistics telematics tracking consoles.",
       theme: "light",
-      badgeColor: "text-[#181B1E]",
+      badgeColor: "text-[#4D9218]",
       features: [
         "Multi-Department Triage & Dispatch Queues",
         "Automated WhatsApp & SMS Client Updates",
@@ -225,7 +225,7 @@ export function ServicesLayout() {
       description:
         "High-throughput financial commerce infrastructure, virtual card issuance APIs, and event-driven automation pipelines.",
       theme: "light",
-      badgeColor: "text-[#181B1E]",
+      badgeColor: "text-[#4D9218]",
       features: [
         "High-Throughput REST & GraphQL API Gateways",
         "Payment Rails (Stripe, Paystack, Flutterwave)",
@@ -239,12 +239,12 @@ export function ServicesLayout() {
 
   return (
     <div className="w-full bg-[#FAF9F6]">
-      {/* 1. Services Hero Banner: Clean Matte Ink Design (No glowing colors) */}
+      {/* 1. Services Hero Banner: Matte Green with Circuit Tracings matching user template */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-10">
-        <div className="relative rounded-3xl bg-[#181B1E] border border-[#2D333B] overflow-hidden py-14 sm:py-20 px-6 sm:px-12 text-center shadow-lg">
+        <div className="relative rounded-3xl bg-[#8EDE35] border border-[#7ECC28] overflow-hidden py-14 sm:py-20 px-6 sm:px-12 text-center shadow-sm">
           {/* Subtle Circuit Board Vector Pattern Overlay */}
           <svg
-            className="absolute inset-0 w-full h-full opacity-10 pointer-events-none"
+            className="absolute inset-0 w-full h-full opacity-20 pointer-events-none"
             xmlns="http://www.w3.org/2000/svg"
           >
             <pattern
@@ -258,30 +258,30 @@ export function ServicesLayout() {
               <path
                 d="M10 10 h50 v50 h60 M10 80 h30 v40 h80 M80 10 v40 h50 M30 130 v-30 h50 v-30"
                 fill="none"
-                stroke="#FFFFFF"
-                strokeWidth="1.5"
+                stroke="#181B1E"
+                strokeWidth="1.75"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
-              <circle cx="60" cy="60" r="3" fill="#FFFFFF" />
-              <circle cx="120" cy="120" r="3" fill="#FFFFFF" />
-              <circle cx="130" cy="50" r="3" fill="#FFFFFF" />
-              <circle cx="80" cy="80" r="3" fill="#FFFFFF" />
-              <circle cx="10" cy="10" r="2.5" fill="#FFFFFF" />
+              <circle cx="60" cy="60" r="3.5" fill="#181B1E" />
+              <circle cx="120" cy="120" r="3.5" fill="#181B1E" />
+              <circle cx="130" cy="50" r="3.5" fill="#181B1E" />
+              <circle cx="80" cy="80" r="3.5" fill="#181B1E" />
+              <circle cx="10" cy="10" r="3" fill="#181B1E" />
             </pattern>
             <rect width="100%" height="100%" fill="url(#circuit-pattern-services)" />
           </svg>
 
           <div className="relative z-10">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#181B1E]">
               Services
             </h1>
-            <div className="flex items-center justify-center gap-2 text-xs sm:text-sm font-medium text-gray-400 mt-3 font-mono">
-              <Link href="/" className="hover:text-white transition-colors">
+            <div className="flex items-center justify-center gap-2 text-xs sm:text-sm font-medium text-[#181B1E]/80 mt-3 font-mono">
+              <Link href="/" className="hover:text-[#181B1E] transition-colors">
                 Home
               </Link>
               <ChevronRight className="size-3.5 opacity-60" />
-              <span className="font-semibold text-white">Services</span>
+              <span className="font-semibold text-[#181B1E]">Services</span>
             </div>
           </div>
         </div>
@@ -291,12 +291,12 @@ export function ServicesLayout() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
         {/* Section Heading */}
         <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-20">
-          <span className="text-[#334655] font-mono text-xs font-semibold uppercase tracking-wider block mb-3">
+          <span className="text-[#4D9218] font-bold text-xs sm:text-sm uppercase tracking-wider block mb-3 font-mono">
             Our Services
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold tracking-tight text-[#181B1E] leading-[1.2]">
             Our Mission Is To Make Your{" "}
-            <span className="underline decoration-[#334655] decoration-2 underline-offset-4 text-[#181B1E]">
+            <span className="bg-[#8EDE35] text-[#181B1E] px-3 py-0.5 rounded-md inline-block shadow-xs">
               Business
             </span>{" "}
             Better Through Technology
@@ -311,36 +311,36 @@ export function ServicesLayout() {
           {services.map((item) => {
             const Icon = item.icon;
 
-            // Card Themes: Clean matte styles without neon/glowing colors
+            // Card Themes: Clean matte green & dark aesthetic
             const isDark = item.cardTheme === "dark";
             const isAccent = item.cardTheme === "accent";
 
             let cardBg = "bg-white border border-[#E5E7EB] text-[#181B1E]";
             let iconWrapper =
-              "bg-[#F1F3F5] text-[#181B1E] border border-[#E2E8F0] group-hover:bg-[#181B1E] group-hover:text-white";
+              "bg-[#F1F3F5] text-[#181B1E] border border-[#E2E8F0] group-hover:bg-[#8EDE35] group-hover:text-[#181B1E]";
             let titleColor = "text-[#181B1E]";
             let descColor = "text-[#64748B]";
-            let tagColor = "text-[#334655]";
-            let ctaColor = "text-[#181B1E] hover:text-[#334655]";
+            let tagColor = "text-muted";
+            let ctaColor = "text-[#181B1E] hover:text-[#4D9218]";
             let buttonBg = "bg-[#181B1E] text-white hover:bg-[#334655]";
 
             if (isDark) {
               cardBg = "bg-[#181B1E] text-white border border-[#2D333B] shadow-xl";
-              iconWrapper = "bg-white/10 text-white border border-white/15";
+              iconWrapper = "bg-[#8EDE35] text-[#181B1E]";
               titleColor = "text-white";
-              descColor = "text-gray-300";
-              tagColor = "text-gray-400";
-              ctaColor = "text-white hover:text-gray-200 underline decoration-white/40 underline-offset-4";
-              buttonBg = "bg-white text-[#181B1E] hover:bg-gray-100";
+              descColor = "text-[#94A3B8]";
+              tagColor = "text-[#8EDE35]";
+              ctaColor = "text-[#8EDE35] hover:underline";
+              buttonBg = "bg-[#8EDE35] text-[#181B1E] hover:bg-[#7ECC28]";
             } else if (isAccent) {
-              // Deep Slate Navy accent card instead of neon green
-              cardBg = "bg-[#243342] text-white border border-[#334655]/60 shadow-xl";
-              iconWrapper = "bg-white/10 text-white border border-white/15";
-              titleColor = "text-white";
-              descColor = "text-gray-300";
-              tagColor = "text-gray-400";
-              ctaColor = "text-white hover:text-gray-200 underline decoration-white/40 underline-offset-4";
-              buttonBg = "bg-white text-[#181B1E] hover:bg-gray-100";
+              // Matte green accent card matching template
+              cardBg = "bg-[#8EDE35] text-[#181B1E] border border-[#7ECC28] shadow-xl";
+              iconWrapper = "bg-[#181B1E] text-[#8EDE35]";
+              titleColor = "text-[#181B1E]";
+              descColor = "text-[#181B1E]/80";
+              tagColor = "text-[#181B1E]/70";
+              ctaColor = "text-[#181B1E] font-bold hover:underline";
+              buttonBg = "bg-[#181B1E] text-white hover:bg-[#252824]";
             }
 
             return (
@@ -430,7 +430,7 @@ export function ServicesLayout() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
           <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-20">
-            <span className="text-[#334655] font-mono text-xs font-semibold uppercase tracking-wider block mb-3">
+            <span className="text-[#4D9218] font-mono text-xs font-semibold uppercase tracking-wider block mb-3">
               Pricing Plan
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold tracking-tight text-[#181B1E] leading-[1.2]">
@@ -452,7 +452,7 @@ export function ServicesLayout() {
                   className={`${
                     isDark
                       ? "bg-[#181B1E] text-white border border-[#2D333B] shadow-xl"
-                      : "bg-white text-[#181B1E] border border-[#E5E7EB] shadow-md hover:border-[#181B1E]"
+                      : "bg-white text-[#181B1E] border border-[#E5E7EB] shadow-md hover:border-[#8EDE35]"
                   } rounded-3xl p-8 sm:p-10 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1`}
                 >
                   <div>
@@ -498,7 +498,7 @@ export function ServicesLayout() {
                         <div key={feature} className="flex items-start gap-2.5 text-xs sm:text-sm">
                           <Check
                             className={`size-4 mt-0.5 shrink-0 ${
-                              isDark ? "text-gray-300" : "text-[#334655]"
+                              isDark ? "text-[#8EDE35]" : "text-[#4D9218]"
                             }`}
                           />
                           <span className={isDark ? "text-gray-300" : "text-[#334155]"}>
@@ -509,16 +509,12 @@ export function ServicesLayout() {
                     </div>
                   </div>
 
-                  {/* Choose Plan Button */}
+                  {/* Choose Plan Button (Matte Green, no glowing blur) */}
                   <Link
                     href={`/#contact?service=${encodeURIComponent(
                       plan.contactService
                     )}&plan=${encodeURIComponent(plan.name)}`}
-                    className={`w-full font-bold text-center py-3.5 px-6 rounded-xl transition-colors shadow-sm block text-sm ${
-                      isDark
-                        ? "bg-white text-[#181B1E] hover:bg-gray-100"
-                        : "bg-[#181B1E] text-white hover:bg-[#334655]"
-                    }`}
+                    className="w-full bg-[#8EDE35] text-[#181B1E] font-bold text-center py-3.5 px-6 rounded-xl hover:bg-[#7ECC28] transition-colors shadow-sm block text-sm"
                   >
                     Choose Plan
                   </Link>
