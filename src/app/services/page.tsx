@@ -2,16 +2,16 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { ProjectPreviewFrame } from "@/components/ProjectPreviewFrame";
+import { ServiceArchitecturePanel } from "@/components/services/ServiceArchitecturePanel";
 import { FadeIn } from "@/components/MotionWrapper";
-import { ArrowRight, Check, ArrowUpRight, Clock, ShieldCheck, Mail } from "lucide-react";
+import { ArrowRight, Check, ArrowUpRight, Clock, ShieldCheck, Mail, Sparkles } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Services | Techpronnet Technologies — Software Built Around Your Business",
+  title: "Services & Capabilities | Techpronnet Technologies — Software Built Around Your Business",
   description:
-    "Explore our complete services: custom websites and client portals, hospital and healthcare systems, custom business software, mobile applications, workflow automation, and cloud infrastructure.",
+    "Explore our core engineering disciplines: custom web applications, native-grade mobile apps, custom business software & ERPs, workflow automation, and Neon PostgreSQL cloud infrastructure.",
   openGraph: {
-    title: "Services | Techpronnet Technologies",
+    title: "Services & Capabilities | Techpronnet Technologies",
     description:
       "Precision software engineering, custom business platforms, healthcare systems, and automated workflows designed around how your organization operates.",
     type: "website",
@@ -20,137 +20,339 @@ export const metadata: Metadata = {
 };
 
 export default function ServicesPage() {
-  const serviceSections = [
+  const serviceOfferings = [
     {
       id: "web-portals",
       num: "01",
-      category: "Web & Client Portals",
-      title: "Websites, Booking Engines & Client Portals",
-      tagline: "Designed for high-trust conversions and frictionless client interaction.",
-      description:
-        "We build fast, responsive websites and confidential self-service portals tailored for professional practices and commercial businesses. From corporate legal portals to client intake engines, we eliminate disjointed email chains and replace them with secure, brand-aligned digital platforms.",
-      exemplarName: "Nnamdi I. Nwagwu, Esq. Legal Practice Portal",
-      exemplarUrl: "https://nnamdinwagwu.com",
-      imageSrc: "/images/projects/law.png",
-      previewType: "law-firm" as const,
-      isReversed: false,
+      category: "Web Platforms & Client Portals",
+      title: "Websites, Booking Engines & Secure Client Portals",
+      tagline: "High-trust digital frontends engineered for client onboarding, intake, and self-service.",
+      problem:
+        "Growing professional practices and commercial businesses often rely on disjointed email threads, lost attachments, and manual scheduling back-and-forth. This frustrates high-value clients and slows down operations.",
+      approach:
+        "We build fast, responsive web applications and confidential client portals. Clients can self-book appointments, securely transmit confidential documentation, and track project status in a single, branded digital experience.",
       capabilities: [
-        "Confidential client intake questionnaires with direct attorney contact",
+        "Confidential client intake questionnaires with role-based routing",
         "Direct real-time consultation scheduling & calendar sync",
-        "Encrypted client consultation brief transmission",
+        "Encrypted client document room with 256-bit access controls",
         "SEO-engineered page architectures loading in under 1 second",
       ],
-      deliverables: "Design Systems, Next.js Frontend, Secure Consultation Engine",
+      deliverables: "Design Systems, Next.js Frontend, Secure Consultation Engine, Cloud DB",
       contactService: "Website or web portal",
+      isReversed: false,
+      architecture: {
+        systemCode: "SYS // WEB_APP_RUNTIME",
+        runtimeBadge: "Next.js 16 SSR",
+        status: "Production Ready",
+        layers: [
+          {
+            step: "01",
+            label: "Client Ingestion Layer",
+            desc: "Responsive web UI with zero layout shift and sub-100ms TTFB across mobile & desktop.",
+            metric: "Sub-1s LCP",
+          },
+          {
+            step: "02",
+            label: "Server Actions & Zero-Trust Validation",
+            desc: "Zod server-side schemas validating intake forms, appointments, and uploads.",
+            metric: "Strict Typing",
+          },
+          {
+            step: "03",
+            label: "Persistence & Security",
+            desc: "Encrypted records stored in Neon Serverless Postgres with automatic connection pooling.",
+            metric: "< 25ms Queries",
+          },
+          {
+            step: "04",
+            label: "Confirmation & Alerts",
+            desc: "Automated booking confirmations via transactional email and WhatsApp notifications.",
+            metric: "Real-Time Sync",
+          },
+        ],
+        techStack: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS", "Neon Postgres", "Vercel Edge"],
+        specs: [
+          { label: "Architecture", value: "SSR + Edge Cache" },
+          { label: "Query Latency", value: "< 25ms Serverless" },
+          { label: "Security", value: "256-Bit SSL / TLS" },
+        ],
+        caseStudyLink: {
+          client: "Nnamdi I. Nwagwu, Esq. Legal Chambers",
+          href: "/work#law-portal",
+        },
+      },
     },
     {
-      id: "healthcare-systems",
+      id: "mobile-apps",
       num: "02",
-      category: "Healthcare & Hospitals",
-      title: "Hospital & Clinical Management Systems",
-      tagline: "Streamlining outpatient triage, patient records, and doctor scheduling.",
-      description:
-        "Healthcare organizations require systems where reliability is non-negotiable. We engineer comprehensive hospital platforms that manage patient flow, outpatient triage, doctor shift allocations, and automated appointment communications, reducing missed visits and eliminating waiting room gridlock.",
-      exemplarName: "Ogechi Hospital Clinical Management Portal",
-      exemplarUrl: "https://ogechihospital.org",
-      imageSrc: "/images/projects/hospotal.png",
-      previewType: "hospital" as const,
-      isReversed: true,
+      category: "Mobile Application Engineering",
+      title: "Native-Grade Mobile Applications (iOS & Android)",
+      tagline: "Dependable mobile software engineered for on-the-go teams and real-time field operations.",
+      problem:
+        "When field agents, delivery drivers, or healthcare practitioners operate away from a desk, web-only tools fail due to spotty cellular connections, laggy touch feedback, and poor hardware integration.",
+      approach:
+        "We design and engineer cross-platform iOS and Android mobile applications built on unified codebases. With offline-first SQLite caching, native 60fps gestures, and real-time background sync, your staff can complete tasks anywhere.",
       capabilities: [
-        "Real-time patient triage queue and department directory",
-        "Online doctor consultation bookings and emergency care routing",
-        "Doctor shift scheduling with consultation slot limits",
-        "Fast EHR indexing across patient records with audit logs",
+        "Cross-platform iOS & Android releases from a single, maintainable codebase",
+        "Offline-first SQLite local persistence with seamless background synchronization",
+        "Live GPS geolocation, vehicle telematics, and route optimization",
+        "Hardware integration: camera scanning, push notifications (APNs / FCM), and biometric auth",
       ],
-      deliverables: "Clinical EHR, Triage Dashboard, Emergency Routing, Cloud DB",
-      contactService: "Custom business software",
+      deliverables: "App Store & Play Store Binaries, Offline Engine, Push Notification Hub",
+      contactService: "Mobile application",
+      isReversed: true,
+      architecture: {
+        systemCode: "SYS // MOBILE_RUNTIME",
+        runtimeBadge: "React Native + Expo",
+        status: "Offline-First Sync",
+        layers: [
+          {
+            step: "01",
+            label: "Native Interaction Layer",
+            desc: "Fluid 60fps touch gestures, bottom sheets, and hardware haptic feedback.",
+            metric: "60 FPS Native",
+          },
+          {
+            step: "02",
+            label: "Local Persistence Engine",
+            desc: "Encrypted SQLite database allowing full offline creation, reading, and queuing.",
+            metric: "Zero Network Lag",
+          },
+          {
+            step: "03",
+            label: "Background Delta Reconciliation",
+            desc: "Automated background sync resolving conflicts whenever connectivity resumes.",
+            metric: "Auto Reconnect",
+          },
+          {
+            step: "04",
+            label: "Hardware Bridge",
+            desc: "Biometrics (FaceID/Fingerprint), GPS telemetry, and instant APNs / FCM push notifications.",
+            metric: "Instant Push",
+          },
+        ],
+        techStack: ["React Native", "Expo", "SQLite", "APNs / FCM", "Secure Enclave", "WebSockets"],
+        specs: [
+          { label: "Target Platforms", value: "iOS 16+ & Android 12+" },
+          { label: "Sync Engine", value: "SQLite Delta Sync" },
+          { label: "Performance", value: "60 FPS Hardware Accel" },
+        ],
+        caseStudyLink: {
+          client: "Integrated with logistics dispatch & clinical suites",
+          href: "/work#logistics-console",
+        },
+      },
     },
     {
-      id: "custom-software",
+      id: "custom-erp",
       num: "03",
-      category: "Business Software & ERP",
+      category: "Business Software & Operations Consoles",
       title: "Custom Business Software, ERP & Operations Consoles",
-      tagline: "Reflecting the exact operational logic of how your business operates.",
-      description:
-        "Off-the-shelf software forces teams into awkward workarounds. We build custom operational dashboards, dispatch consoles, and inventory tracking engines that mirror your exact business rules, giving managers immediate real-time visibility and eliminating manual spreadsheets.",
-      exemplarName: "Avex Logistics Services Freight & Tracking Platform",
-      exemplarUrl: "https://avexlogisticsservices.com",
-      imageSrc: "/images/projects/logistics.png",
-      previewType: "logistics" as const,
-      isReversed: false,
+      tagline: "Software that reflects the exact operational logic of how your business runs.",
+      problem:
+        "Off-the-shelf software packages force organizations into rigid workflows, expensive per-seat licensing, and disconnected spreadsheets that conceal critical operational bottlenecks.",
+      approach:
+        "We build tailor-made management consoles, hospital triage systems, and operations dashboards that mirror your exact operational rules. Managers get real-time operational visibility and staff save hours of repetitive admin daily.",
       capabilities: [
-        "Real-time shipment tracking ID search with verified route milestones",
-        "Instant multi-modal freight quotes across road, air, and ocean cargo",
-        "Dynamic driver assignment queues and digital manifest generation",
-        "Direct multi-channel customer dispatch and WhatsApp integration",
+        "Centralized administrative consoles with multi-department visibility",
+        "Hospital outpatient triage, doctor scheduling, and electronic health records",
+        "Multi-warehouse inventory tracking and automated stock level alerts",
+        "Granular role-based access control (RBAC) with immutable audit logs",
       ],
-      deliverables: "Operations Portal, Live Shipment Tracking, Quote Engine",
+      deliverables: "Central Operations Console, Department Rosters, Live Inventory Sync, Audit Logs",
       contactService: "Custom business software",
+      isReversed: false,
+      architecture: {
+        systemCode: "SYS // ENTERPRISE_ERP_CORE",
+        runtimeBadge: "Multi-Department Console",
+        status: "RBAC Enforced",
+        layers: [
+          {
+            step: "01",
+            label: "Multi-Channel Ingestion",
+            desc: "Aggregating clinical triage queues, logistics manifests, orders, and staff rosters.",
+            metric: "Live Streams",
+          },
+          {
+            step: "02",
+            label: "Business Rules State Machine",
+            desc: "Strict approval thresholds, status transitions, and role permission verifications.",
+            metric: "Zero Bypasses",
+          },
+          {
+            step: "03",
+            label: "High-Volume Data Store",
+            desc: "PostgreSQL relational schemas with indexed foreign keys and audit triggers.",
+            metric: "99.98% Uptime",
+          },
+          {
+            step: "04",
+            label: "Executive Telemetry Dashboard",
+            desc: "Real-time department metrics, capacity indicators, and scheduled PDF reporting.",
+            metric: "Sub-Second Views",
+          },
+        ],
+        techStack: ["Next.js Enterprise", "Neon Postgres", "Node.js", "RBAC Middleware", "Zod"],
+        specs: [
+          { label: "Access Control", value: "Granular Multi-Tenant RBAC" },
+          { label: "Audit Logging", value: "Immutable Append-Only" },
+          { label: "Scalability", value: "25,000+ Profiles Indexed" },
+        ],
+        caseStudyLink: {
+          client: "Ogechi Hospital, Avex Logistics & ZidiClinic",
+          href: "/work",
+        },
+      },
     },
     {
-      id: "clinic-scheduling",
+      id: "automation",
       num: "04",
-      category: "Clinical ERP & Booking",
-      title: "Clinic ERP & Outpatient Appointment Booking Suite",
-      tagline: "Empowering specialized practices with frictionless scheduling and billing.",
-      description:
-        "Designed specifically for private medical practices, clinics, and diagnostic centers. This system unifies doctor appointment availability, multi-channel booking reminders, patient record histories, and digital billing into an accessible web platform.",
-      exemplarName: "ZidiClinic AI — Modern Clinic OS Suite",
-      exemplarUrl: "https://zidiai.vercel.app",
-      imageSrc: "/images/projects/clinic_erp_and_appointment_booking.png",
-      previewType: "hospital" as const,
+      category: "Workflow Automation & Integrations",
+      title: "Workflow Automation, Webhooks & API Pipelines",
+      tagline: "Eliminate manual repetitive entry and connect your business tools into one cohesive pipeline.",
+      problem:
+        "Copying information manually between booking engines, accounting software, databases, and customer communication channels wastes hundreds of team hours and invites human errors.",
+      approach:
+        "We engineer automated event pipelines that connect your existing tools. When an event occurs—such as a booking, an invoice payment, or a shipment update—our pipelines immediately validate, sync, and notify without human intervention.",
+      capabilities: [
+        "Event-driven webhook listeners with idempotency and automated retry queues",
+        "Multi-channel instant alerting via WhatsApp API, SMS, and transactional email",
+        "Automated invoice generation, payment reconciliation, and ledger synchronization",
+        "Custom middleware bridging legacy databases with modern cloud APIs",
+      ],
+      deliverables: "Webhook Microservices, Multi-Channel Alert Pipelines, Sync Middleware",
+      contactService: "Workflow automation",
       isReversed: true,
-      capabilities: [
-        "Interactive doctor appointment calendar with real-time slot locks",
-        "AI assistant for patient replies and appointment scheduling guidance",
-        "Digital patient intake forms with medical history logging",
-        "Instant billing invoicing and pharmacy inventory coordination",
-      ],
-      deliverables: "Patient Booking Portal, Doctor Console, AI Booking Assistant",
-      contactService: "Website or web portal",
-    },
-    {
-      id: "enterprise-platform",
-      num: "05",
-      category: "Enterprise Software & Cloud Platforms",
-      title: "Chaen / Aenbase Financial Commerce Infrastructure",
-      tagline: "Custom reactive platforms built on serverless cloud databases.",
-      description:
-        "For growing commercial platforms with custom business workflows, we develop unified web hubs that integrate transactional data, account hierarchies, and automated report generation, delivering sub-second execution speeds without technical overhead.",
-      exemplarName: "Chaen / Aenbase Financial Commerce Infrastructure",
-      exemplarUrl: "https://www.aenbase.com",
-      imageSrc: "/images/projects/aenbase.png",
-      previewType: "automation" as const,
-      isReversed: false,
-      capabilities: [
-        "Custom administrative portal with role-based permissions",
-        "Serverless database queries with sub-30ms response times",
-        "Automated audit trails and transaction reconciliations",
-        "High-performance responsive rendering across mobile & desktop",
-      ],
-      deliverables: "Custom Business Portal, Neon Postgres Architecture, API",
-      contactService: "Custom business software",
+      architecture: {
+        systemCode: "SYS // EVENT_AUTOMATION_PIPELINE",
+        runtimeBadge: "Idempotent Webhooks",
+        status: "Active · Sub-20ms",
+        layers: [
+          {
+            step: "01",
+            label: "Inbound Event Detection",
+            desc: "Cryptographically signed webhook listeners capturing orders, payments, or bookings.",
+            metric: "HMAC Signed",
+          },
+          {
+            step: "02",
+            label: "Idempotency & Queue Processing",
+            desc: "Deduplication cache ensuring every transactional event executes exactly once.",
+            metric: "Zero Duplicates",
+          },
+          {
+            step: "03",
+            label: "Transactional Ledger Update",
+            desc: "Atomic database transaction committing state changes to Neon Postgres in < 20ms.",
+            metric: "18ms Latency",
+          },
+          {
+            step: "04",
+            label: "Outbound Multi-Channel Broadcast",
+            desc: "Simultaneous trigger of WhatsApp alerts, SMS notifications, and customer invoices.",
+            metric: "Multi-Channel",
+          },
+        ],
+        techStack: ["Serverless Functions", "Twilio / WhatsApp API", "Redis Queues", "Stripe / Paystack", "Neon DB"],
+        specs: [
+          { label: "Execution Speed", value: "Sub-20ms Pipeline Latency" },
+          { label: "Reliability", value: "Exponential Retry Backoff" },
+          { label: "Messaging", value: "WhatsApp / SMS / Email" },
+        ],
+        caseStudyLink: {
+          client: "Chaen / Aenbase Financial Commerce Infrastructure",
+          href: "/work#aenbase-platform",
+        },
+      },
     },
     {
       id: "cloud-infrastructure",
-      num: "06",
-      category: "Cloud Infrastructure & Support",
-      title: "Cloud Infrastructure, Neon Postgres & SLA Support",
-      tagline: "High-availability cloud architectures backed by continuous technical care.",
-      description:
-        "Launching your software is only the beginning. We design serverless cloud infrastructure on modern platforms like Neon PostgreSQL, optimize database queries, perform routine security audits, and provide dedicated SLA-backed engineering coverage so your systems never skip a beat.",
-      exemplarName: "Neon Postgres & Cloud Edge Engine",
-      exemplarUrl: "https://db.techpronnet.com",
-      previewType: "cloud-db" as const,
-      isReversed: true,
+      num: "05",
+      category: "Cloud Infrastructure & SLA Support",
+      title: "Cloud Infrastructure, Neon Postgres & Maintenance",
+      tagline: "High-availability serverless backends backed by continuous engineering care.",
+      problem:
+        "Software downtime, database connection spikes, and unresolved technical glitches erode customer trust and directly impact revenue.",
+      approach:
+        "We architect scalable serverless database environments on Neon PostgreSQL, configure connection pooling, optimize complex SQL queries, and provide guaranteed SLA-backed technical maintenance so your platforms stay resilient.",
       capabilities: [
-        "Serverless Postgres database configuration with connection pooling",
-        "Sub-100ms global query execution and automatic indexing audits",
-        "Zero-downtime database migrations and cloud cutover execution",
-        "Continuous 24/7 health monitoring and guaranteed escalation SLAs",
+        "Serverless PostgreSQL provisioning with PgBouncer connection pooling",
+        "Query indexing optimization and query performance tuning (<30ms response)",
+        "Automated database backups, point-in-time recovery, and zero-downtime migrations",
+        "Continuous uptime monitoring with guaranteed engineering escalation SLAs",
       ],
       deliverables: "Database Tuning, Cloud Cutover, Continuous SLA Coverage",
       contactService: "Maintenance and support",
+      isReversed: false,
+      architecture: {
+        systemCode: "SYS // NEON_POSTGRES_CLOUD",
+        runtimeBadge: "Serverless Database",
+        status: "99.99% Uptime SLA",
+        layers: [
+          {
+            step: "01",
+            label: "Edge Routing & Connection Pool",
+            desc: "PgBouncer connection pooling absorbing traffic spikes with minimal memory overhead.",
+            metric: "10,000+ Conns",
+          },
+          {
+            step: "02",
+            label: "Serverless Compute & Auto-Suspend",
+            desc: "Compute scales up instantly under demand and suspends during zero-traffic hours.",
+            metric: "Auto-Scaling",
+          },
+          {
+            step: "03",
+            label: "Branching & Zero-Downtime Schema Cuts",
+            desc: "Instant copy-on-write database branches for staging verification prior to production.",
+            metric: "Instant Branches",
+          },
+          {
+            step: "04",
+            label: "Continuous Health Probes & SLA Care",
+            desc: "Automated synthetic transaction probes with guaranteed escalation response times.",
+            metric: "24/7 Monitoring",
+          },
+        ],
+        techStack: ["Neon Postgres", "PgBouncer", "AWS / Vercel Edge", "OpenTelemetry", "SQL Tuning"],
+        specs: [
+          { label: "Uptime SLA", value: "99.99% Guaranteed" },
+          { label: "Query Speed", value: "< 28ms Global Average" },
+          { label: "Coverage", value: "24/7 Engineering SLA" },
+        ],
+        caseStudyLink: {
+          client: "Serverless Neon Postgres Cloud Architecture",
+          href: "/work",
+        },
+      },
+    },
+  ];
+
+  const comparisonRows = [
+    {
+      dimension: "Codebase Ownership",
+      techpronnet: "100% bespoke source code owned entirely by your business with zero recurring licensing fees.",
+      generic: "Locked into proprietary SaaS platforms, generic themes, or closed vendor ecosystems.",
+    },
+    {
+      dimension: "Operational Alignment",
+      techpronnet: "Engineered around your exact team rules, triage procedures, and custom business logic.",
+      generic: "Forces your team to compromise operational processes to fit rigid pre-built software limits.",
+    },
+    {
+      dimension: "Database Architecture",
+      techpronnet: "Modern serverless Neon PostgreSQL with sub-30ms queries and dedicated connection pooling.",
+      generic: "Bloated monolithic databases, slow plugin queries, or black-box no-code databases.",
+    },
+    {
+      dimension: "Security & Permissions",
+      techpronnet: "Strict role-based access control (RBAC), server-side Zod validation, and immutable audit logs.",
+      generic: "Basic admin/user roles with third-party plugin vulnerabilities and no audit trails.",
+    },
+    {
+      dimension: "Ongoing Engineering Care",
+      techpronnet: "Dedicated SLA engineering coverage with direct access to the software engineers who built it.",
+      generic: "Outsourced tier-1 ticket queues with slow escalation and abandoned post-launch support.",
     },
   ];
 
@@ -164,31 +366,32 @@ export default function ServicesPage() {
             <div className="max-w-3xl">
               <FadeIn direction="up">
                 <p className="eyebrow uppercase text-[11px] sm:text-xs font-semibold text-muted mb-4 sm:mb-6">
-                  Services &amp; Core Disciplines · Techpronnet Technologies
+                  Core Engineering Disciplines · Techpronnet Technologies
                 </p>
                 <h1 className="text-[34px] sm:text-5xl lg:text-[64px] leading-[1.08] tracking-[-.05em] sm:tracking-[-.055em] font-semibold text-ink">
                   Software engineered around your business.
                   <span className="block text-muted font-normal mt-1 sm:mt-2">
-                    Not around generic templates.
+                    Engineered from first principles.
                   </span>
                 </h1>
                 <p className="mt-6 sm:mt-8 text-base sm:text-lg text-muted leading-relaxed max-w-2xl">
-                  We design, build, and support mission-critical digital systems—from confidential legal client portals and clinical healthcare platforms to real-time dispatch consoles and event-driven automation.
+                  We don&apos;t resell generic templates or fragile off-the-shelf plugins. We design, engineer, and maintain custom digital platforms tailored to your operational workflows, customer interactions, and data models.
                 </p>
 
                 <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-3.5 sm:gap-4">
                   <Link
                     href="/#contact"
-                    className="inline-flex items-center justify-center gap-3 bg-ink text-white px-7 py-3.5 sm:py-4 text-sm font-medium hover:bg-navy transition-colors text-center w-full sm:w-auto"
+                    className="inline-flex items-center justify-center gap-3 bg-ink text-white px-7 py-3.5 sm:py-4 text-sm font-medium hover:bg-navy transition-colors text-center w-full sm:w-auto shadow-xs"
                   >
                     Start a Project Discussion
                     <ArrowRight className="size-4" />
                   </Link>
                   <Link
-                    href="#web-portals"
+                    href="/work"
                     className="inline-flex items-center justify-center gap-3 border border-line bg-white px-7 py-3.5 sm:py-4 text-sm font-medium text-ink hover:border-ink transition-colors text-center w-full sm:w-auto"
                   >
-                    Browse Core Disciplines
+                    Explore Production Systems
+                    <ArrowUpRight className="size-4" />
                   </Link>
                 </div>
               </FadeIn>
@@ -196,31 +399,28 @@ export default function ServicesPage() {
 
             {/* Quick Anchor Navigation Strip */}
             <div className="mt-14 sm:mt-20 border-t border-line pt-6 flex flex-wrap gap-x-8 gap-y-3 text-xs font-mono text-muted">
-              <span className="text-navy font-semibold uppercase">Jump to:</span>
+              <span className="text-navy font-semibold uppercase">Jump to Offering:</span>
               <a href="#web-portals" className="hover:text-ink transition-colors">
-                01. Legal &amp; Web Portals
+                01. Web Portals &amp; Platforms
               </a>
-              <a href="#healthcare-systems" className="hover:text-ink transition-colors">
-                02. Hospital Systems
+              <a href="#mobile-apps" className="hover:text-ink transition-colors">
+                02. Mobile Applications
               </a>
-              <a href="#custom-software" className="hover:text-ink transition-colors">
-                03. Logistics &amp; ERP
+              <a href="#custom-erp" className="hover:text-ink transition-colors">
+                03. Business Software &amp; ERP
               </a>
-              <a href="#clinic-scheduling" className="hover:text-ink transition-colors">
-                04. Clinic ERP Suite
-              </a>
-              <a href="#enterprise-platform" className="hover:text-ink transition-colors">
-                05. Aenbase Platform
+              <a href="#automation" className="hover:text-ink transition-colors">
+                04. Workflow Automation
               </a>
               <a href="#cloud-infrastructure" className="hover:text-ink transition-colors">
-                06. Cloud &amp; SLA
+                05. Cloud &amp; Neon Postgres
               </a>
             </div>
           </div>
         </section>
 
-        {/* Alternating Service Sections */}
-        {serviceSections.map((section, idx) => (
+        {/* Alternating Service Offering Sections */}
+        {serviceOfferings.map((section, idx) => (
           <section
             key={section.id}
             id={section.id}
@@ -230,20 +430,21 @@ export default function ServicesPage() {
           >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-                {/* Visual UI Screenshot Frame Column */}
+                {/* Visual Architecture Console Column */}
                 <div
                   className={`lg:col-span-6 ${
                     section.isReversed ? "order-2 lg:order-1" : "order-2 lg:order-2"
                   }`}
                 >
                   <FadeIn direction="up">
-                    <ProjectPreviewFrame
-                      type={section.previewType}
-                      imageSrc={section.imageSrc}
-                      imageAlt={section.title}
-                      url={section.exemplarUrl}
-                      title={section.exemplarName}
-                      tag={section.category}
+                    <ServiceArchitecturePanel
+                      systemCode={section.architecture.systemCode}
+                      runtimeBadge={section.architecture.runtimeBadge}
+                      status={section.architecture.status}
+                      layers={section.architecture.layers}
+                      techStack={section.architecture.techStack}
+                      specs={section.architecture.specs}
+                      caseStudyLink={section.architecture.caseStudyLink}
                     />
                   </FadeIn>
                 </div>
@@ -266,13 +467,13 @@ export default function ServicesPage() {
                         {section.tagline}
                       </p>
                       <p className="text-sm sm:text-base text-muted leading-relaxed mt-4">
-                        {section.description}
+                        {section.approach}
                       </p>
                     </div>
 
                     <div className="pt-6 border-t border-line/70">
                       <span className="text-xs font-mono uppercase text-ink font-semibold block mb-3">
-                        Key Capabilities &amp; Architecture
+                        Key Capabilities &amp; Engineering Scope
                       </span>
                       <ul className="space-y-2.5 text-xs sm:text-sm text-muted">
                         {section.capabilities.map((cap) => (
@@ -284,15 +485,15 @@ export default function ServicesPage() {
                       </ul>
                     </div>
 
-                    <div className="pt-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs">
-                      <span className="font-mono text-muted">
+                    <div className="pt-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs border-t border-line/70">
+                      <span className="font-mono text-muted text-[11px]">
                         Deliverables: {section.deliverables}
                       </span>
                       <Link
-                        href="/#contact"
+                        href={`/#contact?service=${encodeURIComponent(section.contactService)}`}
                         className="inline-flex items-center gap-2 font-semibold text-ink hover:text-navy transition-colors pb-1 border-b border-line hover:border-navy"
                       >
-                        <span>Discuss this solution</span>
+                        <span>Discuss this offering</span>
                         <ArrowRight className="size-3.5" />
                       </Link>
                     </div>
@@ -302,6 +503,56 @@ export default function ServicesPage() {
             </div>
           </section>
         ))}
+
+        {/* Engineering Standards & Comparison Matrix */}
+        <section className="section-space border-b border-line bg-paper">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <FadeIn direction="up">
+              <div className="max-w-2xl mb-12 sm:mb-16">
+                <p className="eyebrow uppercase text-[11px] sm:text-xs font-semibold text-muted mb-4">
+                  Engineering Standards
+                </p>
+                <h2 className="text-3xl sm:text-5xl font-semibold tracking-[-.045em] leading-tight text-ink">
+                  How our engineering differs.
+                </h2>
+                <p className="mt-4 text-base sm:text-lg text-muted leading-relaxed">
+                  We believe commercial software should be an enduring corporate asset, not an endless subscription headache.
+                </p>
+              </div>
+
+              <div className="border border-line bg-white shadow-xs overflow-x-auto">
+                <table className="w-full text-left text-xs sm:text-sm border-collapse min-w-[640px]">
+                  <thead>
+                    <tr className="bg-[#F3F2EC] border-b border-line text-ink font-semibold font-mono text-xs uppercase tracking-wider">
+                      <th className="p-4 sm:p-5 w-1/4">Evaluation Criteria</th>
+                      <th className="p-4 sm:p-5 w-5/12 text-navy bg-sand/60 border-l border-r border-line">
+                        Techpronnet Engineering
+                      </th>
+                      <th className="p-4 sm:p-5 w-1/3 text-muted">
+                        Generic Agencies / SaaS Templates
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-line">
+                    {comparisonRows.map((row) => (
+                      <tr key={row.dimension} className="hover:bg-sand/20 transition-colors">
+                        <td className="p-4 sm:p-5 font-semibold text-ink font-mono text-xs">
+                          {row.dimension}
+                        </td>
+                        <td className="p-4 sm:p-5 text-ink leading-relaxed bg-sand/30 border-l border-r border-line font-medium">
+                          {row.techpronnet}
+                        </td>
+                        <td className="p-4 sm:p-5 text-muted leading-relaxed">
+                          {row.generic}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </FadeIn>
+          </div>
+        </section>
 
         {/* Closing Contact CTA */}
         <section className="section-space bg-sand border-b border-line">
@@ -335,17 +586,25 @@ export default function ServicesPage() {
                   <div className="lg:col-span-4 flex flex-col gap-3 sm:gap-3.5 lg:items-end">
                     <Link
                       href="/#contact"
-                      className="inline-flex items-center justify-center gap-2.5 bg-ink text-white px-8 py-4 text-sm font-medium hover:bg-navy transition-colors text-center w-full sm:w-auto"
+                      className="inline-flex items-center justify-center gap-2.5 bg-ink text-white px-8 py-4 text-sm font-medium hover:bg-navy transition-colors text-center w-full sm:w-auto shadow-xs"
                     >
                       <span>Tell Us About Your Project</span>
                       <ArrowRight className="size-4" />
                     </Link>
 
-                    <a
-                      href="mailto:contact@techpronnet.com"
+                    <Link
+                      href="/work"
                       className="inline-flex items-center justify-center gap-2 border border-line bg-paper px-6 py-3.5 text-xs font-mono font-medium text-ink hover:border-ink transition-colors text-center w-full sm:w-auto"
                     >
-                      <Mail className="size-3.5 text-navy" />
+                      <span>Browse Real Case Studies</span>
+                      <ArrowUpRight className="size-3.5" />
+                    </Link>
+
+                    <a
+                      href="mailto:contact@techpronnet.com"
+                      className="inline-flex items-center justify-center gap-2 text-xs font-mono text-muted hover:text-ink transition-colors text-center"
+                    >
+                      <Mail className="size-3 text-navy" />
                       <span>contact@techpronnet.com</span>
                     </a>
                   </div>

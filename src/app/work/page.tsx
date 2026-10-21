@@ -169,6 +169,7 @@ export default function WorkPage() {
           {caseStudies.map((project, idx) => (
             <section
               key={project.id}
+              id={project.id}
               className={`section-space ${idx % 2 === 1 ? "bg-sand/30" : "bg-white"}`}
             >
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
