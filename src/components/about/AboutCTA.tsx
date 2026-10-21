@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, Mail, Clock } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Mail, Clock, CheckCircle2 } from "lucide-react";
 import { FadeIn } from "@/components/MotionWrapper";
 
 export function AboutCTA() {
@@ -28,7 +28,7 @@ export function AboutCTA() {
                     <span>Direct response within 24 business hours</span>
                   </span>
                   <span className="flex items-center gap-2">
-                    <span className="size-2 rounded-full bg-[#8EDE35]" />
+                    <CheckCircle2 className="size-3.5 text-[#4D9218] shrink-0" />
                     <span>No-obligation architecture consultation</span>
                   </span>
                 </div>

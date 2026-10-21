@@ -12,7 +12,6 @@ export function Industries() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="flex items-center gap-2 shrink-0">
-            <span className="size-2 rounded-full bg-[#8EDE35]" />
             <p className="font-mono text-xs uppercase font-semibold text-[#4D9218] tracking-wider">
               Who We Work With
             </p>

@@ -1,7 +1,7 @@
 "use client";
 
 import { FadeIn } from "@/components/MotionWrapper";
-import { Target, Compass } from "lucide-react";
+import { Target, Compass, Check } from "lucide-react";
 
 export function MissionVision() {
   return (
@@ -43,11 +43,11 @@ export function MissionVision() {
 
             <div className="mt-8 pt-6 border-t border-[#E5E7EB] space-y-3 text-xs sm:text-sm text-[#181B1E]/80">
               <div className="flex items-start gap-2.5">
-                <span className="size-2 rounded-full bg-[#8EDE35] shrink-0 mt-1.5" />
+                <Check className="size-3.5 text-[#4D9218] shrink-0 mt-0.5" />
                 <span>Replace manual tasks with unified, automated workflows.</span>
               </div>
               <div className="flex items-start gap-2.5">
-                <span className="size-2 rounded-full bg-[#8EDE35] shrink-0 mt-1.5" />
+                <Check className="size-3.5 text-[#4D9218] shrink-0 mt-0.5" />
                 <span>Deliver dependable, robust architectures designed for long-term growth.</span>
               </div>
             </div>
@@ -74,11 +74,11 @@ export function MissionVision() {
 
             <div className="mt-8 pt-6 border-t border-[#E5E7EB] space-y-3 text-xs sm:text-sm text-[#181B1E]/80">
               <div className="flex items-start gap-2.5">
-                <span className="size-2 rounded-full bg-[#8EDE35] shrink-0 mt-1.5" />
+                <Check className="size-3.5 text-[#4D9218] shrink-0 mt-0.5" />
                 <span>Prioritize durability, maintainability, and data security above trends.</span>
               </div>
               <div className="flex items-start gap-2.5">
-                <span className="size-2 rounded-full bg-[#8EDE35] shrink-0 mt-1.5" />
+                <Check className="size-3.5 text-[#4D9218] shrink-0 mt-0.5" />
                 <span>Establish lasting client partnerships where software compounds in value.</span>
               </div>
             </div>
