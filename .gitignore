@@ -2,25 +2,51 @@
 /node_modules
 /.pnp
 .pnp.js
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
 
 # Next.js build output
 /.next/
 /out/
+/build/
+/dist/
 
-# Environment files
-.env*.local
+# Production & Environment secret files
 .env
+.env.*
+!.env.example
 
-# Debug logs
+# Vercel CLI
+.vercel
+
+# Debug and runtime logs
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# OS Files
+# OS and Editor files
 .DS_Store
-*.pem
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
 
-# TypeScript
+# Certificates and keys
+*.pem
+*.key
+*.cert
+*.crt
+*.pfx
+*.p12
+
+# TypeScript build info
 *.tsbuildinfo
 next-env.d.ts
+

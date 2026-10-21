@@ -66,7 +66,7 @@ cp .env.example .env.local
 ```
 Paste your Neon database URL into `.env.local`:
 ```env
-DATABASE_URL="postgresql://neondb_owner:YOUR_PASSWORD@ep-long-wave-axhjvl06-pooler.c-4.us-east-2.aws.neon.tech/neondb?sslmode=require"
+DATABASE_URL="postgresql://neondb_owner:[PASSWORD]@[ENDPOINT]-pooler.[REGION].aws.neon.tech/neondb?sslmode=require"
 ```
 
 ### Step 3: Run Database Migrations
