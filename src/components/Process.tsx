@@ -136,26 +136,21 @@ export function Process() {
             </div>
           </div>
 
-          {/* STEP 2: Content Block (Centered directly BELOW Node 2 peak, 100% clear of curve) */}
-          <div className="absolute top-[54%] left-1/2 -translate-x-1/2 w-[34%] z-10 group">
-            <div className="flex items-start justify-between gap-4">
-              <div>
-                <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#4D9218] block mb-1.5">
-                  02 · Engineering
-                </span>
-                <h3 className="text-xl sm:text-2xl font-extrabold text-[#181B1E] tracking-tight mb-2">
-                  Architect &amp; Build
-                </h3>
-                <p className="text-xs sm:text-sm text-muted leading-relaxed">
-                  We engineer high-performance web applications and mobile platforms using Next.js 16 SSR, serverless Neon Postgres, and resilient event pipelines.
-                </p>
-              </div>
-
-              {/* Step 2 Numeral: Locked safely inside the card next to title, zero line collision */}
-              <span className="text-6xl sm:text-7xl font-black font-mono text-gray-200 select-none shrink-0 leading-none group-hover:text-[#8EDE35] transition-colors">
-                2
-              </span>
-            </div>
+          {/* STEP 2: Content Block (Directly centered under Node 2 peak icon) */}
+          <div className="absolute top-[41%] left-1/2 -translate-x-1/2 w-[30%] z-10 text-center flex flex-col items-center group">
+            {/* Step 2 Numeral: Placed directly under the Node 2 icon, before the title */}
+            <span className="text-6xl sm:text-7xl font-black font-mono text-gray-200 select-none leading-none mb-2.5 group-hover:text-[#8EDE35] transition-colors">
+              2
+            </span>
+            <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#4D9218] block mb-1">
+              02 · Engineering
+            </span>
+            <h3 className="text-xl sm:text-2xl font-extrabold text-[#181B1E] tracking-tight mb-2">
+              Architect &amp; Build
+            </h3>
+            <p className="text-xs sm:text-sm text-muted leading-relaxed max-w-xs mx-auto">
+              We engineer high-performance web applications and mobile platforms using Next.js 16 SSR, serverless Neon Postgres, and resilient event pipelines.
+            </p>
           </div>
 
           {/* STEP 3: Floating Node on Curve (At 82% X, 44% Y) */}
