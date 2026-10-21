@@ -7,6 +7,8 @@ import { ArrowUpRight, Maximize2, X, Lock } from "lucide-react";
 interface ServiceVisualFrameProps {
   imageSrc: string;
   imageAlt: string;
+  serviceTag?: string;
+  serviceTitle?: string;
   category: string;
   badge: string;
   caseStudyLink?: {
@@ -18,11 +20,17 @@ interface ServiceVisualFrameProps {
 export function ServiceVisualFrame({
   imageSrc,
   imageAlt,
+  serviceTag,
+  serviceTitle,
   category,
   badge,
   caseStudyLink,
 }: ServiceVisualFrameProps) {
   const [modalOpen, setModalOpen] = useState(false);
+
+  const displayTitle = serviceTag
+    ? `${serviceTag} · ${serviceTitle || category}`
+    : category;
 
   return (
     <>
@@ -37,7 +45,9 @@ export function ServiceVisualFrame({
 
           <div className="flex items-center gap-2 font-mono text-[11px] text-muted truncate">
             <Lock className="size-3 text-navy shrink-0" />
-            <span className="truncate uppercase tracking-wider">{category}</span>
+            <span className="truncate uppercase tracking-wider font-semibold text-ink">
+              {displayTitle}
+            </span>
           </div>
 
           <div className="flex items-center gap-2">
@@ -73,7 +83,7 @@ export function ServiceVisualFrame({
         {caseStudyLink && (
           <div className="px-4 py-2.5 border-t border-line bg-[#FAF9F5] flex items-center justify-between text-xs font-mono">
             <span className="text-muted text-[11px] truncate mr-2">
-              Production Deployment:
+              Production Case Study:
             </span>
             <Link
               href={caseStudyLink.href}
@@ -98,7 +108,7 @@ export function ServiceVisualFrame({
           >
             <div className="flex items-center justify-between px-3 py-2 border-b border-line mb-2 text-xs">
               <span className="font-mono text-ink font-semibold truncate">
-                {imageAlt} ({category})
+                {displayTitle} — {badge}
               </span>
               <button
                 type="button"

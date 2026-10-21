@@ -44,9 +44,9 @@ export default function ServicesPage() {
       contactService: "Website or web portal",
       isReversed: false,
       imageSrc: "/images/services/web-portals.jpg",
-      badge: "Next.js 16 Web Platform",
+      badge: "Websites & Portals",
       caseStudyLink: {
-        client: "Nnamdi I. Nwagwu, Esq. — Legal Practice Portal",
+        client: "Nnamdi I. Nwagwu, Esq. — Legal Practice Website & Client Consultation Portal",
         href: "/work#law-portal",
       },
     },
@@ -73,9 +73,9 @@ export default function ServicesPage() {
       contactService: "Mobile application",
       isReversed: true,
       imageSrc: "/images/services/mobile-apps.jpg",
-      badge: "Native-Grade Mobile",
+      badge: "Mobile Applications",
       caseStudyLink: {
-        client: "Avex Logistics Services — Freight & Tracking Console",
+        client: "Avex Logistics Services — Freight, Cargo & Real-Time Shipment Tracking Portal",
         href: "/work#logistics-console",
       },
     },
@@ -102,9 +102,9 @@ export default function ServicesPage() {
       contactService: "Custom business software",
       isReversed: false,
       imageSrc: "/images/services/business-erp.jpg",
-      badge: "Clinical & Operations ERP",
+      badge: "Custom Business Software",
       caseStudyLink: {
-        client: "Ogechi Hospital & ZidiClinic Management Systems",
+        client: "Ogechi Hospital — Hospital Web Portal & Clinical Appointment Booking System",
         href: "/work#hospital-system",
       },
     },
@@ -131,10 +131,10 @@ export default function ServicesPage() {
       contactService: "Workflow automation",
       isReversed: true,
       imageSrc: "/images/services/workflow-automation.jpg",
-      badge: "Workflow Pipeline Engine",
+      badge: "Workflow Automation",
       caseStudyLink: {
-        client: "Chaen — Automated Ledger & Event Notification Pipeline",
-        href: "/work#aenbase-platform",
+        client: "ZidiClinic AI — Modern Clinic Operations System (Clinic OS)",
+        href: "/work#clinic-erp",
       },
     },
     {
@@ -160,9 +160,9 @@ export default function ServicesPage() {
       contactService: "API or software integration",
       isReversed: false,
       imageSrc: "/images/services/apis-integrations.jpg",
-      badge: "API & Integrations Hub",
+      badge: "APIs & Integrations",
       caseStudyLink: {
-        client: "Chaen Financial Commerce Infrastructure & Virtual Cards",
+        client: "Chaen — Financial Commerce Infrastructure & Digital Store",
         href: "/work#aenbase-platform",
       },
     },
@@ -189,7 +189,7 @@ export default function ServicesPage() {
       contactService: "Maintenance and support",
       isReversed: true,
       imageSrc: "/images/services/cloud-infrastructure.jpg",
-      badge: "System Health & SLA Telemetry",
+      badge: "Maintenance & Support",
       caseStudyLink: {
         client: "Neon Serverless Postgres Architecture (Across All Deployments)",
         href: "/work",
@@ -312,6 +312,8 @@ export default function ServicesPage() {
                     <ServiceVisualFrame
                       imageSrc={section.imageSrc}
                       imageAlt={section.title}
+                      serviceTag={section.tag}
+                      serviceTitle={section.title}
                       category={section.category}
                       badge={section.badge}
                       caseStudyLink={section.caseStudyLink}
