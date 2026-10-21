@@ -15,7 +15,7 @@ import {
   CreditCard,
   ShieldCheck,
 } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 
 interface ClientTestimonial {
   id: string;
@@ -32,6 +32,7 @@ interface ClientTestimonial {
 }
 
 export function TestimonialCarousel() {
+  const shouldReduceMotion = useReducedMotion();
   const testimonials: ClientTestimonial[] = [
     {
       id: "legal",
@@ -157,7 +158,8 @@ export function TestimonialCarousel() {
 
   return (
     <section
-      className="bg-[#FAF9F6] border-b border-[#E5E7EB] py-16 sm:py-24 overflow-hidden relative"
+      id="testimonials"
+      className="bg-[#FAF9F6] border-b border-[#E5E7EB] py-16 sm:py-24 overflow-hidden relative scroll-mt-24"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       onTouchStart={handleTouchStart}
@@ -211,10 +213,13 @@ export function TestimonialCarousel() {
           <AnimatePresence mode="wait" initial={false}>
             <motion.div
               key={current.id}
-              initial={{ opacity: 0, x: direction * 24 }}
+              initial={{ opacity: 0, x: shouldReduceMotion ? 0 : direction * 24 }}
               animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: direction * -24 }}
-              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              exit={{ opacity: 0, x: shouldReduceMotion ? 0 : direction * -24 }}
+              transition={{
+                duration: shouldReduceMotion ? 0.15 : 0.35,
+                ease: [0.22, 1, 0.36, 1],
+              }}
               className="w-full"
             >
               <div className="space-y-8 sm:space-y-10">

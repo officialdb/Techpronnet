@@ -35,7 +35,7 @@ export function OurStory() {
   ];
 
   return (
-    <section id="story" className="section-space border-b border-[#E5E7EB] bg-white scroll-mt-16">
+    <section id="story" className="section-space border-b border-[#E5E7EB] bg-white scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Left Narrative Column */}

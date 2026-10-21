@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { FadeIn } from "@/components/MotionWrapper";
 
 export function AboutHero() {
   const stats = [
@@ -30,7 +31,7 @@ export function AboutHero() {
   return (
     <section className="border-b border-[#E5E7EB] bg-[#FAF9F6]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-28">
-        <div className="max-w-3xl">
+        <FadeIn direction="up" duration={0.4} delay={0.05} className="max-w-3xl">
           <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#4D9218] block mb-4 sm:mb-6">
             About Techpronnet Technologies · Established 2019
           </span>
@@ -64,27 +65,29 @@ export function AboutHero() {
               <ArrowUpRight className="size-4" />
             </Link>
           </div>
-        </div>
+        </FadeIn>
 
         {/* Minimalist Linear Stats Cards */}
-        <div className="mt-14 sm:mt-20 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-          {stats.map((s) => (
-            <div
-              key={s.label}
-              className="bg-white border border-[#E5E7EB] rounded-2xl p-6 shadow-xs hover:border-[#8EDE35] transition-all"
-            >
-              <span className="font-mono text-3xl sm:text-4xl font-extrabold tracking-tight text-[#181B1E] block">
-                {s.value}
-              </span>
-              <span className="text-sm font-bold text-[#181B1E] mt-2 block">
-                {s.label}
-              </span>
-              <span className="text-xs text-muted mt-0.5 block">
-                {s.note}
-              </span>
-            </div>
-          ))}
-        </div>
+        <FadeIn direction="up" delay={0.1}>
+          <div className="mt-14 sm:mt-20 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            {stats.map((s) => (
+              <div
+                key={s.label}
+                className="bg-white border border-[#E5E7EB] rounded-2xl p-6 shadow-xs hover:border-[#8EDE35] transition-all"
+              >
+                <span className="font-mono text-3xl sm:text-4xl font-extrabold tracking-tight text-[#181B1E] block">
+                  {s.value}
+                </span>
+                <span className="text-sm font-bold text-[#181B1E] mt-2 block">
+                  {s.label}
+                </span>
+                <span className="text-xs text-muted mt-0.5 block">
+                  {s.note}
+                </span>
+              </div>
+            ))}
+          </div>
+        </FadeIn>
       </div>
     </section>
   );

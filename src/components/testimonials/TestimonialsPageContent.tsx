@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import { FadeIn } from "@/components/MotionWrapper";
 import {
   ChevronRight,
   ArrowRight,
@@ -152,7 +153,7 @@ export function TestimonialsPageContent() {
             <rect width="100%" height="100%" fill="url(#circuit-pattern-testimonials)" />
           </svg>
 
-          <div className="relative z-10">
+          <FadeIn direction="up" className="relative z-10">
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#181B1E]">
               Testimonials
             </h1>
@@ -163,85 +164,90 @@ export function TestimonialsPageContent() {
               <ChevronRight className="size-3.5 opacity-60" />
               <span className="font-semibold text-[#181B1E]">Testimonials</span>
             </div>
-          </div>
+          </FadeIn>
         </div>
       </section>
 
       {/* 2. Key Trust Metrics Strip (NO CARDS - Generous typographic numbers with subtle rule dividers) */}
       <section className="border-b border-[#E5E7EB] bg-white py-12 sm:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12 text-center md:text-left">
-            <div className="space-y-1.5">
-              <span className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#181B1E] tracking-tight block">
-                2019
-              </span>
-              <p className="font-mono text-xs font-semibold uppercase text-[#4D9218] tracking-wider">
-                Founded &amp; Delivering
-              </p>
-              <p className="text-xs text-muted">Continuous software delivery for growing businesses</p>
-            </div>
+          <FadeIn direction="up">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12 text-center md:text-left">
+              <div className="space-y-1.5">
+                <span className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#181B1E] tracking-tight block">
+                  2019
+                </span>
+                <p className="font-mono text-xs font-semibold uppercase text-[#4D9218] tracking-wider">
+                  Founded &amp; Delivering
+                </p>
+                <p className="text-xs text-muted">Continuous software delivery for growing businesses</p>
+              </div>
 
-            <div className="space-y-1.5">
-              <span className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#181B1E] tracking-tight block">
-                45+
-              </span>
-              <p className="font-mono text-xs font-semibold uppercase text-[#4D9218] tracking-wider">
-                Production Platforms
-              </p>
-              <p className="text-xs text-muted">Healthcare, legal, logistics, and fintech deployments</p>
-            </div>
+              <div className="space-y-1.5">
+                <span className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#181B1E] tracking-tight block">
+                  45+
+                </span>
+                <p className="font-mono text-xs font-semibold uppercase text-[#4D9218] tracking-wider">
+                  Production Platforms
+                </p>
+                <p className="text-xs text-muted">Healthcare, legal, logistics, and fintech deployments</p>
+              </div>
 
-            <div className="space-y-1.5">
-              <span className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#181B1E] tracking-tight block">
-                99.9%
-              </span>
-              <p className="font-mono text-xs font-semibold uppercase text-[#4D9218] tracking-wider">
-                Uptime Delivered
-              </p>
-              <p className="text-xs text-muted">Serverless Neon Postgres &amp; reliable cloud infrastructure</p>
-            </div>
+              <div className="space-y-1.5">
+                <span className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#181B1E] tracking-tight block">
+                  99.9%
+                </span>
+                <p className="font-mono text-xs font-semibold uppercase text-[#4D9218] tracking-wider">
+                  Uptime Delivered
+                </p>
+                <p className="text-xs text-muted">Serverless Neon Postgres &amp; reliable cloud infrastructure</p>
+              </div>
 
-            <div className="space-y-1.5">
-              <span className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#181B1E] tracking-tight block">
-                100%
-              </span>
-              <p className="font-mono text-xs font-semibold uppercase text-[#4D9218] tracking-wider">
-                Code Ownership
-              </p>
-              <p className="text-xs text-muted">Zero proprietary lock-in, client owns all intellectual property</p>
+              <div className="space-y-1.5">
+                <span className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#181B1E] tracking-tight block">
+                  100%
+                </span>
+                <p className="font-mono text-xs font-semibold uppercase text-[#4D9218] tracking-wider">
+                  Code Ownership
+                </p>
+                <p className="text-xs text-muted">Zero proprietary lock-in, client owns all intellectual property</p>
+              </div>
             </div>
-          </div>
+          </FadeIn>
         </div>
       </section>
 
       {/* 3. Editorial Testimonial Stories (NO CARDS - Clean typographic quotes with generous whitespace) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
         {/* Intro */}
-        <div className="max-w-3xl mb-16 sm:mb-24">
-          <span className="text-[#4D9218] font-mono text-xs font-semibold uppercase tracking-wider block mb-3">
-            Client Voices &amp; Verified Impact
-          </span>
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#181B1E] leading-tight">
-            How leaders evaluate working with{" "}
-            <span className="bg-[#8EDE35] text-[#181B1E] px-3.5 py-0.5 rounded-xl inline-block shadow-xs">
-              Techpronnet.
+        <FadeIn direction="up">
+          <div className="max-w-3xl mb-16 sm:mb-24">
+            <span className="text-[#4D9218] font-mono text-xs font-semibold uppercase tracking-wider block mb-3">
+              Client Voices &amp; Verified Impact
             </span>
-          </h2>
-          <p className="mt-4 text-sm sm:text-base text-muted leading-relaxed">
-            Read direct feedback from managing partners, medical directors, and technical leaders who partnered with Techpronnet Technologies to build custom portals, automate workflows, and replace legacy bottlenecks.
-          </p>
-        </div>
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#181B1E] leading-tight">
+              How leaders evaluate working with{" "}
+              <span className="bg-[#8EDE35] text-[#181B1E] px-3.5 py-0.5 rounded-xl inline-block shadow-xs">
+                Techpronnet.
+              </span>
+            </h2>
+            <p className="mt-4 text-sm sm:text-base text-muted leading-relaxed">
+              Read direct feedback from managing partners, medical directors, and technical leaders who partnered with Techpronnet Technologies to build custom portals, automate workflows, and replace legacy bottlenecks.
+            </p>
+          </div>
+        </FadeIn>
 
         {/* Editorial Stories List */}
         <div className="space-y-20 sm:space-y-28">
           {testimonials.map((item, idx) => {
             const Icon = item.icon;
             return (
-              <article
-                key={item.id}
-                className="pt-12 first:pt-0 border-t first:border-t-0 border-[#E5E7EB]"
-              >
-                <div className="grid lg:grid-cols-12 gap-8 lg:gap-14 items-start">
+              <FadeIn key={item.id} direction="up">
+                <article
+                  id={item.id}
+                  className="pt-12 first:pt-0 border-t first:border-t-0 border-[#E5E7EB]"
+                >
+                  <div className="grid lg:grid-cols-12 gap-8 lg:gap-14 items-start">
                   {/* Left Column: Metric & Client Profile */}
                   <div className="lg:col-span-4 space-y-6">
                     {/* Sector & Icon */}
@@ -319,14 +325,16 @@ export function TestimonialsPageContent() {
                   </div>
                 </div>
               </article>
-            );
-          })}
-        </div>
-      </section>
+            </FadeIn>
+          );
+        })}
+      </div>
+    </section>
 
-      {/* 4. Bottom Call To Action: Clean Minimalist Section */}
-      <section className="bg-white border-t border-[#E5E7EB] py-16 sm:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-3xl">
+    {/* 4. Bottom Call To Action: Clean Minimalist Section */}
+    <section className="bg-white border-t border-[#E5E7EB] py-16 sm:py-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-3xl">
+        <FadeIn direction="up">
           <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#4D9218] block mb-3">
             Start Your Partnership
           </span>
@@ -353,8 +361,9 @@ export function TestimonialsPageContent() {
               <ArrowUpRight className="size-3.5" />
             </Link>
           </div>
-        </div>
-      </section>
+        </FadeIn>
+      </div>
+    </section>
     </div>
   );
 }

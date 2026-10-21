@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { FadeIn } from "@/components/MotionWrapper";
 import {
   Monitor,
   Smartphone,
@@ -272,7 +273,7 @@ export function ServicesLayout() {
             <rect width="100%" height="100%" fill="url(#circuit-pattern-services)" />
           </svg>
 
-          <div className="relative z-10">
+          <FadeIn direction="up" className="relative z-10">
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#181B1E]">
               Services
             </h1>
@@ -283,71 +284,75 @@ export function ServicesLayout() {
               <ChevronRight className="size-3.5 opacity-60" />
               <span className="font-semibold text-[#181B1E]">Services</span>
             </div>
-          </div>
+          </FadeIn>
         </div>
       </section>
 
       {/* 2. Core 6 Services Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+      <section id="services" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 scroll-mt-24">
         {/* Section Heading */}
-        <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-20">
-          <span className="text-[#4D9218] font-bold text-xs sm:text-sm uppercase tracking-wider block mb-3 font-mono">
-            Our Services
-          </span>
-          <h2 className="text-2xl sm:text-4xl lg:text-[44px] font-extrabold tracking-tight text-[#181B1E] leading-tight">
-            Our Mission Is To Make Your{" "}
-            <span className="bg-[#8EDE35] text-[#181B1E] px-3 py-0.5 rounded-md inline-block shadow-xs">
-              Business
-            </span>{" "}
-            Better Through Technology
-          </h2>
-          <p className="text-sm sm:text-base text-muted max-w-2xl mx-auto mt-4 leading-relaxed">
-            We engineer bespoke software systems, mobile platforms, and automated pipelines designed around your exact operational workflows.
-          </p>
-        </div>
+        <FadeIn direction="up">
+          <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-20">
+            <span className="text-[#4D9218] font-bold text-xs sm:text-sm uppercase tracking-wider block mb-3 font-mono">
+              Our Services
+            </span>
+            <h2 className="text-2xl sm:text-4xl lg:text-[44px] font-extrabold tracking-tight text-[#181B1E] leading-tight">
+              Our Mission Is To Make Your{" "}
+              <span className="bg-[#8EDE35] text-[#181B1E] px-3 py-0.5 rounded-md inline-block shadow-xs">
+                Business
+              </span>{" "}
+              Better Through Technology
+            </h2>
+            <p className="text-sm sm:text-base text-muted max-w-2xl mx-auto mt-4 leading-relaxed">
+              We engineer bespoke software systems, mobile platforms, and automated pipelines designed around your exact operational workflows.
+            </p>
+          </div>
+        </FadeIn>
 
         {/* 3x2 Grid of 6 Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {services.map((item) => {
-            const Icon = item.icon;
+        <FadeIn direction="up" delay={0.1}>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {services.map((item) => {
+              const Icon = item.icon;
 
-            // Card Themes: Clean matte green & dark aesthetic
-            const isDark = item.cardTheme === "dark";
-            const isAccent = item.cardTheme === "accent";
+              // Card Themes: Clean matte green & dark aesthetic
+              const isDark = item.cardTheme === "dark";
+              const isAccent = item.cardTheme === "accent";
 
-            let cardBg = "bg-white border border-[#E5E7EB] text-[#181B1E]";
-            let iconWrapper =
-              "bg-[#F1F3F5] text-[#181B1E] border border-[#E2E8F0] group-hover:bg-[#8EDE35] group-hover:text-[#181B1E]";
-            let titleColor = "text-[#181B1E]";
-            let descColor = "text-[#64748B]";
-            let tagColor = "text-muted";
-            let ctaColor = "text-[#181B1E] hover:text-[#4D9218]";
-            let buttonBg = "bg-[#181B1E] text-white hover:bg-[#334655]";
+              let cardBg = "bg-white border border-[#E5E7EB] text-[#181B1E]";
+              let iconWrapper =
+                "bg-[#F1F3F5] text-[#181B1E] border border-[#E2E8F0] group-hover:bg-[#8EDE35] group-hover:text-[#181B1E]";
+              let titleColor = "text-[#181B1E]";
+              let descColor = "text-[#64748B]";
+              let tagColor = "text-muted";
+              let ctaColor = "text-[#181B1E] hover:text-[#4D9218]";
+              let buttonBg = "bg-[#181B1E] text-white hover:bg-[#334655]";
 
-            if (isDark) {
-              cardBg = "bg-[#181B1E] text-white border border-[#2D333B] shadow-xl";
-              iconWrapper = "bg-[#8EDE35] text-[#181B1E]";
-              titleColor = "text-white";
-              descColor = "text-[#94A3B8]";
-              tagColor = "text-[#8EDE35]";
-              ctaColor = "text-[#8EDE35] hover:underline";
-              buttonBg = "bg-[#8EDE35] text-[#181B1E] hover:bg-[#7ECC28]";
-            } else if (isAccent) {
-              // Matte green accent card matching template
-              cardBg = "bg-[#8EDE35] text-[#181B1E] border border-[#7ECC28] shadow-xl";
-              iconWrapper = "bg-[#181B1E] text-[#8EDE35]";
-              titleColor = "text-[#181B1E]";
-              descColor = "text-[#181B1E]/80";
-              tagColor = "text-[#181B1E]/70";
-              ctaColor = "text-[#181B1E] font-bold hover:underline";
-              buttonBg = "bg-[#181B1E] text-white hover:bg-[#252824]";
-            }
+              if (isDark) {
+                cardBg = "bg-[#181B1E] text-white border border-[#2D333B] shadow-xl";
+                iconWrapper = "bg-[#8EDE35] text-[#181B1E]";
+                titleColor = "text-white";
+                descColor = "text-[#94A3B8]";
+                tagColor = "text-[#8EDE35]";
+                ctaColor = "text-[#8EDE35] hover:underline";
+                buttonBg = "bg-[#8EDE35] text-[#181B1E] hover:bg-[#7ECC28]";
+              } else if (isAccent) {
+                // Matte green accent card matching template
+                cardBg = "bg-[#8EDE35] text-[#181B1E] border border-[#7ECC28] shadow-xl";
+                iconWrapper = "bg-[#181B1E] text-[#8EDE35]";
+                titleColor = "text-[#181B1E]";
+                descColor = "text-[#181B1E]/80";
+                tagColor = "text-[#181B1E]/70";
+                ctaColor = "text-[#181B1E] font-bold hover:underline";
+                buttonBg = "bg-[#181B1E] text-white hover:bg-[#252824]";
+              }
 
-            return (
-              <div
-                key={item.id}
-                className={`${cardBg} rounded-3xl p-6 sm:p-8 lg:p-9 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl relative group overflow-hidden`}
-              >
+              return (
+                <div
+                  key={item.id}
+                  id={item.id}
+                  className={`${cardBg} scroll-mt-24 rounded-3xl p-6 sm:p-8 lg:p-9 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl relative group overflow-hidden`}
+                >
                 <div>
                   {/* Top Header: Circular Icon + Tag + Preview Button */}
                   <div className="flex items-center justify-between mb-6">
@@ -423,12 +428,14 @@ export function ServicesLayout() {
             );
           })}
         </div>
-      </section>
+      </FadeIn>
+    </section>
 
-      {/* 3. Pricing Plan Section from User Image */}
-      <section className="bg-white border-t border-[#E5E7EB] py-16 sm:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Section Header */}
+    {/* 3. Pricing Plan Section from User Image */}
+    <section id="pricing" className="bg-white border-t border-[#E5E7EB] py-16 sm:py-24 scroll-mt-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <FadeIn direction="up">
           <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-20">
             <span className="text-[#4D9218] font-mono text-xs font-semibold uppercase tracking-wider block mb-3">
               Pricing Plan
@@ -440,8 +447,10 @@ export function ServicesLayout() {
               Transparent project scopes, predictable delivery, and 100% custom source code owned entirely by your company with zero ongoing license bloat.
             </p>
           </div>
+        </FadeIn>
 
-          {/* 3 Pricing Cards */}
+        {/* 3 Pricing Cards */}
+        <FadeIn direction="up" delay={0.1}>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
             {pricingPlans.map((plan) => {
               const isDark = plan.theme === "dark";
@@ -522,8 +531,9 @@ export function ServicesLayout() {
               );
             })}
           </div>
-        </div>
-      </section>
+        </FadeIn>
+      </div>
+    </section>
 
       {/* 4. Fullscreen Lightbox Modal for Image Previews */}
       {activeModalImage && (

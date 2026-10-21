@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { FadeIn } from "@/components/MotionWrapper";
 import {
   Monitor,
   Smartphone,
@@ -171,37 +172,41 @@ export function Services() {
   ];
 
   return (
-    <section id="solutions" className="py-16 sm:py-24 bg-white border-b border-[#E5E7EB] scroll-mt-20">
+    <section id="services" className="py-16 sm:py-24 bg-white border-b border-[#E5E7EB] scroll-mt-24 relative">
+      <span id="solutions" className="absolute -top-24 opacity-0 pointer-events-none" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading matching user template */}
-        <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-20">
-          <span className="text-[#4D9218] font-bold text-xs sm:text-sm uppercase tracking-wider block mb-3 font-mono">
-            Our Services
-          </span>
-          <h2 className="text-2xl sm:text-4xl lg:text-[44px] font-extrabold tracking-tight text-[#181B1E] leading-[1.2]">
-            Our Mission Is To Make Your{" "}
-            <span className="bg-[#8EDE35] text-[#181B1E] px-3.5 py-0.5 rounded-xl inline-block shadow-xs">
-              Business
-            </span>{" "}
-            Better Through Technology
-          </h2>
-          <p className="text-sm sm:text-base text-muted max-w-2xl mx-auto mt-4 leading-relaxed">
-            We engineer bespoke software systems, mobile platforms, and automated pipelines designed around your exact operational workflows.
-          </p>
-        </div>
+        <FadeIn direction="up">
+          <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-20">
+            <span className="text-[#4D9218] font-bold text-xs sm:text-sm uppercase tracking-wider block mb-3 font-mono">
+              Our Services
+            </span>
+            <h2 className="text-2xl sm:text-4xl lg:text-[44px] font-extrabold tracking-tight text-[#181B1E] leading-[1.2]">
+              Our Mission Is To Make Your{" "}
+              <span className="bg-[#8EDE35] text-[#181B1E] px-3.5 py-0.5 rounded-xl inline-block shadow-xs">
+                Business
+              </span>{" "}
+              Better Through Technology
+            </h2>
+            <p className="text-sm sm:text-base text-muted max-w-2xl mx-auto mt-4 leading-relaxed">
+              We engineer bespoke software systems, mobile platforms, and automated pipelines designed around your exact operational workflows.
+            </p>
+          </div>
+        </FadeIn>
 
         {/* 3x2 Grid of 6 Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {services.map((item) => {
-            const Icon = item.icon;
+        <FadeIn direction="up" delay={0.1}>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {services.map((item) => {
+              const Icon = item.icon;
 
-            const isDark = item.cardTheme === "dark";
-            const isAccent = item.cardTheme === "accent";
+              const isDark = item.cardTheme === "dark";
+              const isAccent = item.cardTheme === "accent";
 
-            let cardBg = "bg-white border border-[#E5E7EB] text-[#181B1E]";
-            let iconWrapper =
-              "bg-[#F1F3F5] text-[#181B1E] border border-[#E2E8F0] group-hover:bg-[#8EDE35] group-hover:text-[#181B1E]";
-            let titleColor = "text-[#181B1E]";
+              let cardBg = "bg-white border border-[#E5E7EB] text-[#181B1E]";
+              let iconWrapper =
+                "bg-[#F1F3F5] text-[#181B1E] border border-[#E2E8F0] group-hover:bg-[#8EDE35] group-hover:text-[#181B1E]";
+              let titleColor = "text-[#181B1E]";
             let descColor = "text-[#64748B]";
             let tagColor = "text-muted";
             let ctaColor = "text-[#181B1E] hover:text-[#4D9218]";
@@ -302,8 +307,10 @@ export function Services() {
             );
           })}
         </div>
+      </FadeIn>
 
-        {/* Section Bottom Links */}
+      {/* Section Bottom Links */}
+      <FadeIn direction="up" delay={0.15}>
         <div className="mt-14 sm:mt-16 text-center flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link
             href="/services"
@@ -321,7 +328,8 @@ export function Services() {
             <ArrowUpRight className="size-4 text-[#4D9218]" />
           </Link>
         </div>
-      </div>
+      </FadeIn>
+    </div>
 
       {/* Lightbox Modal */}
       {activeModalImage && (

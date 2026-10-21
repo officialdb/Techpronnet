@@ -1,7 +1,7 @@
 "use client";
 
 import { ReactNode } from "react";
-import { motion, HTMLMotionProps } from "framer-motion";
+import { motion, HTMLMotionProps, useReducedMotion } from "framer-motion";
 
 interface FadeInProps extends HTMLMotionProps<"div"> {
   children: ReactNode;
@@ -9,17 +9,24 @@ interface FadeInProps extends HTMLMotionProps<"div"> {
   duration?: number;
   direction?: "up" | "down" | "left" | "right" | "none";
   className?: string;
+  amount?: number | "some" | "all";
 }
 
 export function FadeIn({
   children,
   delay = 0,
-  duration = 0.5,
+  duration = 0.45,
   direction = "up",
   className = "",
+  amount = 0.15,
   ...props
 }: FadeInProps) {
+  const shouldReduceMotion = useReducedMotion();
+
   const getInitialPosition = () => {
+    if (shouldReduceMotion) {
+      return { opacity: 1, x: 0, y: 0 };
+    }
     switch (direction) {
       case "up":
         return { opacity: 0, y: 16 };
@@ -31,18 +38,18 @@ export function FadeIn({
         return { opacity: 0, x: -12 };
       case "none":
       default:
-        return { opacity: 0 };
+        return { opacity: 0, x: 0, y: 0 };
     }
   };
 
   return (
     <motion.div
-      initial={getInitialPosition()}
+      initial={shouldReduceMotion ? false : getInitialPosition()}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
-      viewport={{ once: true }}
+      viewport={{ once: true, amount }}
       transition={{
-        duration,
-        delay,
+        duration: shouldReduceMotion ? 0 : duration,
+        delay: shouldReduceMotion ? 0 : delay,
         ease: [0.21, 0.47, 0.32, 0.98],
       }}
       className={className}
@@ -56,22 +63,26 @@ export function FadeIn({
 export function StaggerContainer({
   children,
   className = "",
-  staggerDelay = 0.1,
+  staggerDelay = 0.08,
+  amount = 0.15,
 }: {
   children: ReactNode;
   className?: string;
   staggerDelay?: number;
+  amount?: number | "some" | "all";
 }) {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <motion.div
-      initial="hidden"
+      initial={shouldReduceMotion ? false : "hidden"}
       whileInView="show"
-      viewport={{ once: true }}
+      viewport={{ once: true, amount }}
       variants={{
         hidden: {},
         show: {
           transition: {
-            staggerChildren: staggerDelay,
+            staggerChildren: shouldReduceMotion ? 0 : staggerDelay,
           },
         },
       }}
@@ -89,15 +100,19 @@ export function StaggerItem({
   children: ReactNode;
   className?: string;
 }) {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <motion.div
       variants={{
-        hidden: { opacity: 0, y: 20 },
+        hidden: shouldReduceMotion
+          ? { opacity: 1, y: 0 }
+          : { opacity: 0, y: 16 },
         show: {
           opacity: 1,
           y: 0,
           transition: {
-            duration: 0.45,
+            duration: shouldReduceMotion ? 0 : 0.45,
             ease: [0.21, 0.47, 0.32, 0.98],
           },
         },
@@ -108,3 +123,4 @@ export function StaggerItem({
     </motion.div>
   );
 }
+

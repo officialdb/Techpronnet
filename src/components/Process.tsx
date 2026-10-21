@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { Flag, Code2, PackageCheck } from "lucide-react";
+import { FadeIn } from "@/components/MotionWrapper";
 
 export function Process() {
   const [activeStep, setActiveStep] = useState<number>(2);
@@ -40,54 +41,56 @@ export function Process() {
   ];
 
   return (
-    <section id="process" className="py-20 sm:py-28 bg-[#FAF9F6] border-b border-[#E5E7EB] scroll-mt-20 overflow-hidden">
+    <section id="process" className="py-20 sm:py-28 bg-[#FAF9F6] border-b border-[#E5E7EB] scroll-mt-24 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* 1. Section Header matching reference image */}
-        <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
-          <div className="inline-flex items-center justify-center gap-2.5 mb-3">
-            <span className="w-6 h-0.5 bg-[#8EDE35] rounded-full" />
-            <span className="text-[#4D9218] font-mono text-xs font-semibold uppercase tracking-widest">
-              How We Deliver
-            </span>
-            <span className="w-6 h-0.5 bg-[#8EDE35] rounded-full" />
-          </div>
+        <FadeIn direction="up">
+          <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
+            <div className="inline-flex items-center justify-center gap-2.5 mb-3">
+              <span className="w-6 h-0.5 bg-[#8EDE35] rounded-full" />
+              <span className="text-[#4D9218] font-mono text-xs font-semibold uppercase tracking-widest">
+                How We Deliver
+              </span>
+              <span className="w-6 h-0.5 bg-[#8EDE35] rounded-full" />
+            </div>
 
-          <h2 className="text-2xl sm:text-4xl lg:text-[52px] font-extrabold tracking-tight text-[#181B1E] leading-[1.12]">
-            A Clear Process. No Unnecessary{" "}
-            <span className="bg-[#8EDE35] text-[#181B1E] px-3.5 py-0.5 rounded-xl inline-block shadow-xs">
-              Complexity.
-            </span>
-          </h2>
-          <p className="mt-4 sm:mt-5 text-sm sm:text-base text-muted max-w-2xl mx-auto leading-relaxed">
-            Every deployment follows a transparent, disciplined execution wave from discovery to post-launch warranties.
-          </p>
-        </div>
+            <h2 className="text-2xl sm:text-4xl lg:text-[52px] font-extrabold tracking-tight text-[#181B1E] leading-[1.12]">
+              A Clear Process. No Unnecessary{" "}
+              <span className="bg-[#8EDE35] text-[#181B1E] px-3.5 py-0.5 rounded-xl inline-block shadow-xs">
+                Complexity.
+              </span>
+            </h2>
+            <p className="mt-4 sm:mt-5 text-sm sm:text-base text-muted max-w-2xl mx-auto leading-relaxed">
+              Every deployment follows a transparent, disciplined execution wave from discovery to post-launch warranties.
+            </p>
+          </div>
+        </FadeIn>
 
         {/* 2. Desktop Undulating Wave Flow (Screens >= lg) */}
-        <div className="hidden lg:block relative w-full h-[620px] select-none">
+        <FadeIn direction="up" delay={0.1} className="hidden lg:block relative w-full h-[620px] select-none">
           {/* Continuous Smooth Fluid Bezier Wave SVG Line */}
-          <svg
-            className="w-full h-full absolute inset-0 pointer-events-none"
-            viewBox="0 0 1000 500"
-            preserveAspectRatio="none"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            {/* Subtle soft backdrop curve */}
-            <path
-              d="M 40 330 C 90 335, 130 340, 180 340 C 290 340, 380 140, 500 140 C 590 140, 650 260, 710 260 C 750 260, 780 220, 820 220 C 860 220, 910 230, 960 235"
-              stroke="#E5E7EB"
-              strokeWidth="6"
-              strokeLinecap="round"
-            />
-            {/* Foreground Brand Flow Line */}
-            <path
-              d="M 40 330 C 90 335, 130 340, 180 340 C 290 340, 380 140, 500 140 C 590 140, 650 260, 710 260 C 750 260, 780 220, 820 220 C 860 220, 910 230, 960 235"
-              stroke="#181B1E"
-              strokeWidth="3.5"
-              strokeLinecap="round"
-            />
-          </svg>
+            <svg
+              className="w-full h-full absolute inset-0 pointer-events-none"
+              viewBox="0 0 1000 500"
+              preserveAspectRatio="none"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              {/* Subtle soft backdrop curve */}
+              <path
+                d="M 40 330 C 90 335, 130 340, 180 340 C 290 340, 380 140, 500 140 C 590 140, 650 260, 710 260 C 750 260, 780 220, 820 220 C 860 220, 910 230, 960 235"
+                stroke="#E5E7EB"
+                strokeWidth="6"
+                strokeLinecap="round"
+              />
+              {/* Foreground Brand Flow Line */}
+              <path
+                d="M 40 330 C 90 335, 130 340, 180 340 C 290 340, 380 140, 500 140 C 590 140, 650 260, 710 260 C 750 260, 780 220, 820 220 C 860 220, 910 230, 960 235"
+                stroke="#181B1E"
+                strokeWidth="3.5"
+                strokeLinecap="round"
+              />
+            </svg>
 
           {/* STEP 1: Content Block (Positioned ABOVE Node 1) */}
           <div className="absolute top-[6%] left-[5%] w-[30%] z-10 group">
@@ -185,51 +188,53 @@ export function Process() {
               </span>
             </div>
           </div>
-        </div>
+        </FadeIn>
 
         {/* 3. Mobile Responsive Vertical Flow (Screens < lg) */}
-        <div className="block lg:hidden relative pl-6 sm:pl-8 space-y-10 border-l-2 border-[#181B1E] ml-6 sm:ml-8 my-8">
-          {steps.map((s) => {
-            const Icon = s.icon;
-            const isDark = s.theme === "dark";
+        <FadeIn direction="up" delay={0.1} className="block lg:hidden">
+          <div className="relative pl-6 sm:pl-8 space-y-10 border-l-2 border-[#181B1E] ml-6 sm:ml-8 my-8">
+            {steps.map((s) => {
+              const Icon = s.icon;
+              const isDark = s.theme === "dark";
 
-            return (
-              <div key={s.num} className="relative pl-4 sm:pl-6">
-                {/* Floating Node on Vertical Line */}
-                <div className="absolute -left-[35px] sm:-left-[39px] top-0">
-                  <div
-                    className={`size-11 sm:size-12 rounded-xl flex items-center justify-center shadow-md border ${
-                      isDark
-                        ? "bg-[#181B1E] text-[#8EDE35] border-[#2D333B]"
-                        : "bg-white text-[#181B1E] border-[#E5E7EB]"
-                    }`}
-                  >
-                    <Icon className="size-5" />
-                  </div>
-                </div>
-
-                <div className="bg-white border border-[#E5E7EB] rounded-2xl p-6 shadow-xs relative overflow-hidden">
-                  <div className="flex items-start justify-between gap-3">
-                    <div>
-                      <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#4D9218] block mb-1">
-                        {s.tag}
-                      </span>
-                      <h3 className="text-lg font-bold text-[#181B1E] mb-2">
-                        {s.title}
-                      </h3>
-                      <p className="text-xs sm:text-sm text-muted leading-relaxed">
-                        {s.description}
-                      </p>
+              return (
+                <div key={s.num} className="relative pl-4 sm:pl-6">
+                  {/* Floating Node on Vertical Line */}
+                  <div className="absolute -left-[35px] sm:-left-[39px] top-0">
+                    <div
+                      className={`size-11 sm:size-12 rounded-xl flex items-center justify-center shadow-md border ${
+                        isDark
+                          ? "bg-[#181B1E] text-[#8EDE35] border-[#2D333B]"
+                          : "bg-white text-[#181B1E] border-[#E5E7EB]"
+                      }`}
+                    >
+                      <Icon className="size-5" />
                     </div>
-                    <span className="text-5xl font-black font-mono text-gray-200 select-none shrink-0 leading-none">
-                      {s.num}
-                    </span>
+                  </div>
+
+                  <div className="bg-white border border-[#E5E7EB] rounded-2xl p-6 shadow-xs relative overflow-hidden">
+                    <div className="flex items-start justify-between gap-3">
+                      <div>
+                        <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#4D9218] block mb-1">
+                          {s.tag}
+                        </span>
+                        <h3 className="text-lg font-bold text-[#181B1E] mb-2">
+                          {s.title}
+                        </h3>
+                        <p className="text-xs sm:text-sm text-muted leading-relaxed">
+                          {s.description}
+                        </p>
+                      </div>
+                      <span className="text-5xl font-black font-mono text-gray-200 select-none shrink-0 leading-none">
+                        {s.num}
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
+        </FadeIn>
       </div>
     </section>
   );

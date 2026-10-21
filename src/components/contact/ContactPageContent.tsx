@@ -17,6 +17,7 @@ import {
   Zap,
 } from "lucide-react";
 import { ContactForm } from "@/components/ContactForm";
+import { FadeIn } from "@/components/MotionWrapper";
 
 export function ContactPageContent() {
   const nextSteps = [
@@ -78,7 +79,7 @@ export function ContactPageContent() {
             <rect width="100%" height="100%" fill="url(#circuit-pattern-contact)" />
           </svg>
 
-          <div className="relative z-10">
+          <FadeIn direction="up" className="relative z-10">
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#181B1E]">
               Contact Us
             </h1>
@@ -89,7 +90,7 @@ export function ContactPageContent() {
               <ChevronRight className="size-3.5 opacity-60" />
               <span className="font-semibold text-[#181B1E]">Contact</span>
             </div>
-          </div>
+          </FadeIn>
         </div>
       </section>
 
@@ -97,7 +98,7 @@ export function ContactPageContent() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 lg:py-24">
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-start">
           {/* Left Column: Direct Communication Channels & Trust Guarantees */}
-          <div className="lg:col-span-5 space-y-8">
+          <FadeIn direction="up" className="lg:col-span-5 space-y-8">
             <div>
               <span className="text-[#4D9218] font-mono text-xs font-semibold uppercase tracking-wider block mb-3">
                 Start A Conversation
@@ -225,10 +226,10 @@ export function ContactPageContent() {
                 </div>
               </div>
             </div>
-          </div>
+          </FadeIn>
 
           {/* Right Column: Neon-Backed Contact Form */}
-          <div className="lg:col-span-7 bg-white border border-[#E5E7EB] rounded-3xl p-5 sm:p-8 lg:p-10 shadow-sm">
+          <FadeIn direction="up" delay={0.1} className="lg:col-span-7 bg-white border border-[#E5E7EB] rounded-3xl p-5 sm:p-8 lg:p-10 shadow-sm">
             <div className="mb-6 pb-6 border-b border-[#E5E7EB]">
               <h3 className="text-xl sm:text-2xl font-bold text-[#181B1E] tracking-tight">
                 Submit A Project Enquiry
@@ -238,53 +239,57 @@ export function ContactPageContent() {
               </p>
             </div>
             <ContactForm />
-          </div>
+          </FadeIn>
         </div>
       </section>
 
       {/* 3. What Happens Next: 3-Stage Process */}
       <section className="bg-white border-t border-[#E5E7EB] py-16 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl mb-12 sm:mb-16">
-            <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#4D9218] block mb-3">
-              Clear &amp; Predictable Process
-            </span>
-            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#181B1E]">
-              What happens after you enquire?
-            </h2>
-            <p className="mt-4 text-sm sm:text-base text-muted leading-relaxed">
-              We respect your time. Here is the straightforward process from initial enquiry to active software development.
-            </p>
-          </div>
+          <FadeIn direction="up">
+            <div className="max-w-2xl mb-12 sm:mb-16">
+              <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#4D9218] block mb-3">
+                Clear &amp; Predictable Process
+              </span>
+              <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#181B1E]">
+                What happens after you enquire?
+              </h2>
+              <p className="mt-4 text-sm sm:text-base text-muted leading-relaxed">
+                We respect your time. Here is the straightforward process from initial enquiry to active software development.
+              </p>
+            </div>
+          </FadeIn>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {nextSteps.map((step) => {
-              const StepIcon = step.icon;
-              return (
-                <div
-                  key={step.num}
-                  className="bg-[#FAF9F6] border border-[#E5E7EB] rounded-2xl p-6 sm:p-8 flex flex-col justify-between hover:border-[#8EDE35] transition-all"
-                >
-                  <div>
-                    <div className="flex items-center justify-between mb-6">
-                      <div className="size-11 rounded-xl bg-[#181B1E] text-[#8EDE35] flex items-center justify-center">
-                        <StepIcon className="size-5" />
+          <FadeIn direction="up" delay={0.1}>
+            <div className="grid md:grid-cols-3 gap-8">
+              {nextSteps.map((step) => {
+                const StepIcon = step.icon;
+                return (
+                  <div
+                    key={step.num}
+                    className="bg-[#FAF9F6] border border-[#E5E7EB] rounded-2xl p-6 sm:p-8 flex flex-col justify-between hover:border-[#8EDE35] transition-all"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between mb-6">
+                        <div className="size-11 rounded-xl bg-[#181B1E] text-[#8EDE35] flex items-center justify-center">
+                          <StepIcon className="size-5" />
+                        </div>
+                        <span className="font-mono text-xs font-bold text-[#4D9218] bg-white border border-[#E5E7EB] px-2.5 py-1 rounded-lg">
+                          STEP {step.num}
+                        </span>
                       </div>
-                      <span className="font-mono text-xs font-bold text-[#4D9218] bg-white border border-[#E5E7EB] px-2.5 py-1 rounded-lg">
-                        STEP {step.num}
-                      </span>
+                      <h3 className="text-lg sm:text-xl font-bold tracking-tight text-[#181B1E] mb-3">
+                        {step.title}
+                      </h3>
+                      <p className="text-xs sm:text-sm text-muted leading-relaxed">
+                        {step.description}
+                      </p>
                     </div>
-                    <h3 className="text-lg sm:text-xl font-bold tracking-tight text-[#181B1E] mb-3">
-                      {step.title}
-                    </h3>
-                    <p className="text-xs sm:text-sm text-muted leading-relaxed">
-                      {step.description}
-                    </p>
                   </div>
-                </div>
-              );
-            })}
-          </div>
+                );
+              })}
+            </div>
+          </FadeIn>
         </div>
       </section>
     </div>

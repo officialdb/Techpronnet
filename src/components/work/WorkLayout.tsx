@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { FadeIn } from "@/components/MotionWrapper";
 import {
   Scale,
   Activity,
@@ -205,7 +206,7 @@ export function WorkLayout() {
             <rect width="100%" height="100%" fill="url(#circuit-pattern-work)" />
           </svg>
 
-          <div className="relative z-10">
+          <FadeIn direction="up" className="relative z-10">
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#181B1E]">
               Our Work
             </h1>
@@ -216,43 +217,45 @@ export function WorkLayout() {
               <ChevronRight className="size-3.5 opacity-60" />
               <span className="font-semibold text-[#181B1E]">Our Work</span>
             </div>
-          </div>
+          </FadeIn>
         </div>
       </section>
 
       {/* 2. Main Section Header & Sector Jump Pills */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-20 pb-10">
-        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
-          <span className="text-[#4D9218] font-mono text-xs font-semibold uppercase tracking-wider block mb-3">
-            Case Studies &amp; Systems
-          </span>
-          <h2 className="text-2xl sm:text-4xl lg:text-[44px] font-extrabold tracking-tight text-[#181B1E] leading-tight">
-            Proven Systems Delivered For Real{" "}
-            <span className="bg-[#8EDE35] text-[#181B1E] px-3 py-0.5 rounded-md inline-block shadow-xs">
-              Business
-            </span>{" "}
-            Impact
-          </h2>
-          <p className="text-sm sm:text-base text-muted max-w-2xl mx-auto mt-4 leading-relaxed">
-            Explore live production platforms, hospital systems, legal portals, and logistics dispatch consoles engineered by Techpronnet Technologies since 2019. Click any screenshot to view in full resolution.
-          </p>
-        </div>
+        <FadeIn direction="up">
+          <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
+            <span className="text-[#4D9218] font-mono text-xs font-semibold uppercase tracking-wider block mb-3">
+              Case Studies &amp; Systems
+            </span>
+            <h2 className="text-2xl sm:text-4xl lg:text-[44px] font-extrabold tracking-tight text-[#181B1E] leading-tight">
+              Proven Systems Delivered For Real{" "}
+              <span className="bg-[#8EDE35] text-[#181B1E] px-3 py-0.5 rounded-md inline-block shadow-xs">
+                Business
+              </span>{" "}
+              Impact
+            </h2>
+            <p className="text-sm sm:text-base text-muted max-w-2xl mx-auto mt-4 leading-relaxed">
+              Explore live production platforms, hospital systems, legal portals, and logistics dispatch consoles engineered by Techpronnet Technologies since 2019. Click any screenshot to view in full resolution.
+            </p>
+          </div>
 
-        {/* Quick Anchor Jump Strip */}
-        <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 text-xs font-mono">
-          <span className="text-muted text-[11px] uppercase tracking-wider mr-1">
-            Jump to case:
-          </span>
-          {caseStudies.map((item) => (
-            <a
-              key={item.id}
-              href={`#${item.id}`}
-              className="px-3.5 py-1.5 rounded-full bg-white border border-[#E5E7EB] text-[#181B1E] hover:border-[#181B1E] hover:bg-[#F3F4F6] transition-all text-[11px] font-medium"
-            >
-              {item.num}. {item.client.split("/")[0].trim()}
-            </a>
-          ))}
-        </div>
+          {/* Quick Anchor Jump Strip */}
+          <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 text-xs font-mono">
+            <span className="text-muted text-[11px] uppercase tracking-wider mr-1">
+              Jump to case:
+            </span>
+            {caseStudies.map((item) => (
+              <a
+                key={item.id}
+                href={`#${item.id}`}
+                className="px-3.5 py-1.5 rounded-full bg-white border border-[#E5E7EB] text-[#181B1E] hover:border-[#181B1E] hover:bg-[#F3F4F6] transition-all text-[11px] font-medium"
+              >
+                {item.num}. {item.client.split("/")[0].trim()}
+              </a>
+            ))}
+          </div>
+        </FadeIn>
       </section>
 
       {/* 3. Case Studies Showcase Cards */}
@@ -263,11 +266,11 @@ export function WorkLayout() {
             const isEven = idx % 2 === 1;
 
             return (
-              <div
-                key={project.id}
-                id={project.id}
-                className="scroll-mt-24 rounded-3xl bg-white border border-[#E5E7EB] shadow-md hover:shadow-xl transition-all duration-300 p-5 sm:p-8 lg:p-12 relative overflow-hidden group"
-              >
+              <FadeIn key={project.id} direction="up">
+                <div
+                  id={project.id}
+                  className="scroll-mt-24 rounded-3xl bg-white border border-[#E5E7EB] shadow-md hover:shadow-xl transition-all duration-300 p-5 sm:p-8 lg:p-12 relative overflow-hidden group"
+                >
                 {/* Card Top Strip */}
                 <div className="flex flex-wrap items-center justify-between gap-4 pb-6 mb-8 border-b border-[#E5E7EB]">
                   <div className="flex items-center gap-3">
@@ -425,113 +428,120 @@ export function WorkLayout() {
                   </div>
                 </div>
               </div>
-            );
-          })}
+            </FadeIn>
+          );
+        })}
         </div>
       </section>
 
       {/* 4. Engineering Standards & Technology Foundation */}
       <section className="bg-white border-t border-[#E5E7EB] py-16 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-14">
-            <span className="text-[#4D9218] font-mono text-xs font-semibold uppercase tracking-wider block mb-3">
-              Engineering Architecture
-            </span>
-            <h2 className="text-2xl sm:text-4xl lg:text-[42px] font-extrabold tracking-tight text-[#181B1E] leading-tight">
-              The Technology Foundation Behind Every Deployment
-            </h2>
-            <p className="text-sm sm:text-base text-muted max-w-2xl mx-auto mt-4 leading-relaxed">
-              Every system we deliver is engineered with modern serverless architecture, strict type safety, and clean operational seams.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-[#FAF9F6] border border-[#E5E7EB] rounded-3xl p-6 sm:p-8 hover:border-[#8EDE35] transition-all">
-              <div className="size-12 rounded-full bg-[#181B1E] text-[#8EDE35] flex items-center justify-center mb-6">
-                <Database className="size-5" />
-              </div>
-              <h3 className="text-xl font-bold text-[#181B1E] mb-2.5">
-                Neon Serverless Postgres
-              </h3>
-              <p className="text-sm text-muted leading-relaxed">
-                Dedicated connection pooling, sub-30ms global query execution, automated daily backups, and point-in-time recovery.
+          <FadeIn direction="up">
+            <div className="text-center max-w-3xl mx-auto mb-14">
+              <span className="text-[#4D9218] font-mono text-xs font-semibold uppercase tracking-wider block mb-3">
+                Engineering Architecture
+              </span>
+              <h2 className="text-2xl sm:text-4xl lg:text-[42px] font-extrabold tracking-tight text-[#181B1E] leading-tight">
+                The Technology Foundation Behind Every Deployment
+              </h2>
+              <p className="text-sm sm:text-base text-muted max-w-2xl mx-auto mt-4 leading-relaxed">
+                Every system we deliver is engineered with modern serverless architecture, strict type safety, and clean operational seams.
               </p>
             </div>
+          </FadeIn>
 
-            <div className="bg-[#FAF9F6] border border-[#E5E7EB] rounded-3xl p-6 sm:p-8 hover:border-[#8EDE35] transition-all">
-              <div className="size-12 rounded-full bg-[#181B1E] text-[#8EDE35] flex items-center justify-center mb-6">
-                <Code2 className="size-5" />
+          <FadeIn direction="up" delay={0.1}>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="bg-[#FAF9F6] border border-[#E5E7EB] rounded-3xl p-6 sm:p-8 hover:border-[#8EDE35] transition-all">
+                <div className="size-12 rounded-full bg-[#181B1E] text-[#8EDE35] flex items-center justify-center mb-6">
+                  <Database className="size-5" />
+                </div>
+                <h3 className="text-xl font-bold text-[#181B1E] mb-2.5">
+                  Neon Serverless Postgres
+                </h3>
+                <p className="text-sm text-muted leading-relaxed">
+                  Dedicated connection pooling, sub-30ms global query execution, automated daily backups, and point-in-time recovery.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-[#181B1E] mb-2.5">
-                Next.js 16 SSR &amp; RSC
-              </h3>
-              <p className="text-sm text-muted leading-relaxed">
-                Server components, zero-bundle streaming, and high-performance SEO page structures loading under 1 second worldwide.
-              </p>
-            </div>
 
-            <div className="bg-[#FAF9F6] border border-[#E5E7EB] rounded-3xl p-6 sm:p-8 hover:border-[#8EDE35] transition-all">
-              <div className="size-12 rounded-full bg-[#181B1E] text-[#8EDE35] flex items-center justify-center mb-6">
-                <ShieldCheck className="size-5" />
+              <div className="bg-[#FAF9F6] border border-[#E5E7EB] rounded-3xl p-6 sm:p-8 hover:border-[#8EDE35] transition-all">
+                <div className="size-12 rounded-full bg-[#181B1E] text-[#8EDE35] flex items-center justify-center mb-6">
+                  <Code2 className="size-5" />
+                </div>
+                <h3 className="text-xl font-bold text-[#181B1E] mb-2.5">
+                  Next.js 16 SSR &amp; RSC
+                </h3>
+                <p className="text-sm text-muted leading-relaxed">
+                  Server components, zero-bundle streaming, and high-performance SEO page structures loading under 1 second worldwide.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-[#181B1E] mb-2.5">
-                Zero-Vendor Lock-In
-              </h3>
-              <p className="text-sm text-muted leading-relaxed">
-                100% bespoke source code owned entirely by your business. No proprietary SaaS theme restrictions or monthly recurring software tax.
-              </p>
+
+              <div className="bg-[#FAF9F6] border border-[#E5E7EB] rounded-3xl p-6 sm:p-8 hover:border-[#8EDE35] transition-all">
+                <div className="size-12 rounded-full bg-[#181B1E] text-[#8EDE35] flex items-center justify-center mb-6">
+                  <ShieldCheck className="size-5" />
+                </div>
+                <h3 className="text-xl font-bold text-[#181B1E] mb-2.5">
+                  Zero-Vendor Lock-In
+                </h3>
+                <p className="text-sm text-muted leading-relaxed">
+                  100% bespoke source code owned entirely by your business. No proprietary SaaS theme restrictions or monthly recurring software tax.
+                </p>
+              </div>
             </div>
-          </div>
+          </FadeIn>
         </div>
       </section>
 
       {/* 5. Closing Project Inquiry Call-To-Action (Matte Green, No Glowing Blur) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
-        <div className="relative rounded-3xl bg-[#181B1E] text-white p-6 sm:p-10 lg:p-16 shadow-xl overflow-hidden border border-[#2D333B]">
-          {/* Note: NO radial blur or glow layer here! Pure matte finish */}
-          <div className="relative z-10 grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            <div className="lg:col-span-8">
-              <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#8EDE35] block mb-3">
-                Initiate A Project
-              </span>
-              <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
-                Ready to build your next digital platform?
-              </h2>
-              <p className="mt-4 sm:mt-5 text-sm sm:text-base text-gray-300 leading-relaxed max-w-2xl">
-                Whether you need to replace manual spreadsheets, deploy a confidential client intake portal, or architect an operations console, we provide upfront feasibility evaluations and reliable execution.
-              </p>
+        <FadeIn direction="up">
+          <div className="relative rounded-3xl bg-[#181B1E] text-white p-6 sm:p-10 lg:p-16 shadow-xl overflow-hidden border border-[#2D333B]">
+            {/* Note: NO radial blur or glow layer here! Pure matte finish */}
+            <div className="relative z-10 grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+              <div className="lg:col-span-8">
+                <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#8EDE35] block mb-3">
+                  Initiate A Project
+                </span>
+                <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
+                  Ready to build your next digital platform?
+                </h2>
+                <p className="mt-4 sm:mt-5 text-sm sm:text-base text-gray-300 leading-relaxed max-w-2xl">
+                  Whether you need to replace manual spreadsheets, deploy a confidential client intake portal, or architect an operations console, we provide upfront feasibility evaluations and reliable execution.
+                </p>
 
-              <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3 text-xs text-gray-400 font-mono">
-                <span className="flex items-center gap-2">
-                  <Clock className="size-4 text-[#8EDE35] shrink-0" />
-                  <span>Direct response within 24 business hours</span>
-                </span>
-                <span className="flex items-center gap-2">
-                  <ShieldCheck className="size-4 text-[#8EDE35] shrink-0" />
-                  <span>No-obligation scope &amp; architecture review</span>
-                </span>
+                <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3 text-xs text-gray-400 font-mono">
+                  <span className="flex items-center gap-2">
+                    <Clock className="size-4 text-[#8EDE35] shrink-0" />
+                    <span>Direct response within 24 business hours</span>
+                  </span>
+                  <span className="flex items-center gap-2">
+                    <ShieldCheck className="size-4 text-[#8EDE35] shrink-0" />
+                    <span>No-obligation scope &amp; architecture review</span>
+                  </span>
+                </div>
+              </div>
+
+              <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3.5 lg:items-end">
+                <Link
+                  href="/#contact"
+                  className="inline-flex items-center justify-center gap-2.5 bg-[#8EDE35] text-[#181B1E] font-bold px-8 py-4 rounded-xl text-sm hover:bg-[#7ECC28] transition-colors shadow-sm text-center w-full sm:w-auto"
+                >
+                  <span>Tell Us About Your Project</span>
+                  <ArrowRight className="size-4" />
+                </Link>
+
+                <Link
+                  href="/services"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl border border-white/20 bg-white/5 hover:bg-white/10 text-white text-xs font-mono font-medium transition-colors text-center w-full sm:w-auto"
+                >
+                  <span>Explore Services &amp; Pricing</span>
+                  <ArrowUpRight className="size-3.5" />
+                </Link>
               </div>
             </div>
-
-            <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3.5 lg:items-end">
-              <Link
-                href="/#contact"
-                className="inline-flex items-center justify-center gap-2.5 bg-[#8EDE35] text-[#181B1E] font-bold px-8 py-4 rounded-xl text-sm hover:bg-[#7ECC28] transition-colors shadow-sm text-center w-full sm:w-auto"
-              >
-                <span>Tell Us About Your Project</span>
-                <ArrowRight className="size-4" />
-              </Link>
-
-              <Link
-                href="/services"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl border border-white/20 bg-white/5 hover:bg-white/10 text-white text-xs font-mono font-medium transition-colors text-center w-full sm:w-auto"
-              >
-                <span>Explore Services &amp; Pricing</span>
-                <ArrowUpRight className="size-3.5" />
-              </Link>
-            </div>
           </div>
-        </div>
+        </FadeIn>
       </section>
 
       {/* 6. Fullscreen Screenshot Lightbox Modal */}

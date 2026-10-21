@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { FadeIn } from "@/components/MotionWrapper";
 import {
   ChevronRight,
   ArrowRight,
@@ -204,7 +205,7 @@ export function FaqsPageContent() {
             <rect width="100%" height="100%" fill="url(#circuit-pattern-faqs)" />
           </svg>
 
-          <div className="relative z-10">
+          <FadeIn direction="up" className="relative z-10">
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#181B1E]">
               Frequently Asked Questions
             </h1>
@@ -215,33 +216,34 @@ export function FaqsPageContent() {
               <ChevronRight className="size-3.5 opacity-60" />
               <span className="font-semibold text-[#181B1E]">FAQs</span>
             </div>
-          </div>
+          </FadeIn>
         </div>
       </section>
 
       {/* 2. Main FAQ Filter & Accordion Section (NO CARDS - Generous typographic spacing) */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 lg:py-24">
+      <section id="faqs" className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 lg:py-24 scroll-mt-24">
         {/* Section Intro & Live Search */}
-        <div className="mb-12 sm:mb-16 space-y-6">
-          <div>
-            <span className="text-[#4D9218] font-mono text-xs font-semibold uppercase tracking-wider block mb-3">
-              Answers &amp; Technical Clarifications
-            </span>
-            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#181B1E] leading-tight">
-              Everything you need to know about our engineering standard.
-            </h2>
-            <p className="mt-4 text-sm sm:text-base text-muted leading-relaxed">
-              Find transparent answers regarding how we estimate project costs, safeguard your intellectual property, architect reliable serverless databases, and manage ongoing production support.
-            </p>
-          </div>
+        <FadeIn direction="up">
+          <div className="mb-12 sm:mb-16 space-y-6">
+            <div>
+              <span className="text-[#4D9218] font-mono text-xs font-semibold uppercase tracking-wider block mb-3">
+                Answers &amp; Technical Clarifications
+              </span>
+              <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#181B1E] leading-tight">
+                Everything you need to know about our engineering standard.
+              </h2>
+              <p className="mt-4 text-sm sm:text-base text-muted leading-relaxed">
+                Find transparent answers regarding how we estimate project costs, safeguard your intellectual property, architect reliable serverless databases, and manage ongoing production support.
+              </p>
+            </div>
 
-          {/* Search Input */}
-          <div className="relative max-w-xl">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 size-4 text-muted pointer-events-none" />
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+            {/* Search Input */}
+            <div className="relative max-w-xl">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 size-4 text-muted pointer-events-none" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search questions (e.g. Postgres, ownership, pricing, timeline)..."
               className="w-full bg-white border border-[#E5E7EB] rounded-2xl pl-11 pr-4 py-3.5 text-sm text-[#181B1E] placeholder:text-muted/60 focus:border-[#8EDE35] focus:outline-none focus:ring-2 focus:ring-[#8EDE35]/25 transition-all shadow-xs"
             />
@@ -274,8 +276,10 @@ export function FaqsPageContent() {
             ))}
           </div>
         </div>
+      </FadeIn>
 
-        {/* Accordion Component (Radix UI / shadcn with Clean Dividers) */}
+      {/* Accordion Component (Radix UI / shadcn with Clean Dividers) */}
+      <FadeIn direction="up" delay={0.08}>
         {filteredFaqs.length === 0 ? (
           <div className="py-16 text-center border-t border-b border-[#E5E7EB] text-muted space-y-3">
             <HelpCircle className="size-8 mx-auto text-muted/60" />
@@ -312,11 +316,13 @@ export function FaqsPageContent() {
             ))}
           </Accordion>
         )}
-      </section>
+      </FadeIn>
+    </section>
 
-      {/* 3. Bottom Direct Engineering Consultation */}
-      <section className="bg-white border-t border-[#E5E7EB] py-16 sm:py-24">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    {/* 3. Bottom Direct Engineering Consultation */}
+    <section className="bg-white border-t border-[#E5E7EB] py-16 sm:py-24">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <FadeIn direction="up">
           <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#4D9218] block mb-3">
             Direct Technical Answers
           </span>
@@ -344,8 +350,9 @@ export function FaqsPageContent() {
               <span>Instant WhatsApp Inquiry (+234 706 265 4567)</span>
             </a>
           </div>
-        </div>
-      </section>
+        </FadeIn>
+      </div>
+    </section>
     </div>
   );
 }

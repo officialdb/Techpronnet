@@ -1,13 +1,14 @@
 import { ContactForm } from "./ContactForm";
 import { Clock, ShieldCheck, Mail, MapPin } from "lucide-react";
+import { FadeIn } from "@/components/MotionWrapper";
 
 export function ContactSection() {
   return (
-    <section id="contact" className="bg-[#FAF9F6] border-b border-[#E5E7EB] py-16 sm:py-24 scroll-mt-10">
+    <section id="contact" className="bg-[#FAF9F6] border-b border-[#E5E7EB] py-16 sm:py-24 scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Left Intro Column */}
-          <div className="lg:col-span-5">
+          <FadeIn direction="up" className="lg:col-span-5">
             <span className="text-[#4D9218] font-mono text-xs font-semibold uppercase tracking-wider block mb-3">
               Start A Conversation
             </span>
@@ -89,12 +90,12 @@ export function ContactSection() {
                 </div>
               </div>
             </div>
-          </div>
+          </FadeIn>
 
           {/* Right Form Column */}
-          <div className="lg:col-span-7 bg-white border border-[#E5E7EB] rounded-3xl p-5 sm:p-8 lg:p-10 shadow-sm">
+          <FadeIn direction="up" delay={0.1} className="lg:col-span-7 bg-white border border-[#E5E7EB] rounded-3xl p-5 sm:p-8 lg:p-10 shadow-sm">
             <ContactForm />
-          </div>
+          </FadeIn>
         </div>
       </div>
     </section>
