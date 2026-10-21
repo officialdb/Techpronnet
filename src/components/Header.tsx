@@ -33,7 +33,7 @@ export function Header() {
         </Link>
 
         {/* Desktop Navigation Links */}
-        <div className="hidden lg:flex items-center gap-7 text-sm text-muted">
+        <div className="hidden lg:flex items-center gap-8 text-sm text-muted">
           <Link
             href="/services"
             className="hover:text-[#4D9218] font-medium transition-colors"
@@ -45,12 +45,6 @@ export function Header() {
             className="hover:text-[#4D9218] font-medium transition-colors"
           >
             Our Work
-          </Link>
-          <Link
-            href="/testimonials"
-            className="hover:text-[#4D9218] font-medium transition-colors"
-          >
-            Testimonials
           </Link>
           <Link
             href="/faqs"
@@ -115,13 +109,6 @@ export function Header() {
               className="px-3 py-2.5 hover:bg-sand transition-colors"
             >
               Our Work
-            </Link>
-            <Link
-              href="/testimonials"
-              onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2.5 hover:bg-sand transition-colors"
-            >
-              Testimonials
             </Link>
             <Link
               href="/faqs"

@@ -4,6 +4,7 @@ import { Industries } from "@/components/Industries";
 import { Problems } from "@/components/Problems";
 import { Services } from "@/components/Services";
 import { Process } from "@/components/Process";
+import { TestimonialCarousel } from "@/components/TestimonialCarousel";
 import { ContactSection } from "@/components/ContactSection";
 import { Footer } from "@/components/Footer";
 
@@ -17,6 +18,7 @@ export default function HomePage() {
         <Problems />
         <Services />
         <Process />
+        <TestimonialCarousel />
         <ContactSection />
       </main>
       <Footer />

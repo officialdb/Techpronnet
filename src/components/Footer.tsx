@@ -142,7 +142,7 @@ export function Footer() {
               <li>
                 <Link href="/testimonials" className="hover:text-white transition-colors flex items-center gap-1.5">
                   <span className="text-[#8EDE35] font-bold">+</span>
-                  <span>Testimonials</span>
+                  <span>Client Testimonials</span>
                 </Link>
               </li>
               <li>
@@ -233,13 +233,17 @@ export function Footer() {
           <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-center sm:text-left">
             <p>&copy; {currentYear} Techpronnet Technologies. All rights reserved.</p>
             <span className="hidden sm:inline text-white/20">·</span>
-            <div className="flex items-center gap-3">
+            <div className="flex flex-wrap items-center justify-center sm:justify-start gap-x-3 gap-y-1">
               <Link href="/privacy" className="hover:text-[#8EDE35] transition-colors">
                 Privacy Policy
               </Link>
               <span className="text-white/20">·</span>
               <Link href="/terms" className="hover:text-[#8EDE35] transition-colors">
                 Terms &amp; Conditions
+              </Link>
+              <span className="text-white/20">·</span>
+              <Link href="/testimonials" className="hover:text-[#8EDE35] transition-colors">
+                Client Testimonials
               </Link>
             </div>
           </div>
