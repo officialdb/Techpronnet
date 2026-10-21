@@ -37,31 +37,31 @@ export function Header() {
         <div className="hidden lg:flex items-center gap-8 text-sm text-muted">
           <Link
             href="/#problems"
-            className="hover:text-ink font-medium transition-colors"
+            className="hover:text-[#4D9218] font-medium transition-colors"
           >
             The Challenge
           </Link>
           <Link
             href="/services"
-            className="hover:text-ink font-medium transition-colors"
+            className="hover:text-[#4D9218] font-medium transition-colors"
           >
             Services
           </Link>
           <Link
             href="/work"
-            className="hover:text-ink font-medium transition-colors"
+            className="hover:text-[#4D9218] font-medium transition-colors"
           >
             Our Work
           </Link>
           <Link
             href="/#process"
-            className="hover:text-ink font-medium transition-colors"
+            className="hover:text-[#4D9218] font-medium transition-colors"
           >
             Our Process
           </Link>
           <Link
             href="/about"
-            className="hover:text-ink font-medium transition-colors"
+            className="hover:text-[#4D9218] font-medium transition-colors"
           >
             About Us
           </Link>
@@ -71,10 +71,10 @@ export function Header() {
         <div className="flex items-center gap-3 sm:gap-4">
           <Link
             href="/#contact"
-            className="hidden sm:inline-flex items-center gap-2 bg-ink text-white px-5 py-2.5 text-sm font-medium hover:bg-navy transition-colors shadow-xs"
+            className="hidden sm:inline-flex items-center gap-2 bg-[#8EDE35] text-[#181B1E] hover:bg-[#7ECC28] px-5 py-2.5 text-sm font-bold rounded-xl transition-colors shadow-xs"
           >
-            Discuss a Project
-            <ArrowUpRight className="w-4 h-4" />
+            <span>Discuss a Project</span>
+            <ArrowUpRight className="size-4" />
           </Link>
 
           <button

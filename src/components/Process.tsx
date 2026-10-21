@@ -2,62 +2,93 @@ export function Process() {
   const steps = [
     {
       num: "01",
-      title: "Understand",
+      title: "Understand & Scope",
       description:
-        "We learn about your business, challenges, goals and the people who will use the solution.",
+        "We evaluate your current business processes, identify bottlenecks, define architectural requirements, and establish fixed upfront timelines.",
+      theme: "light",
     },
     {
       num: "02",
-      title: "Plan & Build",
+      title: "Architect & Build",
       description:
-        "We define the scope, agree on the timeline and develop a solution that fits your requirements.",
+        "We engineer high-performance web and mobile software with Next.js 16 SSR, serverless Neon Postgres, and resilient event pipelines.",
+      theme: "dark",
     },
     {
       num: "03",
-      title: "Launch & Support",
+      title: "Deploy & Support",
       description:
-        "We test, deliver and help you get started, with ongoing support agreed for your project.",
+        "We execute zero-downtime cuts, configure automated encrypted backups, train your operational team, and provide direct SLA engineering support.",
+      theme: "light",
     },
   ];
 
   return (
-    <section id="process" className="section-space scroll-mt-20">
-      <div className="max-w-7xl mx-auto px-5 sm:px-8">
-        <div className="grid lg:grid-cols-12 gap-12">
-          <div className="lg:col-span-5">
-            <p className="eyebrow uppercase text-xs font-semibold text-muted mb-5">
-              How we work
-            </p>
-            <h2 className="text-3xl sm:text-5xl font-semibold tracking-[-.045em] leading-tight text-ink">
-              A clear process. No unnecessary complexity.
-            </h2>
-            <p className="text-muted leading-7 mt-5 max-w-md text-base sm:text-lg">
-              Every project starts with understanding your needs. From there, we
-              agree on the scope, build thoughtfully and support you through
-              delivery.
-            </p>
-          </div>
+    <section id="process" className="py-16 sm:py-24 bg-[#FAF9F6] border-b border-[#E5E7EB] scroll-mt-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+          <span className="text-[#4D9218] font-mono text-xs font-semibold uppercase tracking-wider block mb-3">
+            How We Deliver
+          </span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#181B1E] leading-[1.15]">
+            A Clear Process. No Unnecessary{" "}
+            <span className="bg-[#8EDE35] text-[#181B1E] px-3.5 py-0.5 rounded-xl inline-block shadow-xs">
+              Complexity.
+            </span>
+          </h2>
+          <p className="mt-4 sm:mt-5 text-sm sm:text-base text-muted max-w-2xl mx-auto leading-relaxed">
+            Every deployment follows a disciplined, transparent execution cycle. From architecture design to post-launch warranties, you maintain 100% visibility.
+          </p>
+        </div>
 
-          <div className="lg:col-span-7">
-            {steps.map((s, index) => (
-              <article
+        <div className="grid md:grid-cols-3 gap-6 sm:gap-8">
+          {steps.map((s) => {
+            const isDark = s.theme === "dark";
+
+            return (
+              <div
                 key={s.num}
-                className={`grid grid-cols-[56px_1fr] gap-5 py-7 border-t border-line ${
-                  index === steps.length - 1 ? "border-b" : ""
-                }`}
+                className={`${
+                  isDark
+                    ? "bg-[#181B1E] text-white border border-[#2D333B] shadow-xl"
+                    : "bg-white text-[#181B1E] border border-[#E5E7EB] shadow-xs hover:border-[#8EDE35]"
+                } rounded-3xl p-8 sm:p-9 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1`}
               >
-                <span className="text-2xl font-medium text-muted font-mono">
-                  {s.num}
-                </span>
                 <div>
-                  <h3 className="text-lg font-semibold text-ink">{s.title}</h3>
-                  <p className="text-sm text-muted mt-2 leading-7">
+                  <div className="flex items-center justify-between mb-6">
+                    <span
+                      className={`size-11 rounded-full font-mono text-sm font-bold flex items-center justify-center ${
+                        isDark
+                          ? "bg-[#8EDE35] text-[#181B1E]"
+                          : "bg-[#FAF9F6] text-[#4D9218] border border-[#E5E7EB]"
+                      }`}
+                    >
+                      {s.num}
+                    </span>
+                    <span className={`text-[11px] font-mono ${isDark ? "text-gray-400" : "text-muted"}`}>
+                      Phase {s.num}
+                    </span>
+                  </div>
+
+                  <h3
+                    className={`text-xl font-bold mb-3 tracking-tight ${
+                      isDark ? "text-white" : "text-[#181B1E]"
+                    }`}
+                  >
+                    {s.title}
+                  </h3>
+
+                  <p
+                    className={`text-sm leading-relaxed ${
+                      isDark ? "text-gray-300" : "text-[#64748B]"
+                    }`}
+                  >
                     {s.description}
                   </p>
                 </div>
-              </article>
-            ))}
-          </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

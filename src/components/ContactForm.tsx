@@ -181,9 +181,9 @@ export function ContactForm() {
             placeholder="Full name"
             aria-invalid={!!fieldErrors.name}
             aria-describedby={fieldErrors.name ? "name-error" : undefined}
-            className={`w-full bg-paper border ${
-              fieldErrors.name ? "border-red-400" : "border-line"
-            } px-3.5 py-3 sm:px-4 sm:py-3.5 text-sm text-ink placeholder:text-muted/60`}
+            className={`w-full rounded-xl bg-[#FAF9F6] border ${
+              fieldErrors.name ? "border-red-400" : "border-[#E5E7EB]"
+            } px-4 py-3.5 text-sm text-[#181B1E] placeholder:text-muted/60 focus:border-[#8EDE35] focus:outline-none focus:ring-2 focus:ring-[#8EDE35]/25 transition-all`}
           />
           {fieldErrors.name && (
             <p id="name-error" className="mt-1.5 text-xs text-red-600">
@@ -209,9 +209,9 @@ export function ContactForm() {
             placeholder="Your company"
             aria-invalid={!!fieldErrors.business}
             aria-describedby={fieldErrors.business ? "business-error" : undefined}
-            className={`w-full bg-paper border ${
-              fieldErrors.business ? "border-red-400" : "border-line"
-            } px-3.5 py-3 sm:px-4 sm:py-3.5 text-sm text-ink placeholder:text-muted/60`}
+            className={`w-full rounded-xl bg-[#FAF9F6] border ${
+              fieldErrors.business ? "border-red-400" : "border-[#E5E7EB]"
+            } px-4 py-3.5 text-sm text-[#181B1E] placeholder:text-muted/60 focus:border-[#8EDE35] focus:outline-none focus:ring-2 focus:ring-[#8EDE35]/25 transition-all`}
           />
           {fieldErrors.business && (
             <p id="business-error" className="mt-1.5 text-xs text-red-600">
@@ -238,9 +238,9 @@ export function ContactForm() {
             placeholder="you@company.com"
             aria-invalid={!!fieldErrors.email}
             aria-describedby={fieldErrors.email ? "email-error" : undefined}
-            className={`w-full bg-paper border ${
-              fieldErrors.email ? "border-red-400" : "border-line"
-            } px-3.5 py-3 sm:px-4 sm:py-3.5 text-sm text-ink placeholder:text-muted/60`}
+            className={`w-full rounded-xl bg-[#FAF9F6] border ${
+              fieldErrors.email ? "border-red-400" : "border-[#E5E7EB]"
+            } px-4 py-3.5 text-sm text-[#181B1E] placeholder:text-muted/60 focus:border-[#8EDE35] focus:outline-none focus:ring-2 focus:ring-[#8EDE35]/25 transition-all`}
           />
           {fieldErrors.email && (
             <p id="email-error" className="mt-1.5 text-xs text-red-600">
@@ -263,9 +263,9 @@ export function ContactForm() {
             placeholder="Your contact number"
             aria-invalid={!!fieldErrors.phone}
             aria-describedby={fieldErrors.phone ? "phone-error" : undefined}
-            className={`w-full bg-paper border ${
-              fieldErrors.phone ? "border-red-400" : "border-line"
-            } px-3.5 py-3 sm:px-4 sm:py-3.5 text-sm text-ink placeholder:text-muted/60`}
+            className={`w-full rounded-xl bg-[#FAF9F6] border ${
+              fieldErrors.phone ? "border-red-400" : "border-[#E5E7EB]"
+            } px-4 py-3.5 text-sm text-[#181B1E] placeholder:text-muted/60 focus:border-[#8EDE35] focus:outline-none focus:ring-2 focus:ring-[#8EDE35]/25 transition-all`}
           />
           {fieldErrors.phone && (
             <p id="phone-error" className="mt-1.5 text-xs text-red-600">
@@ -288,9 +288,9 @@ export function ContactForm() {
           onChange={handleChange}
           aria-invalid={!!fieldErrors.service}
           aria-describedby={fieldErrors.service ? "service-error" : undefined}
-          className={`w-full bg-paper border ${
-            fieldErrors.service ? "border-red-400" : "border-line"
-          } px-3.5 py-3 sm:px-4 sm:py-3.5 text-sm text-ink`}
+          className={`w-full rounded-xl bg-[#FAF9F6] border ${
+            fieldErrors.service ? "border-red-400" : "border-[#E5E7EB]"
+          } px-4 py-3.5 text-sm text-[#181B1E] focus:border-[#8EDE35] focus:outline-none focus:ring-2 focus:ring-[#8EDE35]/25 transition-all`}
         >
           <option value="" disabled>
             Select a service
@@ -323,9 +323,9 @@ export function ContactForm() {
           placeholder="What would you like to build, improve or automate?"
           aria-invalid={!!fieldErrors.details}
           aria-describedby={fieldErrors.details ? "details-error" : undefined}
-          className={`w-full resize-y bg-paper border ${
-            fieldErrors.details ? "border-red-400" : "border-line"
-          } px-3.5 py-3 sm:px-4 sm:py-3.5 text-sm text-ink placeholder:text-muted/60`}
+          className={`w-full resize-y rounded-xl bg-[#FAF9F6] border ${
+            fieldErrors.details ? "border-red-400" : "border-[#E5E7EB]"
+          } px-4 py-3.5 text-sm text-[#181B1E] placeholder:text-muted/60 focus:border-[#8EDE35] focus:outline-none focus:ring-2 focus:ring-[#8EDE35]/25 transition-all`}
         />
         {fieldErrors.details && (
           <p id="details-error" className="mt-1.5 text-xs text-red-600">
@@ -339,7 +339,7 @@ export function ContactForm() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-ink text-white px-8 py-3.5 sm:py-4 text-sm font-medium hover:bg-navy disabled:opacity-75 disabled:cursor-not-allowed transition-colors cursor-pointer"
+          className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-[#8EDE35] text-[#181B1E] px-9 py-4 text-sm font-bold rounded-xl hover:bg-[#7ECC28] disabled:opacity-75 disabled:cursor-not-allowed transition-colors cursor-pointer shadow-sm"
         >
           {isSubmitting ? (
             <>
