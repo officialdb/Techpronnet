@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { ServiceArchitecturePanel } from "@/components/services/ServiceArchitecturePanel";
+import { ServiceVisualFrame } from "@/components/services/ServiceVisualFrame";
 import { FadeIn } from "@/components/MotionWrapper";
-import { ArrowRight, Check, ArrowUpRight, Clock, ShieldCheck, Mail, Sparkles } from "lucide-react";
+import { ArrowRight, Check, ArrowUpRight, Clock, ShieldCheck, Mail } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Services & Capabilities | Techpronnet Technologies — Software Built Around Your Business",
@@ -40,46 +40,11 @@ export default function ServicesPage() {
       deliverables: "Design Systems, Next.js Frontend, Secure Consultation Engine, Cloud DB",
       contactService: "Website or web portal",
       isReversed: false,
-      architecture: {
-        systemCode: "SYS // WEB_APP_RUNTIME",
-        runtimeBadge: "Next.js 16 SSR",
-        status: "Production Ready",
-        layers: [
-          {
-            step: "01",
-            label: "Client Ingestion Layer",
-            desc: "Responsive web UI with zero layout shift and sub-100ms TTFB across mobile & desktop.",
-            metric: "Sub-1s LCP",
-          },
-          {
-            step: "02",
-            label: "Server Actions & Zero-Trust Validation",
-            desc: "Zod server-side schemas validating intake forms, appointments, and uploads.",
-            metric: "Strict Typing",
-          },
-          {
-            step: "03",
-            label: "Persistence & Security",
-            desc: "Encrypted records stored in Neon Serverless Postgres with automatic connection pooling.",
-            metric: "< 25ms Queries",
-          },
-          {
-            step: "04",
-            label: "Confirmation & Alerts",
-            desc: "Automated booking confirmations via transactional email and WhatsApp notifications.",
-            metric: "Real-Time Sync",
-          },
-        ],
-        techStack: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS", "Neon Postgres", "Vercel Edge"],
-        specs: [
-          { label: "Architecture", value: "SSR + Edge Cache" },
-          { label: "Query Latency", value: "< 25ms Serverless" },
-          { label: "Security", value: "256-Bit SSL / TLS" },
-        ],
-        caseStudyLink: {
-          client: "Nnamdi I. Nwagwu, Esq. Legal Chambers",
-          href: "/work#law-portal",
-        },
+      imageSrc: "/images/services/web-portals.jpg",
+      badge: "Next.js 16 SSR",
+      caseStudyLink: {
+        client: "Nnamdi I. Nwagwu, Esq. Legal Chambers",
+        href: "/work#law-portal",
       },
     },
     {
@@ -101,46 +66,11 @@ export default function ServicesPage() {
       deliverables: "App Store & Play Store Binaries, Offline Engine, Push Notification Hub",
       contactService: "Mobile application",
       isReversed: true,
-      architecture: {
-        systemCode: "SYS // MOBILE_RUNTIME",
-        runtimeBadge: "React Native + Expo",
-        status: "Offline-First Sync",
-        layers: [
-          {
-            step: "01",
-            label: "Native Interaction Layer",
-            desc: "Fluid 60fps touch gestures, bottom sheets, and hardware haptic feedback.",
-            metric: "60 FPS Native",
-          },
-          {
-            step: "02",
-            label: "Local Persistence Engine",
-            desc: "Encrypted SQLite database allowing full offline creation, reading, and queuing.",
-            metric: "Zero Network Lag",
-          },
-          {
-            step: "03",
-            label: "Background Delta Reconciliation",
-            desc: "Automated background sync resolving conflicts whenever connectivity resumes.",
-            metric: "Auto Reconnect",
-          },
-          {
-            step: "04",
-            label: "Hardware Bridge",
-            desc: "Biometrics (FaceID/Fingerprint), GPS telemetry, and instant APNs / FCM push notifications.",
-            metric: "Instant Push",
-          },
-        ],
-        techStack: ["React Native", "Expo", "SQLite", "APNs / FCM", "Secure Enclave", "WebSockets"],
-        specs: [
-          { label: "Target Platforms", value: "iOS 16+ & Android 12+" },
-          { label: "Sync Engine", value: "SQLite Delta Sync" },
-          { label: "Performance", value: "60 FPS Hardware Accel" },
-        ],
-        caseStudyLink: {
-          client: "Integrated with logistics dispatch & clinical suites",
-          href: "/work#logistics-console",
-        },
+      imageSrc: "/images/services/mobile-apps.jpg",
+      badge: "React Native + Expo",
+      caseStudyLink: {
+        client: "Avex Logistics Mobile Fleet & Dispatch",
+        href: "/work#logistics-console",
       },
     },
     {
@@ -162,46 +92,11 @@ export default function ServicesPage() {
       deliverables: "Central Operations Console, Department Rosters, Live Inventory Sync, Audit Logs",
       contactService: "Custom business software",
       isReversed: false,
-      architecture: {
-        systemCode: "SYS // ENTERPRISE_ERP_CORE",
-        runtimeBadge: "Multi-Department Console",
-        status: "RBAC Enforced",
-        layers: [
-          {
-            step: "01",
-            label: "Multi-Channel Ingestion",
-            desc: "Aggregating clinical triage queues, logistics manifests, orders, and staff rosters.",
-            metric: "Live Streams",
-          },
-          {
-            step: "02",
-            label: "Business Rules State Machine",
-            desc: "Strict approval thresholds, status transitions, and role permission verifications.",
-            metric: "Zero Bypasses",
-          },
-          {
-            step: "03",
-            label: "High-Volume Data Store",
-            desc: "PostgreSQL relational schemas with indexed foreign keys and audit triggers.",
-            metric: "99.98% Uptime",
-          },
-          {
-            step: "04",
-            label: "Executive Telemetry Dashboard",
-            desc: "Real-time department metrics, capacity indicators, and scheduled PDF reporting.",
-            metric: "Sub-Second Views",
-          },
-        ],
-        techStack: ["Next.js Enterprise", "Neon Postgres", "Node.js", "RBAC Middleware", "Zod"],
-        specs: [
-          { label: "Access Control", value: "Granular Multi-Tenant RBAC" },
-          { label: "Audit Logging", value: "Immutable Append-Only" },
-          { label: "Scalability", value: "25,000+ Profiles Indexed" },
-        ],
-        caseStudyLink: {
-          client: "Ogechi Hospital, Avex Logistics & ZidiClinic",
-          href: "/work",
-        },
+      imageSrc: "/images/services/business-erp.jpg",
+      badge: "Operations Console",
+      caseStudyLink: {
+        client: "Ogechi Hospital & ZidiClinic Systems",
+        href: "/work#hospital-system",
       },
     },
     {
@@ -223,46 +118,11 @@ export default function ServicesPage() {
       deliverables: "Webhook Microservices, Multi-Channel Alert Pipelines, Sync Middleware",
       contactService: "Workflow automation",
       isReversed: true,
-      architecture: {
-        systemCode: "SYS // EVENT_AUTOMATION_PIPELINE",
-        runtimeBadge: "Idempotent Webhooks",
-        status: "Active · Sub-20ms",
-        layers: [
-          {
-            step: "01",
-            label: "Inbound Event Detection",
-            desc: "Cryptographically signed webhook listeners capturing orders, payments, or bookings.",
-            metric: "HMAC Signed",
-          },
-          {
-            step: "02",
-            label: "Idempotency & Queue Processing",
-            desc: "Deduplication cache ensuring every transactional event executes exactly once.",
-            metric: "Zero Duplicates",
-          },
-          {
-            step: "03",
-            label: "Transactional Ledger Update",
-            desc: "Atomic database transaction committing state changes to Neon Postgres in < 20ms.",
-            metric: "18ms Latency",
-          },
-          {
-            step: "04",
-            label: "Outbound Multi-Channel Broadcast",
-            desc: "Simultaneous trigger of WhatsApp alerts, SMS notifications, and customer invoices.",
-            metric: "Multi-Channel",
-          },
-        ],
-        techStack: ["Serverless Functions", "Twilio / WhatsApp API", "Redis Queues", "Stripe / Paystack", "Neon DB"],
-        specs: [
-          { label: "Execution Speed", value: "Sub-20ms Pipeline Latency" },
-          { label: "Reliability", value: "Exponential Retry Backoff" },
-          { label: "Messaging", value: "WhatsApp / SMS / Email" },
-        ],
-        caseStudyLink: {
-          client: "Chaen / Aenbase Financial Commerce Infrastructure",
-          href: "/work#aenbase-platform",
-        },
+      imageSrc: "/images/services/workflow-automation.jpg",
+      badge: "Idempotent Webhooks",
+      caseStudyLink: {
+        client: "Chaen Financial Commerce Infrastructure",
+        href: "/work#aenbase-platform",
       },
     },
     {
@@ -284,46 +144,11 @@ export default function ServicesPage() {
       deliverables: "Database Tuning, Cloud Cutover, Continuous SLA Coverage",
       contactService: "Maintenance and support",
       isReversed: false,
-      architecture: {
-        systemCode: "SYS // NEON_POSTGRES_CLOUD",
-        runtimeBadge: "Serverless Database",
-        status: "99.99% Uptime SLA",
-        layers: [
-          {
-            step: "01",
-            label: "Edge Routing & Connection Pool",
-            desc: "PgBouncer connection pooling absorbing traffic spikes with minimal memory overhead.",
-            metric: "10,000+ Conns",
-          },
-          {
-            step: "02",
-            label: "Serverless Compute & Auto-Suspend",
-            desc: "Compute scales up instantly under demand and suspends during zero-traffic hours.",
-            metric: "Auto-Scaling",
-          },
-          {
-            step: "03",
-            label: "Branching & Zero-Downtime Schema Cuts",
-            desc: "Instant copy-on-write database branches for staging verification prior to production.",
-            metric: "Instant Branches",
-          },
-          {
-            step: "04",
-            label: "Continuous Health Probes & SLA Care",
-            desc: "Automated synthetic transaction probes with guaranteed escalation response times.",
-            metric: "24/7 Monitoring",
-          },
-        ],
-        techStack: ["Neon Postgres", "PgBouncer", "AWS / Vercel Edge", "OpenTelemetry", "SQL Tuning"],
-        specs: [
-          { label: "Uptime SLA", value: "99.99% Guaranteed" },
-          { label: "Query Speed", value: "< 28ms Global Average" },
-          { label: "Coverage", value: "24/7 Engineering SLA" },
-        ],
-        caseStudyLink: {
-          client: "Serverless Neon Postgres Cloud Architecture",
-          href: "/work",
-        },
+      imageSrc: "/images/services/cloud-infrastructure.jpg",
+      badge: "Neon Serverless DB",
+      caseStudyLink: {
+        client: "Serverless Neon Postgres Cloud Edge",
+        href: "/work",
       },
     },
   ];
@@ -430,21 +255,19 @@ export default function ServicesPage() {
           >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-                {/* Visual Architecture Console Column */}
+                {/* Visual Image Display Column */}
                 <div
                   className={`lg:col-span-6 ${
                     section.isReversed ? "order-2 lg:order-1" : "order-2 lg:order-2"
                   }`}
                 >
                   <FadeIn direction="up">
-                    <ServiceArchitecturePanel
-                      systemCode={section.architecture.systemCode}
-                      runtimeBadge={section.architecture.runtimeBadge}
-                      status={section.architecture.status}
-                      layers={section.architecture.layers}
-                      techStack={section.architecture.techStack}
-                      specs={section.architecture.specs}
-                      caseStudyLink={section.architecture.caseStudyLink}
+                    <ServiceVisualFrame
+                      imageSrc={section.imageSrc}
+                      imageAlt={section.title}
+                      category={section.category}
+                      badge={section.badge}
+                      caseStudyLink={section.caseStudyLink}
                     />
                   </FadeIn>
                 </div>
