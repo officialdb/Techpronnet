@@ -33,13 +33,7 @@ export function Header() {
         </Link>
 
         {/* Desktop Navigation Links */}
-        <div className="hidden lg:flex items-center gap-8 text-sm text-muted">
-          <Link
-            href="/#problems"
-            className="hover:text-[#4D9218] font-medium transition-colors"
-          >
-            The Challenge
-          </Link>
+        <div className="hidden lg:flex items-center gap-7 text-sm text-muted">
           <Link
             href="/services"
             className="hover:text-[#4D9218] font-medium transition-colors"
@@ -53,10 +47,16 @@ export function Header() {
             Our Work
           </Link>
           <Link
-            href="/#process"
+            href="/testimonials"
             className="hover:text-[#4D9218] font-medium transition-colors"
           >
-            Our Process
+            Testimonials
+          </Link>
+          <Link
+            href="/faqs"
+            className="hover:text-[#4D9218] font-medium transition-colors"
+          >
+            FAQs
           </Link>
           <Link
             href="/about"
@@ -64,12 +64,18 @@ export function Header() {
           >
             About Us
           </Link>
+          <Link
+            href="/contact"
+            className="hover:text-[#4D9218] font-medium transition-colors"
+          >
+            Contact
+          </Link>
         </div>
 
         {/* Desktop CTA & Mobile Hamburger */}
         <div className="flex items-center gap-3 sm:gap-4">
           <Link
-            href="/#contact"
+            href="/contact"
             className="hidden sm:inline-flex items-center gap-2 bg-[#8EDE35] text-[#181B1E] hover:bg-[#7ECC28] px-5 py-2.5 text-sm font-bold rounded-xl transition-colors shadow-xs"
           >
             <span>Discuss a Project</span>
@@ -97,13 +103,6 @@ export function Header() {
         <div className="lg:hidden bg-paper border-b border-line px-5 py-6 space-y-4 shadow-lg animate-in fade-in slide-in-from-top-2 duration-150">
           <div className="flex flex-col space-y-2 text-base font-medium text-ink">
             <Link
-              href="/#problems"
-              onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2.5 hover:bg-sand transition-colors"
-            >
-              The Challenge
-            </Link>
-            <Link
               href="/services"
               onClick={() => setMobileMenuOpen(false)}
               className="px-3 py-2.5 hover:bg-sand transition-colors"
@@ -118,11 +117,18 @@ export function Header() {
               Our Work
             </Link>
             <Link
-              href="/#process"
+              href="/testimonials"
               onClick={() => setMobileMenuOpen(false)}
               className="px-3 py-2.5 hover:bg-sand transition-colors"
             >
-              Our Process
+              Testimonials
+            </Link>
+            <Link
+              href="/faqs"
+              onClick={() => setMobileMenuOpen(false)}
+              className="px-3 py-2.5 hover:bg-sand transition-colors"
+            >
+              FAQs
             </Link>
             <Link
               href="/about"
@@ -131,10 +137,17 @@ export function Header() {
             >
               About Us
             </Link>
+            <Link
+              href="/contact"
+              onClick={() => setMobileMenuOpen(false)}
+              className="px-3 py-2.5 hover:bg-sand transition-colors"
+            >
+              Contact
+            </Link>
           </div>
           <div className="pt-4 border-t border-line space-y-4">
             <Link
-              href="/#contact"
+              href="/contact"
               onClick={() => setMobileMenuOpen(false)}
               className="flex items-center justify-center gap-2 w-full bg-[#8EDE35] text-[#181B1E] px-5 py-3.5 text-sm font-bold rounded-xl hover:bg-[#7ECC28] active:scale-[0.98] transition-all text-center shadow-xs"
             >

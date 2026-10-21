@@ -140,13 +140,19 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/#process" className="hover:text-white transition-colors flex items-center gap-1.5">
+                <Link href="/testimonials" className="hover:text-white transition-colors flex items-center gap-1.5">
                   <span className="text-[#8EDE35] font-bold">+</span>
-                  <span>Process</span>
+                  <span>Testimonials</span>
                 </Link>
               </li>
               <li>
-                <Link href="/#contact" className="hover:text-white transition-colors flex items-center gap-1.5">
+                <Link href="/faqs" className="hover:text-white transition-colors flex items-center gap-1.5">
+                  <span className="text-[#8EDE35] font-bold">+</span>
+                  <span>FAQs</span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="hover:text-white transition-colors flex items-center gap-1.5">
                   <span className="text-[#8EDE35] font-bold">+</span>
                   <span>Contact</span>
                 </Link>
@@ -222,11 +228,22 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Bottom copyright & Socials */}
-        <div className="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-gray-400 font-mono">
-          <p className="text-center sm:text-left">
-            &copy; {currentYear} Techpronnet Technologies. All rights reserved.
-          </p>
+        {/* Bottom copyright & Legal & Socials */}
+        <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-400 font-mono">
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-center sm:text-left">
+            <p>&copy; {currentYear} Techpronnet Technologies. All rights reserved.</p>
+            <span className="hidden sm:inline text-white/20">·</span>
+            <div className="flex items-center gap-3">
+              <Link href="/privacy" className="hover:text-[#8EDE35] transition-colors">
+                Privacy Policy
+              </Link>
+              <span className="text-white/20">·</span>
+              <Link href="/terms" className="hover:text-[#8EDE35] transition-colors">
+                Terms &amp; Conditions
+              </Link>
+            </div>
+          </div>
+
           <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs text-gray-400">
             <a
               href="https://x.com/Tech_pronnet"
