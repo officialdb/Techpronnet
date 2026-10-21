@@ -19,8 +19,22 @@ export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [serverResult, setServerResult] = useState<ContactActionResult | null>(null);
 
-  // Listen to service selection events from the services section
+  // Listen to service selection events from the services section and URL query params
   useEffect(() => {
+    // Check URL query param on mount
+    if (typeof window !== "undefined") {
+      const urlParams = new URLSearchParams(window.location.search);
+      const serviceParam = urlParams.get("service");
+      if (serviceParam) {
+        setFormData((prev) => ({ ...prev, service: serviceParam }));
+        setFieldErrors((prev) => {
+          const next = { ...prev };
+          delete next.service;
+          return next;
+        });
+      }
+    }
+
     const handleServiceSelect = (e: Event) => {
       const customEvent = e as CustomEvent<{ service: string }>;
       if (customEvent.detail?.service) {
