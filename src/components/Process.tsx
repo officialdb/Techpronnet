@@ -2,58 +2,48 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { Flag, Code2, PackageCheck, ArrowUpRight, CheckCircle2 } from "lucide-react";
+import { Flag, Code2, PackageCheck, ArrowUpRight } from "lucide-react";
 
 export function Process() {
-  const [activeStep, setActiveStep] = useState<number>(1);
+  const [activeStep, setActiveStep] = useState<number>(2);
 
   const steps = [
     {
       num: "1",
       code: "01",
-      title: "General Concept & Scope",
-      tag: "Phase 01 · Discovery",
+      title: "Understand & Scope",
+      tag: "01 · Discovery",
       description:
         "We evaluate your operational workflows, isolate manual bottlenecks, define architectural requirements, and establish fixed upfront timelines.",
       icon: Flag,
       theme: "light",
-      // Desktop positions relative to curve:
-      // Node 1 is at 20% X, 68% Y. Content sits ABOVE Node 1.
-      contentStyle: "top-[8%] left-[6%] sm:left-[8%] w-[88%] sm:w-[28%]",
-      nodeStyle: "left-[20%] top-[68%]",
     },
     {
       num: "2",
       code: "02",
-      title: "Architecture & Build",
-      tag: "Phase 02 · Engineering",
+      title: "Architect & Build",
+      tag: "02 · Engineering",
       description:
-        "We engineer high-performance web applications and mobile software with Next.js 16 SSR, serverless Neon Postgres, and resilient event pipelines.",
+        "We engineer high-performance web applications and mobile platforms using Next.js 16 SSR, serverless Neon Postgres, and resilient event pipelines.",
       icon: Code2,
       theme: "dark",
-      // Node 2 is at 52% X, 32% Y. Content sits BELOW Node 2.
-      contentStyle: "top-[52%] left-[38%] w-[88%] sm:w-[28%]",
-      nodeStyle: "left-[52%] top-[32%]",
     },
     {
       num: "3",
       code: "03",
       title: "Deploy & Support",
-      tag: "Phase 03 · Launch & SLA",
+      tag: "03 · Production",
       description:
         "We execute zero-downtime cuts, configure automated encrypted daily backups, train your operational team, and provide direct SLA engineering support.",
       icon: PackageCheck,
       theme: "light",
-      // Node 3 is at 84% X, 48% Y. Content sits BELOW Node 3.
-      contentStyle: "top-[64%] left-[70%] w-[88%] sm:w-[27%]",
-      nodeStyle: "left-[84%] top-[48%]",
     },
   ];
 
   return (
     <section id="process" className="py-20 sm:py-28 bg-[#FAF9F6] border-b border-[#E5E7EB] scroll-mt-20 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* 1. Section Header matching user reference image */}
+        {/* 1. Section Header matching reference image */}
         <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
           <div className="inline-flex items-center justify-center gap-2.5 mb-3">
             <span className="w-6 h-0.5 bg-[#8EDE35] rounded-full" />
@@ -74,9 +64,9 @@ export function Process() {
           </p>
         </div>
 
-        {/* 2. Desktop Undulating Wave Flow (Matching reference image) */}
-        <div className="hidden md:block relative w-full h-[580px] select-none">
-          {/* Continuous Smooth Bezier Wave SVG Line */}
+        {/* 2. Desktop Undulating Wave Flow (Carefully calibrated to prevent line collision) */}
+        <div className="hidden md:block relative w-full h-[620px] select-none">
+          {/* Continuous Smooth Fluid Bezier Wave SVG Line */}
           <svg
             className="w-full h-full absolute inset-0 pointer-events-none"
             viewBox="0 0 1000 500"
@@ -84,44 +74,47 @@ export function Process() {
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
-            {/* Background subtle curve shadow */}
+            {/* Subtle soft backdrop curve */}
             <path
-              d="M 50 320 C 110 335, 150 340, 200 340 C 310 340, 410 160, 520 160 C 600 160, 650 300, 690 300 C 740 300, 790 240, 840 240 C 890 240, 930 250, 970 255"
+              d="M 40 330 C 90 335, 130 340, 180 340 C 290 340, 380 140, 500 140 C 590 140, 650 260, 710 260 C 750 260, 780 220, 820 220 C 860 220, 910 230, 960 235"
               stroke="#E5E7EB"
               strokeWidth="6"
               strokeLinecap="round"
             />
             {/* Foreground Brand Flow Line */}
             <path
-              d="M 50 320 C 110 335, 150 340, 200 340 C 310 340, 410 160, 520 160 C 600 160, 650 300, 690 300 C 740 300, 790 240, 840 240 C 890 240, 930 250, 970 255"
+              d="M 40 330 C 90 335, 130 340, 180 340 C 290 340, 380 140, 500 140 C 590 140, 650 260, 710 260 C 750 260, 780 220, 820 220 C 860 220, 910 230, 960 235"
               stroke="#181B1E"
               strokeWidth="3.5"
               strokeLinecap="round"
             />
           </svg>
 
-          {/* Step 1: Content Block (ABOVE the node) */}
-          <div className="absolute top-[6%] left-[6%] w-[29%] z-10 group">
-            <div className="relative">
-              {/* Giant Watermark Numeral */}
-              <span className="absolute -top-10 -right-2 text-8xl font-black font-mono text-gray-200/70 select-none -z-10 transition-colors group-hover:text-[#8EDE35]/30">
+          {/* STEP 1: Content Block (Positioned ABOVE Node 1) */}
+          <div className="absolute top-[6%] left-[5%] w-[30%] z-10 group">
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#4D9218] block mb-1.5">
+                  01 · Discovery
+                </span>
+                <h3 className="text-xl sm:text-2xl font-extrabold text-[#181B1E] tracking-tight mb-2">
+                  Understand &amp; Scope
+                </h3>
+                <p className="text-xs sm:text-sm text-muted leading-relaxed">
+                  We evaluate your operational workflows, isolate manual bottlenecks, define architectural requirements, and establish fixed upfront timelines.
+                </p>
+              </div>
+
+              {/* Step 1 Numeral: Paired side-by-side with title matching reference */}
+              <span className="text-6xl sm:text-7xl font-black font-mono text-gray-200 select-none shrink-0 leading-none group-hover:text-[#8EDE35] transition-colors">
                 1
               </span>
-              <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#4D9218] block mb-1.5">
-                01 · Discovery
-              </span>
-              <h3 className="text-xl sm:text-2xl font-extrabold text-[#181B1E] tracking-tight mb-2">
-                Understand &amp; Scope
-              </h3>
-              <p className="text-xs sm:text-sm text-muted leading-relaxed">
-                We evaluate your operational workflows, isolate manual bottlenecks, define architectural requirements, and establish fixed upfront timelines.
-              </p>
             </div>
           </div>
 
-          {/* Step 1: Floating Hexagonal Node (Low point at 20% X, 68% Y) */}
+          {/* STEP 1: Floating Node on Curve (Low point at 18% X, 68% Y) */}
           <div
-            className="absolute left-[20%] top-[68%] -translate-x-1/2 -translate-y-1/2 z-20 cursor-pointer group"
+            className="absolute left-[18%] top-[68%] -translate-x-1/2 -translate-y-1/2 z-20 cursor-pointer group"
             onClick={() => setActiveStep(1)}
           >
             <div className="size-16 rounded-2xl bg-white border-2 border-[#E5E7EB] shadow-lg flex items-center justify-center group-hover:border-[#8EDE35] group-hover:scale-110 active:scale-95 transition-all duration-200">
@@ -131,9 +124,9 @@ export function Process() {
             </div>
           </div>
 
-          {/* Step 2: Floating Hexagonal Node (High Crest at 52% X, 32% Y) */}
+          {/* STEP 2: Floating Node on Curve (High Crest at 50% X, 28% Y) */}
           <div
-            className="absolute left-[52%] top-[32%] -translate-x-1/2 -translate-y-1/2 z-20 cursor-pointer group"
+            className="absolute left-[50%] top-[28%] -translate-x-1/2 -translate-y-1/2 z-20 cursor-pointer group"
             onClick={() => setActiveStep(2)}
           >
             <div className="size-16 rounded-2xl bg-[#181B1E] border-2 border-[#2D333B] shadow-xl flex items-center justify-center group-hover:border-[#8EDE35] group-hover:scale-110 active:scale-95 transition-all duration-200">
@@ -143,28 +136,31 @@ export function Process() {
             </div>
           </div>
 
-          {/* Step 2: Content Block (BELOW the node) */}
-          <div className="absolute top-[48%] left-[38%] w-[29%] z-10 group">
-            <div className="relative">
-              {/* Giant Watermark Numeral */}
-              <span className="absolute -top-8 -right-2 text-8xl font-black font-mono text-gray-200/70 select-none -z-10 transition-colors group-hover:text-[#8EDE35]/30">
+          {/* STEP 2: Content Block (Centered directly BELOW Node 2 peak, 100% clear of curve) */}
+          <div className="absolute top-[54%] left-1/2 -translate-x-1/2 w-[34%] z-10 group">
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#4D9218] block mb-1.5">
+                  02 · Engineering
+                </span>
+                <h3 className="text-xl sm:text-2xl font-extrabold text-[#181B1E] tracking-tight mb-2">
+                  Architect &amp; Build
+                </h3>
+                <p className="text-xs sm:text-sm text-muted leading-relaxed">
+                  We engineer high-performance web applications and mobile platforms using Next.js 16 SSR, serverless Neon Postgres, and resilient event pipelines.
+                </p>
+              </div>
+
+              {/* Step 2 Numeral: Locked safely inside the card next to title, zero line collision */}
+              <span className="text-6xl sm:text-7xl font-black font-mono text-gray-200 select-none shrink-0 leading-none group-hover:text-[#8EDE35] transition-colors">
                 2
               </span>
-              <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#4D9218] block mb-1.5">
-                02 · Engineering
-              </span>
-              <h3 className="text-xl sm:text-2xl font-extrabold text-[#181B1E] tracking-tight mb-2">
-                Architect &amp; Build
-              </h3>
-              <p className="text-xs sm:text-sm text-muted leading-relaxed">
-                We engineer high-performance web applications and mobile platforms using Next.js 16 SSR, serverless Neon Postgres, and resilient event pipelines.
-              </p>
             </div>
           </div>
 
-          {/* Step 3: Floating Hexagonal Node (Mid-right at 84% X, 48% Y) */}
+          {/* STEP 3: Floating Node on Curve (At 82% X, 44% Y) */}
           <div
-            className="absolute left-[84%] top-[48%] -translate-x-1/2 -translate-y-1/2 z-20 cursor-pointer group"
+            className="absolute left-[82%] top-[44%] -translate-x-1/2 -translate-y-1/2 z-20 cursor-pointer group"
             onClick={() => setActiveStep(3)}
           >
             <div className="size-16 rounded-2xl bg-white border-2 border-[#E5E7EB] shadow-lg flex items-center justify-center group-hover:border-[#8EDE35] group-hover:scale-110 active:scale-95 transition-all duration-200">
@@ -174,22 +170,25 @@ export function Process() {
             </div>
           </div>
 
-          {/* Step 3: Content Block (BELOW the node) */}
-          <div className="absolute top-[62%] left-[70%] w-[28%] z-10 group">
-            <div className="relative">
-              {/* Giant Watermark Numeral */}
-              <span className="absolute -top-8 -right-2 text-8xl font-black font-mono text-gray-200/70 select-none -z-10 transition-colors group-hover:text-[#8EDE35]/30">
+          {/* STEP 3: Content Block (Positioned BELOW Node 3) */}
+          <div className="absolute top-[60%] left-[69%] w-[29%] z-10 group">
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#4D9218] block mb-1.5">
+                  03 · Production
+                </span>
+                <h3 className="text-xl sm:text-2xl font-extrabold text-[#181B1E] tracking-tight mb-2">
+                  Deploy &amp; Support
+                </h3>
+                <p className="text-xs sm:text-sm text-muted leading-relaxed">
+                  We execute zero-downtime cuts, configure automated encrypted daily backups, train your operational team, and provide direct SLA engineering support.
+                </p>
+              </div>
+
+              {/* Step 3 Numeral: Paired side-by-side with title matching reference */}
+              <span className="text-6xl sm:text-7xl font-black font-mono text-gray-200 select-none shrink-0 leading-none group-hover:text-[#8EDE35] transition-colors">
                 3
               </span>
-              <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#4D9218] block mb-1.5">
-                03 · Production
-              </span>
-              <h3 className="text-xl sm:text-2xl font-extrabold text-[#181B1E] tracking-tight mb-2">
-                Deploy &amp; Support
-              </h3>
-              <p className="text-xs sm:text-sm text-muted leading-relaxed">
-                We execute zero-downtime cuts, configure automated encrypted daily backups, train your operational team, and provide direct SLA engineering support.
-              </p>
             </div>
           </div>
         </div>
@@ -216,18 +215,22 @@ export function Process() {
                 </div>
 
                 <div className="bg-white border border-[#E5E7EB] rounded-2xl p-6 shadow-xs relative overflow-hidden">
-                  <span className="absolute -top-2 right-2 text-6xl font-black font-mono text-gray-100 select-none -z-10">
-                    {s.num}
-                  </span>
-                  <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#4D9218] block mb-1">
-                    {s.tag}
-                  </span>
-                  <h3 className="text-lg font-bold text-[#181B1E] mb-2">
-                    {s.title}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-muted leading-relaxed">
-                    {s.description}
-                  </p>
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#4D9218] block mb-1">
+                        {s.tag}
+                      </span>
+                      <h3 className="text-lg font-bold text-[#181B1E] mb-2">
+                        {s.title}
+                      </h3>
+                      <p className="text-xs sm:text-sm text-muted leading-relaxed">
+                        {s.description}
+                      </p>
+                    </div>
+                    <span className="text-5xl font-black font-mono text-gray-200 select-none shrink-0 leading-none">
+                      {s.num}
+                    </span>
+                  </div>
                 </div>
               </div>
             );
