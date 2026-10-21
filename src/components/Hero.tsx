@@ -6,13 +6,6 @@ export function Hero() {
     <section className="border-b border-[#E5E7EB] bg-[#FAF9F6]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-28">
         <div className="max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#E5E7EB] mb-6 shadow-2xs">
-            <span className="size-2 rounded-full bg-[#8EDE35]" />
-            <span className="font-mono text-[11px] sm:text-xs font-semibold text-[#4D9218] uppercase tracking-wider">
-              Software · Websites · Mobile Applications
-            </span>
-          </div>
-
           <h1 className="text-[38px] sm:text-6xl lg:text-[72px] leading-[1.06] tracking-[-.05em] font-extrabold text-[#181B1E] break-words">
             Better technology.
             <span className="block mt-1 sm:mt-2 font-extrabold text-[#181B1E]">

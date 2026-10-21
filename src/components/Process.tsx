@@ -1,8 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import Link from "next/link";
-import { Flag, Code2, PackageCheck, ArrowUpRight } from "lucide-react";
+import { Flag, Code2, PackageCheck } from "lucide-react";
 
 export function Process() {
   const [activeStep, setActiveStep] = useState<number>(2);
@@ -230,20 +229,6 @@ export function Process() {
               </div>
             );
           })}
-        </div>
-
-        {/* 4. Bottom Footer Strip matching reference style */}
-        <div className="pt-10 mt-10 border-t border-[#E5E7EB] flex flex-col sm:flex-row justify-between items-center text-xs font-mono text-muted gap-4">
-          <span className="text-center sm:text-left">
-            Techpronnet Delivery Architecture · Established 2019
-          </span>
-          <Link
-            href="/services"
-            className="font-bold text-[#181B1E] hover:text-[#4D9218] transition-colors inline-flex items-center gap-1.5"
-          >
-            <span>Explore Pricing &amp; Service Scopes</span>
-            <ArrowUpRight className="size-3.5 text-[#4D9218]" />
-          </Link>
         </div>
       </div>
     </section>

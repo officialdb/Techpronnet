@@ -1,13 +1,29 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { ArrowUp, Mail, MapPin, Phone, ShieldCheck } from "lucide-react";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+  const [showFloatingTop, setShowFloatingTop] = useState(false);
 
-  const scrollToTop = (e: React.MouseEvent) => {
-    e.preventDefault();
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 300) {
+        setShowFloatingTop(true);
+      } else {
+        setShowFloatingTop(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
     if (typeof window !== "undefined") {
       window.scrollTo({
         top: 0,
@@ -151,18 +167,6 @@ export function Footer() {
                 <span>+234 812 000 0000</span>
               </li>
             </ul>
-
-            <div className="pt-2">
-              <button
-                onClick={scrollToTop}
-                type="button"
-                className="inline-flex items-center gap-2 text-xs font-mono font-medium text-gray-300 hover:text-white border border-white/20 bg-white/5 hover:bg-white/10 px-4 py-2.5 rounded-xl transition-colors cursor-pointer"
-                aria-label="Back to top"
-              >
-                <span>Back to top</span>
-                <ArrowUp className="size-3.5 text-[#8EDE35]" />
-              </button>
-            </div>
           </div>
         </div>
 
@@ -171,11 +175,23 @@ export function Footer() {
           <p className="text-center sm:text-left">
             &copy; {currentYear} Techpronnet Technologies. All rights reserved.
           </p>
-          <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[#8EDE35] text-[11px]">
-            Next.js 16 SSR · Neon Serverless Postgres
-          </span>
         </div>
       </div>
+
+      {/* Floating Back to Top Button */}
+      <button
+        type="button"
+        onClick={scrollToTop}
+        aria-label="Back to top"
+        className={`fixed bottom-6 right-6 z-50 size-11 sm:size-12 rounded-2xl bg-[#181B1E] text-[#8EDE35] border border-white/20 shadow-2xl flex items-center justify-center hover:bg-[#252824] hover:border-[#8EDE35] hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer group ${
+          showFloatingTop
+            ? "opacity-100 translate-y-0 pointer-events-auto"
+            : "opacity-0 translate-y-4 pointer-events-none"
+        }`}
+      >
+        <ArrowUp className="size-5 transition-transform group-hover:-translate-y-0.5" />
+        <span className="sr-only">Back to top</span>
+      </button>
     </footer>
   );
 }
