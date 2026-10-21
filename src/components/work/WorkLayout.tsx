@@ -172,12 +172,12 @@ export function WorkLayout() {
 
   return (
     <div className="w-full bg-[#FAF9F6]">
-      {/* 1. Hero Banner matching /services */}
+      {/* 1. Hero Banner: Clean Matte Ink Design (No glowing colors) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-10">
-        <div className="relative rounded-3xl bg-gradient-to-r from-[#9EF559] via-[#94EE51] to-[#88E544] overflow-hidden py-14 sm:py-20 px-6 sm:px-12 text-center shadow-sm">
-          {/* Circuit Board Vector Pattern Overlay */}
+        <div className="relative rounded-3xl bg-[#181B1E] border border-[#2D333B] overflow-hidden py-14 sm:py-20 px-6 sm:px-12 text-center shadow-lg">
+          {/* Subtle Monochrome Circuit Vector Pattern Overlay */}
           <svg
-            className="absolute inset-0 w-full h-full opacity-25 pointer-events-none"
+            className="absolute inset-0 w-full h-full opacity-10 pointer-events-none"
             xmlns="http://www.w3.org/2000/svg"
           >
             <pattern
@@ -191,30 +191,30 @@ export function WorkLayout() {
               <path
                 d="M10 10 h50 v50 h60 M10 80 h30 v40 h80 M80 10 v40 h50 M30 130 v-30 h50 v-30"
                 fill="none"
-                stroke="#181B1E"
-                strokeWidth="1.75"
+                stroke="#FFFFFF"
+                strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
-              <circle cx="60" cy="60" r="3.5" fill="#181B1E" />
-              <circle cx="120" cy="120" r="3.5" fill="#181B1E" />
-              <circle cx="130" cy="50" r="3.5" fill="#181B1E" />
-              <circle cx="80" cy="80" r="3.5" fill="#181B1E" />
-              <circle cx="10" cy="10" r="3" fill="#181B1E" />
+              <circle cx="60" cy="60" r="3" fill="#FFFFFF" />
+              <circle cx="120" cy="120" r="3" fill="#FFFFFF" />
+              <circle cx="130" cy="50" r="3" fill="#FFFFFF" />
+              <circle cx="80" cy="80" r="3" fill="#FFFFFF" />
+              <circle cx="10" cy="10" r="2.5" fill="#FFFFFF" />
             </pattern>
             <rect width="100%" height="100%" fill="url(#circuit-pattern-work)" />
           </svg>
 
           <div className="relative z-10">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#181B1E]">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white">
               Our Work
             </h1>
-            <div className="flex items-center justify-center gap-2 text-xs sm:text-sm font-medium text-[#181B1E]/80 mt-3">
-              <Link href="/" className="hover:text-[#181B1E] transition-colors">
+            <div className="flex items-center justify-center gap-2 text-xs sm:text-sm font-medium text-gray-400 mt-3 font-mono">
+              <Link href="/" className="hover:text-white transition-colors">
                 Home
               </Link>
               <ChevronRight className="size-3.5 opacity-60" />
-              <span className="font-semibold text-[#181B1E]">Our Work</span>
+              <span className="font-semibold text-white">Our Work</span>
             </div>
           </div>
         </div>
@@ -223,12 +223,12 @@ export function WorkLayout() {
       {/* 2. Main Section Header & Sector Jump Pills */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-20 pb-10">
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
-          <span className="text-[#60B820] font-bold text-xs sm:text-sm uppercase tracking-wider block mb-3">
+          <span className="text-[#334655] font-mono text-xs font-semibold uppercase tracking-wider block mb-3">
             Case Studies &amp; Systems
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold tracking-tight text-[#181B1E] leading-[1.2]">
             Proven Systems Delivered For Real{" "}
-            <span className="bg-[#94EE51] text-[#181B1E] px-3 py-0.5 rounded-md inline-block shadow-2xs">
+            <span className="underline decoration-[#334655] decoration-2 underline-offset-4 text-[#181B1E]">
               Business
             </span>{" "}
             Impact
@@ -247,7 +247,7 @@ export function WorkLayout() {
             <a
               key={item.id}
               href={`#${item.id}`}
-              className="px-3.5 py-1.5 rounded-full bg-white border border-[#E5E7EB] text-[#181B1E] hover:border-[#94EE51] hover:bg-[#94EE51]/15 transition-all text-[11px] font-medium"
+              className="px-3.5 py-1.5 rounded-full bg-white border border-[#E5E7EB] text-[#181B1E] hover:border-[#181B1E] hover:bg-[#F3F4F6] transition-all text-[11px] font-medium"
             >
               {item.num}. {item.client.split("/")[0].trim()}
             </a>
@@ -271,11 +271,11 @@ export function WorkLayout() {
                 {/* Card Top Strip */}
                 <div className="flex flex-wrap items-center justify-between gap-4 pb-6 mb-8 border-b border-[#E5E7EB]">
                   <div className="flex items-center gap-3">
-                    <div className="size-12 rounded-full bg-[#94EE51] text-[#181B1E] flex items-center justify-center shrink-0 shadow-xs">
+                    <div className="size-12 rounded-full bg-[#181B1E] text-white flex items-center justify-center shrink-0 shadow-xs border border-white/10">
                       <Icon className="size-5" />
                     </div>
                     <div>
-                      <span className="font-mono text-[11px] font-semibold text-[#60B820] uppercase tracking-wider block">
+                      <span className="font-mono text-[11px] font-semibold text-[#334655] uppercase tracking-wider block">
                         {project.num} / {project.sector}
                       </span>
                       <span className="text-sm font-bold text-[#181B1E]">
@@ -289,9 +289,9 @@ export function WorkLayout() {
                       href={project.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#FAF9F6] border border-[#E5E7EB] text-[#181B1E] hover:border-[#94EE51] hover:bg-[#94EE51]/20 transition-all text-xs font-mono"
+                      className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#FAF9F6] border border-[#E5E7EB] text-[#181B1E] hover:border-[#181B1E] hover:bg-gray-100 transition-all text-xs font-mono"
                     >
-                      <Lock className="size-3 text-[#60B820]" />
+                      <Lock className="size-3 text-[#334655]" />
                       <span className="truncate max-w-[180px] sm:max-w-none">
                         {project.url.replace("https://", "")}
                       </span>
@@ -304,7 +304,7 @@ export function WorkLayout() {
                 <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                   {/* Screenshot Display Column */}
                   <div className={`lg:col-span-7 ${isEven ? "lg:order-2" : "lg:order-1"}`}>
-                    <div className="rounded-2xl border border-[#E5E7EB] bg-[#FAF9F6] overflow-hidden shadow-sm group/frame transition-all hover:border-[#94EE51]/70">
+                    <div className="rounded-2xl border border-[#E5E7EB] bg-[#FAF9F6] overflow-hidden shadow-sm group/frame transition-all hover:border-[#334655]/50">
                       {/* Browser header bar */}
                       <div className="bg-[#F3F4F6] px-3.5 py-2.5 border-b border-[#E5E7EB] flex items-center justify-between gap-3 text-xs select-none">
                         <div className="flex items-center gap-1.5 shrink-0">
@@ -314,7 +314,7 @@ export function WorkLayout() {
                         </div>
 
                         <div className="flex items-center gap-1.5 font-mono text-[11px] text-muted truncate max-w-xs">
-                          <Lock className="size-3 text-[#60B820] shrink-0" />
+                          <Lock className="size-3 text-[#334655] shrink-0" />
                           <span className="truncate">{project.url}</span>
                         </div>
 
@@ -377,7 +377,7 @@ export function WorkLayout() {
                       <ul className="space-y-2 text-xs sm:text-sm text-muted">
                         {project.capabilities.map((cap) => (
                           <li key={cap} className="flex items-start gap-2.5">
-                            <Check className="size-4 text-[#60B820] mt-0.5 shrink-0" />
+                            <Check className="size-4 text-[#334655] mt-0.5 shrink-0" />
                             <span>{cap}</span>
                           </li>
                         ))}
@@ -386,7 +386,7 @@ export function WorkLayout() {
 
                     {/* Measured Business Impact */}
                     <div className="pt-4 border-t border-[#E5E7EB]">
-                      <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#60B820] block mb-2.5">
+                      <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#334655] block mb-2.5">
                         Measured Business Impact
                       </span>
                       <div className="space-y-2">
@@ -395,7 +395,7 @@ export function WorkLayout() {
                             key={imp}
                             className="flex items-baseline gap-2 text-xs font-medium text-[#181B1E]"
                           >
-                            <span className="font-mono text-[#60B820] font-bold">&rarr;</span>
+                            <span className="font-mono text-[#334655] font-bold">&rarr;</span>
                             <span>{imp}</span>
                           </div>
                         ))}
@@ -406,7 +406,7 @@ export function WorkLayout() {
                     <div className="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                       <Link
                         href={`/#contact?service=${encodeURIComponent(project.serviceLink)}`}
-                        className="inline-flex items-center justify-center gap-2 bg-[#181B1E] text-white hover:bg-[#94EE51] hover:text-[#181B1E] px-5 py-3 rounded-xl text-xs font-semibold transition-colors shadow-xs"
+                        className="inline-flex items-center justify-center gap-2 bg-[#181B1E] text-white hover:bg-[#334655] px-5 py-3 rounded-xl text-xs font-semibold transition-colors shadow-xs"
                       >
                         <span>Discuss a Similar System</span>
                         <ArrowRight className="size-3.5" />
@@ -434,7 +434,7 @@ export function WorkLayout() {
       <section className="bg-white border-t border-[#E5E7EB] py-16 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-14">
-            <span className="text-[#60B820] font-bold text-xs sm:text-sm uppercase tracking-wider block mb-3">
+            <span className="text-[#334655] font-mono text-xs font-semibold uppercase tracking-wider block mb-3">
               Engineering Architecture
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold tracking-tight text-[#181B1E] leading-tight">
@@ -446,8 +446,8 @@ export function WorkLayout() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-[#FAF9F6] border border-[#E5E7EB] rounded-3xl p-8 hover:border-[#94EE51] transition-all">
-              <div className="size-12 rounded-full bg-[#181B1E] text-[#94EE51] flex items-center justify-center mb-6">
+            <div className="bg-[#FAF9F6] border border-[#E5E7EB] rounded-3xl p-8 hover:border-[#334655] transition-all">
+              <div className="size-12 rounded-full bg-[#181B1E] text-white flex items-center justify-center mb-6">
                 <Database className="size-5" />
               </div>
               <h3 className="text-xl font-bold text-[#181B1E] mb-2.5">
@@ -458,8 +458,8 @@ export function WorkLayout() {
               </p>
             </div>
 
-            <div className="bg-[#FAF9F6] border border-[#E5E7EB] rounded-3xl p-8 hover:border-[#94EE51] transition-all">
-              <div className="size-12 rounded-full bg-[#94EE51] text-[#181B1E] flex items-center justify-center mb-6">
+            <div className="bg-[#FAF9F6] border border-[#E5E7EB] rounded-3xl p-8 hover:border-[#334655] transition-all">
+              <div className="size-12 rounded-full bg-[#243342] text-white flex items-center justify-center mb-6">
                 <Code2 className="size-5" />
               </div>
               <h3 className="text-xl font-bold text-[#181B1E] mb-2.5">
@@ -470,8 +470,8 @@ export function WorkLayout() {
               </p>
             </div>
 
-            <div className="bg-[#FAF9F6] border border-[#E5E7EB] rounded-3xl p-8 hover:border-[#94EE51] transition-all">
-              <div className="size-12 rounded-full bg-[#181B1E] text-[#94EE51] flex items-center justify-center mb-6">
+            <div className="bg-[#FAF9F6] border border-[#E5E7EB] rounded-3xl p-8 hover:border-[#334655] transition-all">
+              <div className="size-12 rounded-full bg-[#181B1E] text-white flex items-center justify-center mb-6">
                 <ShieldCheck className="size-5" />
               </div>
               <h3 className="text-xl font-bold text-[#181B1E] mb-2.5">
@@ -485,15 +485,12 @@ export function WorkLayout() {
         </div>
       </section>
 
-      {/* 5. Closing Project Inquiry Call-To-Action */}
+      {/* 5. Closing Project Inquiry Call-To-Action (No glowing colors or glows) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
-        <div className="relative rounded-3xl bg-[#181B1E] text-white p-8 sm:p-14 lg:p-16 shadow-2xl overflow-hidden">
-          {/* Subtle Accent Glow */}
-          <div className="absolute top-0 right-0 w-96 h-96 bg-[#94EE51]/10 rounded-full blur-3xl pointer-events-none" />
-
+        <div className="relative rounded-3xl bg-[#181B1E] text-white p-8 sm:p-14 lg:p-16 shadow-xl overflow-hidden border border-[#2D333B]">
           <div className="relative z-10 grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             <div className="lg:col-span-8">
-              <span className="text-[#94EE51] font-bold text-xs sm:text-sm uppercase tracking-wider block mb-3">
+              <span className="font-mono text-xs font-semibold uppercase tracking-wider text-gray-400 block mb-3">
                 Initiate A Project
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
@@ -503,13 +500,13 @@ export function WorkLayout() {
                 Whether you need to replace manual spreadsheets, deploy a confidential client intake portal, or architect an operations console, we provide upfront feasibility evaluations and reliable execution.
               </p>
 
-              <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3 text-xs text-gray-400">
+              <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3 text-xs text-gray-400 font-mono">
                 <span className="flex items-center gap-2">
-                  <Clock className="size-4 text-[#94EE51] shrink-0" />
+                  <Clock className="size-4 text-gray-300 shrink-0" />
                   <span>Direct response within 24 business hours</span>
                 </span>
                 <span className="flex items-center gap-2">
-                  <ShieldCheck className="size-4 text-[#94EE51] shrink-0" />
+                  <ShieldCheck className="size-4 text-gray-300 shrink-0" />
                   <span>No-obligation scope &amp; architecture review</span>
                 </span>
               </div>
@@ -518,7 +515,7 @@ export function WorkLayout() {
             <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3.5 lg:items-end">
               <Link
                 href="/#contact"
-                className="inline-flex items-center justify-center gap-2.5 bg-[#94EE51] text-[#181B1E] font-bold px-8 py-4 rounded-xl text-sm hover:bg-[#86E445] transition-colors shadow-sm text-center w-full sm:w-auto"
+                className="inline-flex items-center justify-center gap-2.5 bg-white text-[#181B1E] font-bold px-8 py-4 rounded-xl text-sm hover:bg-gray-100 transition-colors shadow-sm text-center w-full sm:w-auto"
               >
                 <span>Tell Us About Your Project</span>
                 <ArrowRight className="size-4" />
