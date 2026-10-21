@@ -131,7 +131,7 @@ export default function ServicesPage() {
       contactService: "Workflow automation",
       isReversed: true,
       imageSrc: "/images/services/workflow-automation.jpg",
-      badge: "Event-Driven Automation",
+      badge: "Workflow Pipeline Engine",
       caseStudyLink: {
         client: "Chaen — Automated Ledger & Event Notification Pipeline",
         href: "/work#aenbase-platform",
@@ -160,7 +160,7 @@ export default function ServicesPage() {
       contactService: "API or software integration",
       isReversed: false,
       imageSrc: "/images/services/apis-integrations.jpg",
-      badge: "Fintech & API Gateways",
+      badge: "API & Integrations Hub",
       caseStudyLink: {
         client: "Chaen Financial Commerce Infrastructure & Virtual Cards",
         href: "/work#aenbase-platform",
@@ -189,7 +189,7 @@ export default function ServicesPage() {
       contactService: "Maintenance and support",
       isReversed: true,
       imageSrc: "/images/services/cloud-infrastructure.jpg",
-      badge: "Neon Serverless Cloud",
+      badge: "System Health & SLA Telemetry",
       caseStudyLink: {
         client: "Neon Serverless Postgres Architecture (Across All Deployments)",
         href: "/work",
