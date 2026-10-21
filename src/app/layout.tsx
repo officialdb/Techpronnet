@@ -1,32 +1,60 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import { getSiteUrl, SITE_CONFIG } from "@/lib/site";
+import { OrganizationJsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Techpronnet Technologies | Software Built Around Your Business",
-  description:
-    "Techpronnet Technologies builds custom websites, mobile applications, business software and workflow automation for growing businesses.",
+  metadataBase: new URL(getSiteUrl()),
+  title: {
+    default: SITE_CONFIG.defaultTitle,
+    template: SITE_CONFIG.titleTemplate,
+  },
+  description: SITE_CONFIG.description,
+  applicationName: SITE_CONFIG.name,
   keywords: [
-    "custom software",
-    "web development",
-    "mobile applications",
+    "Techpronnet Technologies",
+    "custom software development",
+    "bespoke web portals",
+    "mobile application development",
+    "business software ERP",
     "workflow automation",
-    "business portals",
-    "systems integration",
-    "Techpronnet",
+    "Neon Serverless Postgres",
+    "systems integration Nigeria",
+    "hospital management systems",
+    "legal practice portals",
+    "logistics dispatch systems",
   ],
-  authors: [{ name: "Techpronnet Technologies" }],
+  authors: [{ name: SITE_CONFIG.name, url: getSiteUrl() }],
+  creator: SITE_CONFIG.name,
+  publisher: SITE_CONFIG.name,
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: "Techpronnet Technologies | Software Built Around Your Business",
-    description:
-      "We design and build practical digital solutions that help businesses simplify operations, serve customers better and grow with confidence.",
-    siteName: "Techpronnet Technologies",
+    title: SITE_CONFIG.defaultTitle,
+    description: SITE_CONFIG.description,
+    url: "/",
+    siteName: SITE_CONFIG.name,
+    locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Techpronnet Technologies | Software Built Around Your Business",
-    description:
-      "Practical digital solutions that simplify operations, serve customers better and support long-term growth.",
+    site: "@Tech_pronnet",
+    creator: "@Tech_pronnet",
+    title: SITE_CONFIG.defaultTitle,
+    description: SITE_CONFIG.description,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 
@@ -56,6 +84,7 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-paper text-ink antialiased min-h-screen flex flex-col">
+        <OrganizationJsonLd />
         {children}
       </body>
     </html>

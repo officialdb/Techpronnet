@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { FadeIn } from "@/components/MotionWrapper";
 import {
   Scale,
@@ -351,11 +352,13 @@ export function WorkLayout() {
                           })
                         }
                       >
-                        <img
+                        <Image
                           src={project.imageSrc}
-                          alt={project.title}
-                          className="w-full h-full object-cover object-top transition-transform duration-500 group-hover/frame:scale-[1.02]"
-                          loading="lazy"
+                          alt={`${project.client} — ${project.title} production screenshot`}
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 550px"
+                          className="object-cover object-top transition-transform duration-500 group-hover/frame:scale-[1.02]"
+                          priority={idx === 0}
                         />
                       </div>
                     </div>

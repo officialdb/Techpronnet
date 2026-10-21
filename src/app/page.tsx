@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { Industries } from "@/components/Industries";
@@ -7,6 +8,21 @@ import { Process } from "@/components/Process";
 import { TestimonialCarousel } from "@/components/TestimonialCarousel";
 import { ContactSection } from "@/components/ContactSection";
 import { Footer } from "@/components/Footer";
+
+export const metadata: Metadata = {
+  title: "Techpronnet Technologies | Software Built Around Your Business",
+  description:
+    "We engineer bespoke software systems, modern client portals, and resilient automated pipelines designed around your exact operational workflows.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Techpronnet Technologies | Software Built Around Your Business",
+    description:
+      "We engineer bespoke software systems, modern client portals, and resilient automated pipelines designed around your exact operational workflows.",
+    url: "/",
+  },
+};
 
 export default function HomePage() {
   return (
